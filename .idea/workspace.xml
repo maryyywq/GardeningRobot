@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added classes for types of tool">
-      <change afterPath="$PROJECT_DIR$/src/WiFiCommunication.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added classes for types of communication">
+      <change afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771424922017</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added classes for types of communication">
+      <option name="closed" value="true" />
+      <created>1771425096632</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1771425096632</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -129,7 +144,8 @@
     <MESSAGE value="Added classes for types of navigation" />
     <MESSAGE value="Added classes for types of power source" />
     <MESSAGE value="Added classes for types of tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added classes for types of tool" />
+    <MESSAGE value="Added classes for types of communication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added classes for types of communication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
