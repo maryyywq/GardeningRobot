@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Create enums">
-      <change afterPath="$PROJECT_DIR$/src/ICommunication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/INavigation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added interfaces">
+      <change afterPath="$PROJECT_DIR$/src/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Route.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,12 +71,21 @@
       <option name="project" value="LOCAL" />
       <updated>1771421286783</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added interfaces">
+      <option name="closed" value="true" />
+      <created>1771422079255</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771422079255</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create enums" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create enums" />
+    <MESSAGE value="Added interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
