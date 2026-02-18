@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class PlantingKnowledgeBase implements IKnowledgeBase {
-    private Map<String, Object> storage = new HashMap<>();
-    @Override public void addEntry(String key, Object value) { storage.put(key, value); }
-    @Override public void updateEntry(String key, Object value) { storage.put(key, value); }
+class PlantingKnowledgeBase implements IKnowledgeBase<PlantingEntry> {
+    private Map<String, PlantingEntry> storage = new HashMap<>();
+    @Override public void addEntry(String key, PlantingEntry value) { storage.put(key, value); }
+    @Override public void updateEntry(String key, PlantingEntry value) { storage.put(key, value); }
     @Override public void removeEntry(String key) { storage.remove(key); }
-    @Override public Object getEntry(String key) { return storage.get(key); }
+    @Override public PlantingEntry getEntry(String key) { return storage.get(key); }
     @Override public boolean isToolCompatible(ITool tool) {
-        return tool instanceof PlantingTool;
+        return tool.getToolType() == ToolType.PLANTING;
     }
 }

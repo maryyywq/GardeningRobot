@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added classes for types of communication">
-      <change afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Removed instanceof for types tool">
+      <change afterPath="$PROJECT_DIR$/src/FertilizingEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HarvestingEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/IEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MedicalEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MowingEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlantingEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WateringEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WeedingEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,35 +40,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "maryyywq"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maryyywq&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/maryyywq/GardeningRobot",
-    "accountId": "fae14c23-7478-46d9-9a00-761359f28d1d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/maryyywq/GardeningRobot&quot;,
+    &quot;accountId&quot;: &quot;fae14c23-7478-46d9-9a00-761359f28d1d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="39qQMTiXXsdCSOn7PSqno9ROiDI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -133,7 +142,55 @@
       <option name="project" value="LOCAL" />
       <updated>1771425096632</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added classes for types of knowledge base">
+      <option name="closed" value="true" />
+      <created>1771426211443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426211443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added abstract class Robot">
+      <option name="closed" value="true" />
+      <created>1771426335860</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426335860</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added robot type classes">
+      <option name="closed" value="true" />
+      <created>1771426463770</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426463770</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added class for central controller">
+      <option name="closed" value="true" />
+      <created>1771426596662</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426596662</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Removed instanceof for movement types">
+      <option name="closed" value="true" />
+      <created>1771487496241</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1771487496241</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Removed instanceof for types tool">
+      <option name="closed" value="true" />
+      <created>1771488329354</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1771488329354</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -145,7 +202,13 @@
     <MESSAGE value="Added classes for types of power source" />
     <MESSAGE value="Added classes for types of tool" />
     <MESSAGE value="Added classes for types of communication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added classes for types of communication" />
+    <MESSAGE value="Added classes for types of knowledge base" />
+    <MESSAGE value="Added abstract class Robot" />
+    <MESSAGE value="Added robot type classes" />
+    <MESSAGE value="Added class for central controller" />
+    <MESSAGE value="Removed instanceof for movement types" />
+    <MESSAGE value="Removed instanceof for types tool" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed instanceof for types tool" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

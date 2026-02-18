@@ -5,4 +5,5 @@ public class LeggedMovement implements IMovementSystem {
     }
     @Override public void stop() { System.out.println("Система передвижения на ножках: остановка"); }
     @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения на ножках: скорость установлена " + speed); }
+    @Override public MovementType getMovementType() { return MovementType.GROUND; }
 }

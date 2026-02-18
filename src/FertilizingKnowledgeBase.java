@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class FertilizingKnowledgeBase implements IKnowledgeBase {
-    private Map<String, Object> storage = new HashMap<>();
-    @Override public void addEntry(String key, Object value) { storage.put(key, value); }
-    @Override public void updateEntry(String key, Object value) { storage.put(key, value); }
+class FertilizingKnowledgeBase implements IKnowledgeBase<FertilizingEntry> {
+    private Map<String, FertilizingEntry> storage = new HashMap<>();
+    @Override public void addEntry(String key, FertilizingEntry value) { storage.put(key, value); }
+    @Override public void updateEntry(String key, FertilizingEntry value) { storage.put(key, value); }
     @Override public void removeEntry(String key) { storage.remove(key); }
-    @Override public Object getEntry(String key) { return storage.get(key); }
+    @Override public FertilizingEntry getEntry(String key) { return storage.get(key); }
     @Override public boolean isToolCompatible(ITool tool) {
-        return tool instanceof FertilizingTool;
+        return tool.getToolType() == ToolType.FERTILIZING;
     }
 }

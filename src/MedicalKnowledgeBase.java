@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class MedicalKnowledgeBase implements IKnowledgeBase {
-    private Map<String, Object> storage = new HashMap<>();
-    @Override public void addEntry(String key, Object value) { storage.put(key, value); }
-    @Override public void updateEntry(String key, Object value) { storage.put(key, value); }
+class MedicalKnowledgeBase implements IKnowledgeBase<MedicalEntry> {
+    private Map<String, MedicalEntry> storage = new HashMap<>();
+    @Override public void addEntry(String key, MedicalEntry value) { storage.put(key, value); }
+    @Override public void updateEntry(String key, MedicalEntry value) { storage.put(key, value); }
     @Override public void removeEntry(String key) { storage.remove(key); }
-    @Override public Object getEntry(String key) { return storage.get(key); }
+    @Override public MedicalEntry getEntry(String key) { return storage.get(key); }
     @Override public boolean isToolCompatible(ITool tool) {
-        return tool instanceof MedicalTool;
+        return tool.getToolType() == ToolType.MEDICAL;
     }
 }

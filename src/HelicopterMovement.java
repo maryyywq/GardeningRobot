@@ -4,5 +4,6 @@ public class HelicopterMovement implements IMovementSystem {
         System.out.println("Система передвижения с винтом сверху (как у вертолета): полёт к " + target);
     }
     @Override public void stop() { System.out.println("Система передвижения с винтом сверху (как у вертолета): зависание"); }
-    @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения с винтом сверху (как у вертолета): скорость установлена " + speed); }
+    @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения с винтом сверху (как у вертолета): скорость установлена " + speed);}
+    @Override public MovementType getMovementType() { return MovementType.AIR; }
 }
