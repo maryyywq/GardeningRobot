@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added classes for types of communication">
-      <change afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added abstract class Robot">
+      <change afterPath="$PROJECT_DIR$/src/Drone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GroundRobot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +127,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771425096632</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added classes for types of knowledge base">
+      <option name="closed" value="true" />
+      <created>1771426211443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426211443</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added abstract class Robot">
+      <option name="closed" value="true" />
+      <created>1771426335860</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426335860</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -145,7 +155,9 @@
     <MESSAGE value="Added classes for types of power source" />
     <MESSAGE value="Added classes for types of tool" />
     <MESSAGE value="Added classes for types of communication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added classes for types of communication" />
+    <MESSAGE value="Added classes for types of knowledge base" />
+    <MESSAGE value="Added abstract class Robot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added abstract class Robot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
