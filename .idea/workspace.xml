@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added abstract class Robot">
-      <change afterPath="$PROJECT_DIR$/src/Drone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GroundRobot.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added class for central controller">
+      <change afterPath="$PROJECT_DIR$/src/MovementType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LeggedMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeggedMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlainMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlainMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,44 +21,44 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "maryyywq"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maryyywq&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/maryyywq/GardeningRobot",
-    "accountId": "fae14c23-7478-46d9-9a00-761359f28d1d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/maryyywq/GardeningRobot&quot;,
+    &quot;accountId&quot;: &quot;fae14c23-7478-46d9-9a00-761359f28d1d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="39qQMTiXXsdCSOn7PSqno9ROiDI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -143,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771426335860</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added robot type classes">
+      <option name="closed" value="true" />
+      <created>1771426463770</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426463770</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added class for central controller">
+      <option name="closed" value="true" />
+      <created>1771426596662</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1771426596662</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -157,7 +178,9 @@
     <MESSAGE value="Added classes for types of communication" />
     <MESSAGE value="Added classes for types of knowledge base" />
     <MESSAGE value="Added abstract class Robot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added abstract class Robot" />
+    <MESSAGE value="Added robot type classes" />
+    <MESSAGE value="Added class for central controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added class for central controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,4 +5,5 @@ public class WheeledMovement implements IMovementSystem {
     }
     @Override public void stop() { System.out.println("Система передвижения на колесах: остановка"); }
     @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения на колесах: скорость установлена " + speed); }
+    @Override public MovementType getMovementType() { return MovementType.GROUND; }
 }
