@@ -1,5 +1,6 @@
 import java.util.*;
 
+//База знаний робота, который собирает урожай
 class HarvestingKnowledgeBase implements IKnowledgeBase<HarvestingEntry> {
     private Map<String, HarvestingEntry> storage = new HashMap<>();
     @Override public void addEntry(String key, HarvestingEntry value) { storage.put(key, value); }

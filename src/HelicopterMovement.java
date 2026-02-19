@@ -1,5 +1,6 @@
-public class HelicopterMovement implements IMovementSystem {
-    private double speed = 2.0;
+//Движение робота по типу "вертолет"
+public class HelicopterMovement extends IMovementSystem {
+    HelicopterMovement() {speed = 2.0;}
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения с винтом сверху (как у вертолета): полёт к " + target);
     }

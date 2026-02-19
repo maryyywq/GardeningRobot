@@ -1,13 +1,15 @@
 abstract class Robot implements IRobot {
-    protected String id;
-    protected RobotStatus status = RobotStatus.IDLE;
-    protected IMovementSystem movementSystem;
-    protected INavigation navigation;
-    protected IPowerSource powerSource;
-    protected ICommunication communication;
-    protected IKnowledgeBase<?> knowledgeBase;
-    protected ITool currentTool;
-    protected Location location;
+    protected String id; //Уникальный идентификатор робота
+    protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
+    protected IMovementSystem movementSystem; //Система передвижения
+    protected INavigation navigation; //Навигационная система
+    protected IPowerSource powerSource; //Источник питания
+    protected ICommunication communication; //Система связи
+    protected IKnowledgeBase<?> knowledgeBase; //База знаний
+    protected ITool currentTool; //Текущий установленный инструмент
+    protected Location location; //Текущее местоположение
+
+    public Robot() { }
 
     public Robot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
                          ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
@@ -20,21 +22,35 @@ abstract class Robot implements IRobot {
         this.location = startLoc;
     }
 
-    @Override public void startTask() { status = RobotStatus.WORKING; System.out.println(id + ": задача запущена"); }
+    @Override
+    public void startTask() {
+        if (currentTool == null) {
+            System.out.println(id + ": ошибка - инструмент не установлен, задача не может быть выполнена");
+            status = RobotStatus.ERROR;
+            return;
+        }
+        status = RobotStatus.WORKING;
+        System.out.println(id + ": задача запущена, использую инструмент " + currentTool.getName());
+
+        currentTool.execute();
+    }
+
     @Override public void stopTask() { status = RobotStatus.IDLE; System.out.println(id + ": задача остановлена"); }
     @Override public RobotStatus getStatus() { return status; }
     @Override public void receiveCommand(String command) {
         System.out.println(id + ": получена команда: " + command);
+        communication.receiveCommand(command); //Передаём команду в систему связи
         communication.sendData("Подтверждение", "контроллер");
+        startTask();
     }
 
     @Override
     public void setTool(ITool tool) {
         if (canUseTool(tool)) {
             this.currentTool = tool;
-            System.out.println(id + ": установлен инструмент " + tool.getClass().getSimpleName());
+            System.out.println(id + ": установлен инструмент " + tool.getName()); // вместо getClass().getSimpleName()
         } else {
-            System.out.println(id + ": невозможно использовать инструмент " + tool.getClass().getSimpleName() + " - несовместим с моей базой знаний");
+            System.out.println(id + ": невозможно использовать инструмент " + tool.getName() + " - несовместим с моей базой знаний");
         }
     }
 
@@ -44,11 +60,11 @@ abstract class Robot implements IRobot {
     }
 
     // Реализация геттеров
-    @Override public IMovementSystem getMovementSystem() { return movementSystem; }
-    @Override public INavigation getNavigation() { return navigation; }
-    @Override public IPowerSource getPowerSource() { return powerSource; }
-    @Override public ICommunication getCommunication() { return communication; }
-    @Override public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
-    @Override public ITool getCurrentTool() { return currentTool; }
+    public IMovementSystem getMovementSystem() { return movementSystem; }
+    public INavigation getNavigation() { return navigation; }
+    public IPowerSource getPowerSource() { return powerSource; }
+    public ICommunication getCommunication() { return communication; }
+    public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
+    public ITool getCurrentTool() { return currentTool; }
 }
 

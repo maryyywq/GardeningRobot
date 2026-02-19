@@ -1,7 +1,8 @@
 import java.util.*;
 
 interface ITool {
-    void execute(Map<String, Object> parameters);
-    ToolStatus getStatus();
-    ToolType getToolType();
+    void execute(); //Выполнить операцию с заданными параметрами
+    ToolStatus getStatus(); //Получить состояние инструмента (готов, занят, ошибка)
+    ToolType getToolType(); //Получить тип инструмента
+    String getName();  //Получить название инструмента
 }

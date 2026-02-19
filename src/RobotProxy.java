@@ -1,20 +1,20 @@
 import java.util.*;
 
-public class RobotProxy implements IRobot {
-    private IRobot realRobot;
-    private Set<String> allowedCommands;
-    private static final double MIN_POWER = 10.0;
+public class RobotProxy extends Robot {
+    private Robot realRobot; //Ссылка на реального робота
+    private Set<String> allowedCommands; //Множество разрешённых команд
+    private static final double MIN_POWER = 10.0; //Минимальный уровень заряда для работы
 
-    public RobotProxy(IRobot realRobot) {
+    public RobotProxy(Robot realRobot) {
         this.realRobot = realRobot;
-        this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS"));
+        this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS", "WATER", "FERTILIZE", "WEED", "MOW", "TREAT", "PLANT", "HARVEST"));
     }
 
-    // Проверка всех систем перед запуском задачи
+    //Проверка всех систем перед запуском задачи
     private boolean canStart() {
         System.out.println("Proxy: проверка систем...");
 
-        // Проверка наличия всех компонентов через геттеры
+        //Проверка наличия всех компонентов через геттеры
         if (realRobot.getMovementSystem() == null) {
             System.out.println("Proxy: ошибка - отсутствует система передвижения");
             return false;
@@ -36,14 +36,14 @@ public class RobotProxy implements IRobot {
             return false;
         }
 
-        // Проверка уровня заряда
+        //Проверка уровня заряда
         double level = realRobot.getPowerSource().getLevel();
         if (level < MIN_POWER) {
             System.out.printf("Proxy: ошибка - низкий уровень заряда/топлива: %.1f%% (минимум %.1f%%)%n", level, MIN_POWER);
             return false;
         }
 
-        // Проверка инструмента
+        //Проверка инструмента
         ITool tool = realRobot.getCurrentTool();
         if (tool == null) {
             System.out.println("Proxy: ошибка - инструмент не установлен");
@@ -75,7 +75,7 @@ public class RobotProxy implements IRobot {
 
     @Override
     public void stopTask() {
-        System.out.println("Proxy: логирование stopTask");
+        System.out.println("Proxy: запрос на остановку задачи");
         realRobot.stopTask();
     }
 
@@ -87,31 +87,38 @@ public class RobotProxy implements IRobot {
 
     @Override
     public void setTool(ITool tool) {
-        System.out.println("Proxy: проверка совместимости инструмента " + tool.getClass().getSimpleName());
+        System.out.println("Proxy: проверка совместимости инструмента " + tool.getName());
         if (realRobot.canUseTool(tool)) {
             realRobot.setTool(tool);
         } else {
-            System.out.println("Proxy: инструмент " + tool.getClass().getSimpleName() + " несовместим с этим роботом. Отказ.");
+            System.out.println("Proxy: инструмент " + tool.getName() + " несовместим. Отказ.");
         }
     }
 
     @Override
     public void receiveCommand(String command) {
         String cmd = command.split(" ")[0];
-        if (allowedCommands.contains(cmd)) {
-            System.out.println("Proxy: команда '" + command + "' разрешена");
-            realRobot.receiveCommand(command);
-        } else {
+        //Проверяем, разрешена ли команда
+        if (!allowedCommands.contains(cmd)) {
             System.out.println("Proxy: команда '" + command + "' заблокирована (не разрешена)");
+            return; //Не передаём дальше
+        }
+        System.out.println("Proxy: команда '" + command + "' разрешена, проверяю системы...");
+        if (canStart()) {
+            System.out.println("Proxy: системы в норме, передаю команду роботу");
+            realRobot.receiveCommand(command); //Робот сам запустит задачу в receiveCommand
+        } else {
+            System.out.println("Proxy: задача не запущена из-за проблем с системами");
         }
     }
+
 
     @Override
     public boolean canUseTool(ITool tool) {
         return realRobot.canUseTool(tool);
     }
 
-    // Реализация геттеров (делегирование)
+    //Реализация геттеров (делегирование)
     @Override public IMovementSystem getMovementSystem() { return realRobot.getMovementSystem(); }
     @Override public INavigation getNavigation() { return realRobot.getNavigation(); }
     @Override public IPowerSource getPowerSource() { return realRobot.getPowerSource(); }

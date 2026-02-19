@@ -1,3 +1,5 @@
 public enum ToolStatus {
-    READY, BUSY, ERROR
+    READY, //Инструмент готов к работе
+    BUSY, //Инструмент занят выполнением операции
+    ERROR //Инструмент в состоянии ошибки
 }
