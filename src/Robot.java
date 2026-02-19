@@ -5,12 +5,12 @@ abstract class Robot implements IRobot {
     protected INavigation navigation;
     protected IPowerSource powerSource;
     protected ICommunication communication;
-    protected IKnowledgeBase knowledgeBase;
+    protected IKnowledgeBase<?> knowledgeBase;
     protected ITool currentTool;
     protected Location location;
 
     public Robot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
-                 ICommunication comm, IKnowledgeBase kb, Location startLoc) {
+                         ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
         this.id = id;
         this.movementSystem = ms;
         this.navigation = nav;
@@ -42,4 +42,13 @@ abstract class Robot implements IRobot {
     public boolean canUseTool(ITool tool) {
         return knowledgeBase.isToolCompatible(tool);
     }
+
+    // Реализация геттеров
+    @Override public IMovementSystem getMovementSystem() { return movementSystem; }
+    @Override public INavigation getNavigation() { return navigation; }
+    @Override public IPowerSource getPowerSource() { return powerSource; }
+    @Override public ICommunication getCommunication() { return communication; }
+    @Override public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
+    @Override public ITool getCurrentTool() { return currentTool; }
 }
+
