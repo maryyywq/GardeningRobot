@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added class for central controller">
-      <change afterPath="$PROJECT_DIR$/src/MovementType.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Removed instanceof for movement types">
+      <change afterPath="$PROJECT_DIR$/src/ToolType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LeggedMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeggedMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlainMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlainMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771426596662</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Removed instanceof for movement types">
+      <option name="closed" value="true" />
+      <created>1771487496241</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1771487496241</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -180,7 +192,8 @@
     <MESSAGE value="Added abstract class Robot" />
     <MESSAGE value="Added robot type classes" />
     <MESSAGE value="Added class for central controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added class for central controller" />
+    <MESSAGE value="Removed instanceof for movement types" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed instanceof for movement types" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
