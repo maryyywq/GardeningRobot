@@ -1,3 +1,5 @@
+//Интерфейс робота
+
 interface IRobot {
     void startTask();
     void stopTask();

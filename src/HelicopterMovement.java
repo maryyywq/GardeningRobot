@@ -1,3 +1,4 @@
+//Движение робота по типу "вертолет"
 public class HelicopterMovement implements IMovementSystem {
     private double speed = 2.0;
     @Override public void moveTo(Location target) {

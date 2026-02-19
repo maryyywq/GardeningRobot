@@ -1,3 +1,4 @@
+//Класс летающего робота (дрона)
 public class Drone extends Robot {
     public Drone(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
                  ICommunication comm, IKnowledgeBase kb, Location startLoc) {

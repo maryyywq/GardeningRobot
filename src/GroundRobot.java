@@ -1,3 +1,4 @@
+//Наземный робот
 public class GroundRobot extends Robot {
     public GroundRobot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
                        ICommunication comm, IKnowledgeBase kb, Location startLoc) {

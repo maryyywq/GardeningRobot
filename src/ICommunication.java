@@ -1,3 +1,4 @@
+//Интерфейс связи
 public interface ICommunication {
     void connect();
     void disconnect();

@@ -47,18 +47,19 @@ public class Main {
         harvestingKB.addEntry("томат", new HarvestingEntry("красный", "механизированный"));
         harvestingKB.addEntry("яблоко", new HarvestingEntry("желто-красный", "ручной"));
 
+        //Создание роботов с разными наборами компонентов и баз знаний
         GroundRobot groundWateringBot = new GroundRobot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
         GroundRobot groundFertilizingBot = new GroundRobot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
-
         Drone medicalDrone = new Drone("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
-
         Drone mowingDrone = new Drone("MowDrone", plain, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
 
+        //Создание proxy-роботов
         IRobot proxyWatering = new RobotProxy(groundWateringBot);
         IRobot proxyFertilizing = new RobotProxy(groundFertilizingBot);
         IRobot proxyMedical = new RobotProxy(medicalDrone);
         IRobot proxyMowing = new RobotProxy(mowingDrone);
 
+        //Создание инструментов
         ITool wateringTool = new WateringTool();
         ITool fertilizingTool = new FertilizingTool();
         ITool mowingTool = new MowingTool();
