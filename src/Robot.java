@@ -25,6 +25,7 @@ abstract class Robot implements IRobot {
     @Override public RobotStatus getStatus() { return status; }
     @Override public void receiveCommand(String command) {
         System.out.println(id + ": получена команда: " + command);
+        communication.receiveCommand(command);
         communication.sendData("Подтверждение", "контроллер");
         startTask();
     }

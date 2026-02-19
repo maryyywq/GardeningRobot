@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added class RobotProxy">
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Created main and fixed some bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GroundRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GroundRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ICommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LTECommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LTECommunication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WiFiCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WiFiCommunication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771493273750</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Created main and fixed some bugs">
+      <option name="closed" value="true" />
+      <created>1771502096236</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1771502096236</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -220,6 +225,7 @@
     <MESSAGE value="Removed instanceof for types tool" />
     <MESSAGE value="Added generics for knowledge bases" />
     <MESSAGE value="Added class RobotProxy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added class RobotProxy" />
+    <MESSAGE value="Created main and fixed some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created main and fixed some bugs" />
   </component>
 </project>

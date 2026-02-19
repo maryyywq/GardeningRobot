@@ -75,7 +75,7 @@ public class RobotProxy implements IRobot {
 
     @Override
     public void stopTask() {
-        System.out.println("Proxy: логирование stopTask");
+        System.out.println("Proxy: запрос на остановку задачи");
         realRobot.stopTask();
     }
 

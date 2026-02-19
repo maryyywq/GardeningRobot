@@ -20,16 +20,16 @@ public class Main {
         //Заполнение базы знаний
         WateringKnowledgeBase wateringKB = new WateringKnowledgeBase();
         wateringKB.addEntry("томат", new WateringEntry(2.5, "дождевание"));
-        wateringKB.addEntry("огурец", new WateringEntry(3.0, "капельный"));
-        wateringKB.addEntry("газон", new WateringEntry(5.0, "разбрызгивание"));
+        wateringKB.addEntry("огурец", new WateringEntry(3.0, "точечный"));
+        wateringKB.addEntry("газон", new WateringEntry(5.0, "линейный"));
 
         FertilizingKnowledgeBase fertilizingKB = new FertilizingKnowledgeBase();
         fertilizingKB.addEntry("томат", new FertilizingEntry("NPK 10-10-10", 50));
         fertilizingKB.addEntry("огурец", new FertilizingEntry("азотное", 30));
 
         WeedingKnowledgeBase weedingKB = new WeedingKnowledgeBase();
-        weedingKB.addEntry("пырей", new WeedingEntry("механический", ""));
-        weedingKB.addEntry("осот", new WeedingEntry("химический", "глифосат"));
+        weedingKB.addEntry("морковка", new WeedingEntry("механический", ""));
+        weedingKB.addEntry("лук", new WeedingEntry("химический", "глифосат"));
 
         MowingKnowledgeBase mowingKB = new MowingKnowledgeBase();
         mowingKB.addEntry("газон", new MowingEntry(5.0, ""));
@@ -87,8 +87,11 @@ public class Main {
 
         System.out.println("2. Тестирование установки команд через proxy:");
         proxyWatering.receiveCommand("MOVE 10 20");
+        System.out.println();
         proxyWatering.receiveCommand("SCAN");
-        proxyWatering.receiveCommand("ATTACK"); // заблокировано
+        System.out.println();
+        proxyWatering.receiveCommand("ATTACK");
+        System.out.println();
         proxyWatering.receiveCommand("STATUS");
         System.out.println();
 
@@ -112,7 +115,7 @@ public class Main {
         System.out.println("5. Тестирование систем связи: ");
         wifi.connect();
         wifi.sendData("Hello", "controller");
-        String cmd = wifi.receiveCommand();
+        String cmd = wifi.receiveCommand("MOVE 10 20");
         System.out.println("WiFi: получена команда: " + cmd);
         wifi.disconnect();
         System.out.println();
@@ -137,10 +140,11 @@ public class Main {
         waterParams.put("plant", "томат");
         Task waterTask = new Task("WATER", waterParams);
         controller.assignTask("R2D2", waterTask);
+        System.out.println();
 
         Map<String, Object> fertilizeParams = new HashMap<>();
         fertilizeParams.put("plant", "огурец");
-        Task fertilizeTask = new Task("WATER", fertilizeParams);
+        Task fertilizeTask = new Task("HARVEST", fertilizeParams);
         controller.assignTask("C3PO", fertilizeTask);
         System.out.println();
 
@@ -166,8 +170,10 @@ public class Main {
 
         System.out.println("10. Мониторинг состояния роботов:");
         Map<String, RobotStatus> statuses = controller.monitorRobots();
+        System.out.println();
+        System.out.println("Состояния роботов:");
         for (Map.Entry<String, RobotStatus> entry : statuses.entrySet()) {
-            System.out.println("   " + entry.getKey() + ": " + entry.getValue());
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
         System.out.println();
 
@@ -215,7 +221,7 @@ public class Main {
         System.out.println("15. Проверка передачи данных с помощью сотовой связи:");
         lte.connect();
         lte.sendData("ping", "R2D2");
-        lte.receiveCommand();
+        lte.receiveCommand("START");
         lte.disconnect();
         System.out.println();
 

@@ -5,8 +5,8 @@ public class WiFiCommunication implements ICommunication {
     @Override public void sendData(String data, String recipientId) {
         System.out.println("WiFi: отправка данных получателю " + recipientId + ": " + data);
     }
-    @Override public String receiveCommand() {
+    @Override public String receiveCommand(String command) {
         System.out.println("WiFi: получение команды");
-        return "MOVE_TO 10 20";
+        return command;
     }
 }
