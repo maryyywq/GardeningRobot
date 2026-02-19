@@ -8,14 +8,12 @@ public class CentralController implements IController {
         robots.put(id, robot);
     }
 
-    @Override
     public void assignTask(String robotId, Task task) {
         IRobot robot = robots.get(robotId);
         if (robot != null) {
             System.out.println("Контроллер: назначение задачи " + task.type + " роботу " + robotId);
+            // Передаём команду (строку) роботу, не вызываем startTask отдельно
             robot.receiveCommand(task.type);
-            robot.startTask();
-            // Здесь можно добавить логику выполнения задачи
         } else {
             System.out.println("Контроллер: робот " + robotId + " не найден");
         }

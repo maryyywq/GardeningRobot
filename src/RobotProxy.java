@@ -7,7 +7,7 @@ public class RobotProxy implements IRobot {
 
     public RobotProxy(IRobot realRobot) {
         this.realRobot = realRobot;
-        this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS"));
+        this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS", "WATER", "FERTILIZE", "WEED", "MOW", "TREAT", "PLANT", "HARVEST"));
     }
 
     // Проверка всех систем перед запуском задачи
@@ -87,24 +87,31 @@ public class RobotProxy implements IRobot {
 
     @Override
     public void setTool(ITool tool) {
-        System.out.println("Proxy: проверка совместимости инструмента " + tool.getClass().getSimpleName());
+        System.out.println("Proxy: проверка совместимости инструмента " + tool.getName());
         if (realRobot.canUseTool(tool)) {
             realRobot.setTool(tool);
         } else {
-            System.out.println("Proxy: инструмент " + tool.getClass().getSimpleName() + " несовместим с этим роботом. Отказ.");
+            System.out.println("Proxy: инструмент " + tool.getName() + " несовместим. Отказ.");
         }
     }
 
     @Override
     public void receiveCommand(String command) {
         String cmd = command.split(" ")[0];
-        if (allowedCommands.contains(cmd)) {
-            System.out.println("Proxy: команда '" + command + "' разрешена");
-            realRobot.receiveCommand(command);
-        } else {
+        // Проверяем, разрешена ли команда
+        if (!allowedCommands.contains(cmd)) {
             System.out.println("Proxy: команда '" + command + "' заблокирована (не разрешена)");
+            return; // Не передаём дальше
+        }
+        System.out.println("Proxy: команда '" + command + "' разрешена, проверяю системы...");
+        if (canStart()) {
+            System.out.println("Proxy: системы в норме, передаю команду роботу");
+            realRobot.receiveCommand(command); // Робот сам запустит задачу в receiveCommand
+        } else {
+            System.out.println("Proxy: задача не запущена из-за проблем с системами");
         }
     }
+
 
     @Override
     public boolean canUseTool(ITool tool) {

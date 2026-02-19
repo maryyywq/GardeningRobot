@@ -5,4 +5,5 @@ abstract class BaseTool implements ITool{
     public BaseTool(String name, ToolType toolType) { this.name = name; this.toolType = toolType; }
     @Override public ToolStatus getStatus() { return status; }
     @Override public ToolType getToolType() { return toolType; }
+    @Override public String getName() { return name; }
 }

@@ -26,15 +26,16 @@ abstract class Robot implements IRobot {
     @Override public void receiveCommand(String command) {
         System.out.println(id + ": получена команда: " + command);
         communication.sendData("Подтверждение", "контроллер");
+        startTask();
     }
 
     @Override
     public void setTool(ITool tool) {
         if (canUseTool(tool)) {
             this.currentTool = tool;
-            System.out.println(id + ": установлен инструмент " + tool.getClass().getSimpleName());
+            System.out.println(id + ": установлен инструмент " + tool.getName()); // вместо getClass().getSimpleName()
         } else {
-            System.out.println(id + ": невозможно использовать инструмент " + tool.getClass().getSimpleName() + " - несовместим с моей базой знаний");
+            System.out.println(id + ": невозможно использовать инструмент " + tool.getName() + " - несовместим с моей базой знаний");
         }
     }
 
