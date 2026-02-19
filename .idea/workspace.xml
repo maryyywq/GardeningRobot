@@ -4,24 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Removed instanceof for types tool">
-      <change afterPath="$PROJECT_DIR$/src/FertilizingEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestingEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MedicalEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MowingEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlantingEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WateringEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeedingEntry.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added generics for knowledge bases">
+      <change afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771488329354</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added generics for knowledge bases">
+      <option name="closed" value="true" />
+      <created>1771491941675</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1771491941675</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -208,7 +203,8 @@
     <MESSAGE value="Added class for central controller" />
     <MESSAGE value="Removed instanceof for movement types" />
     <MESSAGE value="Removed instanceof for types tool" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed instanceof for types tool" />
+    <MESSAGE value="Added generics for knowledge bases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generics for knowledge bases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
