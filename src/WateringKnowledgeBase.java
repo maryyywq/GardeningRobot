@@ -1,6 +1,7 @@
 import java.util.*;
-
+//База знаний для полива
 class WateringKnowledgeBase implements IKnowledgeBase<WateringEntry> {
+    //Хранилище данных: ключ - название растения, значение - запись WateringEntry
     private Map<String, WateringEntry> storage = new HashMap<>();
     @Override public void addEntry(String key, WateringEntry value) { storage.put(key, value); }
     @Override public void updateEntry(String key, WateringEntry value) { storage.put(key, value); }

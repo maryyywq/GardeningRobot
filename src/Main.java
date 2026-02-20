@@ -115,7 +115,7 @@ public class Main {
 
         System.out.println("5. Тестирование систем связи: ");
         wifi.connect();
-        wifi.sendData("Hello", "controller");
+        wifi.sendData("Hello", "контроллер");
         String cmd = wifi.receiveCommand("MOVE 10 20");
         System.out.println("WiFi: получена команда: " + cmd);
         wifi.disconnect();
@@ -189,8 +189,8 @@ public class Main {
 
         System.out.println("12. Тестирование инструментов:");
         Map<String, Object> toolParams = new HashMap<>();
-        toolParams.put("volume", 10);
-        toolParams.put("mode", "капельный");
+        toolParams.put("Объем", 10);
+        toolParams.put("Режим", "дождевание");
         wateringTool.execute(toolParams);
         System.out.println("Статус инструмента после выполнения: " + wateringTool.getStatus());
         System.out.println();

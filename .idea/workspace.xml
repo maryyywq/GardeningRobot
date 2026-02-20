@@ -4,30 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Fixed mini bugs">
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Drone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FertilizingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GPSNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPSNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GroundRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GroundRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HarvestingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HarvestingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ICommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommunication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IKnowledgeBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/INavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/INavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MovementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovementType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToolStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,15 +68,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -229,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771507132506</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added comments">
+      <option name="closed" value="true" />
+      <created>1771509199699</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1771509199699</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -251,6 +260,7 @@
     <MESSAGE value="Added class RobotProxy" />
     <MESSAGE value="Created main and fixed some bugs" />
     <MESSAGE value="Fixed mini bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed mini bugs" />
+    <MESSAGE value="Added comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments" />
   </component>
 </project>

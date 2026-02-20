@@ -1,3 +1,4 @@
 public enum MovementType {
-    GROUND, AIR
+    GROUND, //Наземный тип передвижения
+    AIR //Воздушный тип передвижения
 }

@@ -1,3 +1,7 @@
 public enum RobotStatus {
-    IDLE, WORKING, MOVING, CHARGING, ERROR
+    IDLE, //Робот простаивает, не выполняет задач
+    WORKING, //Робот выполняет задачу
+    MOVING, //Робот находится в движении
+    CHARGING, //Робот заряжается / заправляется
+    ERROR //Робот в состоянии ошибки
 }

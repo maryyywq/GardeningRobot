@@ -1,13 +1,13 @@
 abstract class Robot implements IRobot {
-    protected String id;
-    protected RobotStatus status = RobotStatus.IDLE;
-    protected IMovementSystem movementSystem;
-    protected INavigation navigation;
-    protected IPowerSource powerSource;
-    protected ICommunication communication;
-    protected IKnowledgeBase<?> knowledgeBase;
-    protected ITool currentTool;
-    protected Location location;
+    protected String id; //Уникальный идентификатор робота
+    protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
+    protected IMovementSystem movementSystem; //Система передвижения
+    protected INavigation navigation; //Навигационная система
+    protected IPowerSource powerSource; //Источник питания
+    protected ICommunication communication; //Система связи
+    protected IKnowledgeBase<?> knowledgeBase; //База знаний
+    protected ITool currentTool; //Текущий установленный инструмент
+    protected Location location; //Текущее местоположение
 
     public Robot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
                          ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
@@ -25,7 +25,7 @@ abstract class Robot implements IRobot {
     @Override public RobotStatus getStatus() { return status; }
     @Override public void receiveCommand(String command) {
         System.out.println(id + ": получена команда: " + command);
-        communication.receiveCommand(command);
+        communication.receiveCommand(command); //Передаём команду в систему связи
         communication.sendData("Подтверждение", "контроллер");
         startTask();
     }

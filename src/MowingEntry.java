@@ -1,6 +1,6 @@
 public class MowingEntry implements IEntry {
-    private double height;
-    private String shape;
+    private double height; //Высота стрижки (в см)
+    private String shape; //Форма (для кустов, например "шар", "конус")
     public MowingEntry(double height, String shape) { this.height = height; this.shape = shape; }
     public double getHeight() { return height; }
     public String getShape() { return shape; }

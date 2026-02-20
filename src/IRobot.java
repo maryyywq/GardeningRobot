@@ -1,12 +1,14 @@
 //Интерфейс робота
 
 interface IRobot {
-    void startTask();
-    void stopTask();
-    RobotStatus getStatus();
-    void setTool(ITool tool);
-    void receiveCommand(String command);
-    boolean canUseTool(ITool tool);
+    void startTask(); //Запустить выполнение задачи
+    void stopTask();  //Остановить выполнение задачи
+    RobotStatus getStatus(); //Получить текущий статус
+    void setTool(ITool tool); //Установить инструмент
+    void receiveCommand(String command); //Получить команду от контроллера
+    boolean canUseTool(ITool tool); //Проверить, может ли робот использовать данный инструмент
+
+    //Геттеры
     IMovementSystem getMovementSystem();
     INavigation getNavigation();
     IPowerSource getPowerSource();

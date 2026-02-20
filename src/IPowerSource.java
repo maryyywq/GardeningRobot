@@ -1,5 +1,6 @@
+//Интерфейс источника питания
 interface IPowerSource {
-    void charge();
-    double getLevel();
-    void switchToBackup();
+    void charge(); //Запустить процесс зарядки/заправки
+    double getLevel(); //Получить текущий уровень заряда/топлива (в процентах)
+    void switchToBackup(); //Переключиться на резервный источник питания
 }
