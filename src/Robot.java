@@ -9,6 +9,8 @@ abstract class Robot implements IRobot {
     protected ITool currentTool; //Текущий установленный инструмент
     protected Location location; //Текущее местоположение
 
+    public Robot() { }
+
     public Robot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
                          ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
         this.id = id;
@@ -46,11 +48,11 @@ abstract class Robot implements IRobot {
     }
 
     // Реализация геттеров
-    @Override public IMovementSystem getMovementSystem() { return movementSystem; }
-    @Override public INavigation getNavigation() { return navigation; }
-    @Override public IPowerSource getPowerSource() { return powerSource; }
-    @Override public ICommunication getCommunication() { return communication; }
-    @Override public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
-    @Override public ITool getCurrentTool() { return currentTool; }
+    public IMovementSystem getMovementSystem() { return movementSystem; }
+    public INavigation getNavigation() { return navigation; }
+    public IPowerSource getPowerSource() { return powerSource; }
+    public ICommunication getCommunication() { return communication; }
+    public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
+    public ITool getCurrentTool() { return currentTool; }
 }
 

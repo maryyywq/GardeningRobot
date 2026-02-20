@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class RobotProxy implements IRobot {
-    private IRobot realRobot; //Ссылка на реального робота
+public class RobotProxy extends Robot {
+    private Robot realRobot; //Ссылка на реального робота
     private Set<String> allowedCommands; //Множество разрешённых команд
     private static final double MIN_POWER = 10.0; //Минимальный уровень заряда для работы
 
-    public RobotProxy(IRobot realRobot) {
+    public RobotProxy(Robot realRobot) {
         this.realRobot = realRobot;
         this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS", "WATER", "FERTILIZE", "WEED", "MOW", "TREAT", "PLANT", "HARVEST"));
     }
