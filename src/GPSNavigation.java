@@ -1,8 +1,7 @@
 import java.util.*;
 
 //Реализация GPS-навигации
-public class GPSNavigation implements INavigation {
-    private Location current = new Location(0, 0); //Текущая позиция
+public class GPSNavigation extends INavigation {
     @Override public void updatePosition() { //Обновление позиции
         System.out.println("GPS-навигация: обновление позиции по GPS");
     }

@@ -1,7 +1,6 @@
 import java.util.*;
 
-public class VisionNavigation implements INavigation {
-    private Location current = new Location(0, 0);
+public class VisionNavigation extends INavigation {
     @Override public void updatePosition() {
         System.out.println("Навигация с помощью компьютерного зрения: обновление позиции по камерам");
     }

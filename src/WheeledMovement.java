@@ -1,5 +1,5 @@
-public class WheeledMovement implements IMovementSystem {
-    private double speed = 1.0; //Скорость в у.е.
+public class WheeledMovement extends IMovementSystem {
+    WheeledMovement() {speed = 1.0;}
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения на колесах: движение к " + target);
     }

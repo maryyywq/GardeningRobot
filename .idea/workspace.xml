@@ -4,11 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added full comments">
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Moved getters from IRobot to Robot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GPSNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPSNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ICommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/INavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/INavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LTECommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LTECommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LeggedMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeggedMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlainMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaneMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VisionNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VisionNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WiFiCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WiFiCommunication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771573100502</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Moved getters from IRobot to Robot">
+      <option name="closed" value="true" />
+      <created>1771575926299</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1771575926299</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -250,6 +280,7 @@
     <MESSAGE value="Fixed mini bugs" />
     <MESSAGE value="Added comments" />
     <MESSAGE value="Added full comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added full comments" />
+    <MESSAGE value="Moved getters from IRobot to Robot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved getters from IRobot to Robot" />
   </component>
 </project>

@@ -8,7 +8,7 @@ public class Main {
         IMovementSystem wheels = new WheeledMovement();
         IMovementSystem legs = new LeggedMovement();
         IMovementSystem heli = new HelicopterMovement();
-        IMovementSystem plain = new PlainMovement();
+        IMovementSystem plane = new PlaneMovement();
         INavigation gps = new GPSNavigation();
         INavigation vision = new VisionNavigation();
         IPowerSource battery = new Battery();
@@ -51,7 +51,7 @@ public class Main {
         GroundRobot groundWateringBot = new GroundRobot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
         GroundRobot groundFertilizingBot = new GroundRobot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
         Drone medicalDrone = new Drone("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
-        Drone mowingDrone = new Drone("MowDrone", plain, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
+        Drone mowingDrone = new Drone("MowDrone", plane, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
 
         //Создание proxy-роботов
         IRobot proxyWatering = new RobotProxy(groundWateringBot);
@@ -191,7 +191,7 @@ public class Main {
         Map<String, Object> toolParams = new HashMap<>();
         toolParams.put("Объем", 10);
         toolParams.put("Режим", "дождевание");
-        wateringTool.execute(toolParams);
+        wateringTool.execute();
         System.out.println("Статус инструмента после выполнения: " + wateringTool.getStatus());
         System.out.println();
 

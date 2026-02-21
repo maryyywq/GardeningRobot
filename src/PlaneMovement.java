@@ -1,5 +1,5 @@
-public class PlainMovement implements IMovementSystem {
-    private double speed = 3.0;
+public class PlaneMovement extends IMovementSystem {
+    PlaneMovement() {speed = 3.0;}
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения с использованием винта передней части (как у самолета): планирование к " + target);
     }

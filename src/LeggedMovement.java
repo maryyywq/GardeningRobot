@@ -1,5 +1,5 @@
-public class LeggedMovement implements IMovementSystem {
-    private double speed = 0.5;
+public class LeggedMovement extends IMovementSystem {
+    LeggedMovement() {speed = 0.5;}
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения на ножках: перемещение к " + target);
     }

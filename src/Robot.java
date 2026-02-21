@@ -22,7 +22,19 @@ abstract class Robot implements IRobot {
         this.location = startLoc;
     }
 
-    @Override public void startTask() { status = RobotStatus.WORKING; System.out.println(id + ": задача запущена"); }
+    @Override
+    public void startTask() {
+        if (currentTool == null) {
+            System.out.println(id + ": ошибка - инструмент не установлен, задача не может быть выполнена");
+            status = RobotStatus.ERROR;
+            return;
+        }
+        status = RobotStatus.WORKING;
+        System.out.println(id + ": задача запущена, использую инструмент " + currentTool.getName());
+
+        currentTool.execute();
+    }
+
     @Override public void stopTask() { status = RobotStatus.IDLE; System.out.println(id + ": задача остановлена"); }
     @Override public RobotStatus getStatus() { return status; }
     @Override public void receiveCommand(String command) {
