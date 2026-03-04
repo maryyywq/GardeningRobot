@@ -12,4 +12,8 @@ public class GPSNavigation extends INavigation {
     @Override public void adjustRoute(Obstacle obstacle) {
         System.out.println("GPS-навигация: корректировка маршрута для обхода препятствия в " + obstacle.position);
     }
+    @Override
+    public String toString() {
+        return "GPS-навигация";
+    }
 }

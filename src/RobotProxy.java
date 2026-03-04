@@ -13,36 +13,6 @@ public class RobotProxy extends Robot {
     //Проверка всех систем перед запуском задачи
     private boolean canStart() {
         System.out.println("Proxy: проверка систем...");
-
-        //Проверка наличия всех компонентов через геттеры
-        if (realRobot.getMovementSystem() == null) {
-            System.out.println("Proxy: ошибка - отсутствует система передвижения");
-            return false;
-        }
-        if (realRobot.getNavigation() == null) {
-            System.out.println("Proxy: ошибка - отсутствует навигационная система");
-            return false;
-        }
-        if (realRobot.getPowerSource() == null) {
-            System.out.println("Proxy: ошибка - отсутствует источник питания");
-            return false;
-        }
-        if (realRobot.getCommunication() == null) {
-            System.out.println("Proxy: ошибка - отсутствует система связи");
-            return false;
-        }
-        if (realRobot.getKnowledgeBase() == null) {
-            System.out.println("Proxy: ошибка - отсутствует база знаний");
-            return false;
-        }
-
-        //Проверка уровня заряда
-        double level = realRobot.getPowerSource().getLevel();
-        if (level < MIN_POWER) {
-            System.out.printf("Proxy: ошибка - низкий уровень заряда/топлива: %.1f%% (минимум %.1f%%)%n", level, MIN_POWER);
-            return false;
-        }
-
         //Проверка инструмента
         ITool tool = realRobot.getCurrentTool();
         if (tool == null) {

@@ -1,4 +1,6 @@
-class Robot implements IRobot {
+import java.util.Iterator;
+
+class Robot implements IRobot, Iterable<Object> {
     protected String id; //Уникальный идентификатор робота
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
     protected IMovementSystem movementSystem; //Система передвижения
@@ -20,6 +22,11 @@ class Robot implements IRobot {
         this.communication = comm;
         this.knowledgeBase = kb;
         this.location = startLoc;
+    }
+
+    @Override
+    public Iterator<Object> iterator() {
+        return new RobotComponentIterator(this);
     }
 
     @Override
@@ -59,6 +66,11 @@ class Robot implements IRobot {
         return knowledgeBase.isToolCompatible(tool);
     }
 
+    // Метод для получения итератора по компонентам
+    public Iterator<Object> componentIterator() {
+        return new RobotComponentIterator(this);
+    }
+
     // Реализация геттеров
     public IMovementSystem getMovementSystem() { return movementSystem; }
     public INavigation getNavigation() { return navigation; }
@@ -66,5 +78,12 @@ class Robot implements IRobot {
     public ICommunication getCommunication() { return communication; }
     public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
     public ITool getCurrentTool() { return currentTool; }
+
+    @Override
+    public String toString() {
+        String toolStr = (currentTool != null) ? currentTool.getName() : "не установлен";
+        return String.format("Робот '%s': состояние %s, инструмент: %s",
+                id, status.getDescription(), toolStr);
+    }
 }
 

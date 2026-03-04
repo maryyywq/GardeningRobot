@@ -9,4 +9,8 @@ class WeedingKnowledgeBase implements IKnowledgeBase<WeedingEntry> {
     @Override public boolean isToolCompatible(ITool tool) {
         return tool.getToolType() == ToolType.WEEDING;
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний полива (записей: %d)", storage.size());
+    }
 }

@@ -5,4 +5,8 @@ public class Battery extends IPowerSource {
     @Override public double getLevel() { return level; }
     @Override public void switchToBackup() { System.out.println("Аккумулятор: резервный источник отсутствует"); }
     public void setLevel(double level) { this.level = level; }
+    @Override
+    public String toString() {
+        return String.format("Аккумулятор (заряд: %.1f%%)", level);
+    }
 }

@@ -1,7 +1,15 @@
-public enum RobotStatus {
-    IDLE, //Робот простаивает, не выполняет задач
-    WORKING, //Робот выполняет задачу
-    MOVING, //Робот находится в движении
-    CHARGING, //Робот заряжается / заправляется
-    ERROR //Робот в состоянии ошибки
+enum RobotStatus {
+    IDLE, WORKING, MOVING, CHARGING, ERROR;
+
+    public String getDescription() {
+        switch (this) {
+            case IDLE: return "ожидание";
+            case WORKING: return "работа";
+            case MOVING: return "движение";
+            case CHARGING: return "зарядка";
+            case ERROR: return "ошибка";
+            default: return this.name();
+        }
+    }
 }
+

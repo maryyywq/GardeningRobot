@@ -1,9 +1,9 @@
 //Декоратор, добавляющий подсветку с цветом и частотой мигания
 class LightToolDecorator extends ToolDecorator {
     private String color;
-    private double blinkRate; //частота мигания (Гц)
+    private int blinkRate; //частота мигания (раз в секунду)
 
-    public LightToolDecorator(ITool wrapped, String color, double blinkRate) {
+    public LightToolDecorator(ITool wrapped, String color, int blinkRate) {
         super(wrapped);
         this.color = color;
         this.blinkRate = blinkRate;
@@ -11,7 +11,7 @@ class LightToolDecorator extends ToolDecorator {
 
     @Override
     public void execute() {
-        System.out.printf("Подсветка: %s, частота мигания %.1f Гц\n", color, blinkRate);
+        System.out.printf("Подсветка: %s, частота мигания %d раз/сек\n", color, blinkRate);
         super.execute();
         System.out.println("Подсветка выключена");
     }

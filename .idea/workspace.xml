@@ -4,12 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a pattern adapter">
-      <change afterPath="$PROJECT_DIR$/src/LightToolDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SoundToolDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ToolDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VoiceToolDecorator.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added RobotComponentIterator and RobotGroupIterator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GPSNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPSNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LTECommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LTECommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LightToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LightToolDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OldWateringAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OldWateringAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SoundToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SoundToolDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToolStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VoiceToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VoiceToolDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WiFiCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WiFiCommunication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,12 +266,42 @@
       <option name="project" value="LOCAL" />
       <updated>1772629181884</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added a pattern decorator">
+      <option name="closed" value="true" />
+      <created>1772630495989</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772630495989</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added a composite pattern">
+      <option name="closed" value="true" />
+      <created>1772631238534</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772631238534</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Updated classes OldWateringAdapter, OldWateringSystem">
+      <option name="closed" value="true" />
+      <created>1772633481162</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772633481162</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added RobotComponentIterator and RobotGroupIterator">
+      <option name="closed" value="true" />
+      <created>1772785598186</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1772785598186</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Create enums" />
-    <MESSAGE value="Added interfaces" />
     <MESSAGE value="Added additional classes" />
     <MESSAGE value="Added classes for types of movements" />
     <MESSAGE value="Added classes for types of navigation" />
@@ -278,6 +323,10 @@
     <MESSAGE value="Moved getters from IRobot to Robot" />
     <MESSAGE value="Made abstract classes instead of interfaces, added delegation to the method startTask() in the Robot class" />
     <MESSAGE value="Added a pattern adapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a pattern adapter" />
+    <MESSAGE value="Added a pattern decorator" />
+    <MESSAGE value="Added a composite pattern" />
+    <MESSAGE value="Updated classes OldWateringAdapter, OldWateringSystem" />
+    <MESSAGE value="Added RobotComponentIterator and RobotGroupIterator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added RobotComponentIterator and RobotGroupIterator" />
   </component>
 </project>

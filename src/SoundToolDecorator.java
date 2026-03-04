@@ -1,15 +1,16 @@
-//Декоратор, добавляющий звуковой эффект
+//Декоратор, добавляющий музыку
 class SoundToolDecorator extends ToolDecorator {
-    private String sound;
+    private String lyrics;
 
-    public SoundToolDecorator(ITool wrapped, String sound) {
+    public SoundToolDecorator(ITool wrapped, String lyrics) {
         super(wrapped);
-        this.sound = sound;
+        this.lyrics = lyrics;
     }
 
     @Override
     public void execute() {
-        System.out.println("Звук: " + sound + " (инструмент " + wrapped.getName() + ")");
+        System.out.println("Музыка играет (доносятся слова): " + lyrics);
         super.execute();
+        System.out.println("Музыка выключена");
     }
 }

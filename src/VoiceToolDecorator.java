@@ -8,8 +8,8 @@ class VoiceToolDecorator extends ToolDecorator {
 
     @Override
     public void execute() {
-        System.out.println("Голосовой помощник включен! Дорогой(ая), \"" + ownerName + ", я начинаю работу!\"");
+        System.out.println("Голосовой помощник включен! Дорогой(ая), " + ownerName + ", я начинаю работу!");
         super.execute();
-        System.out.println("Голосовой помощник выключается. \"" + ownerName + ", задача выполнена!\"");
+        System.out.println("Голосовой помощник выключается. " + ownerName + ", задача выполнена!");
     }
 }
