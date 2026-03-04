@@ -1,4 +1,4 @@
-abstract class Robot implements IRobot {
+class Robot implements IRobot {
     protected String id; //Уникальный идентификатор робота
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
     protected IMovementSystem movementSystem; //Система передвижения
