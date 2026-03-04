@@ -1,4 +1,4 @@
-public class OldWateringAdapter implements ITool {
+class OldWateringAdapter implements ITool {
     private OldWateringSystem oldSystem;
     private ToolStatus status = ToolStatus.READY;
 
@@ -9,8 +9,9 @@ public class OldWateringAdapter implements ITool {
     @Override
     public void execute() {
         status = ToolStatus.BUSY;
+        System.out.println("Запуск старой поливалки");
         oldSystem.turnOn();
-        System.out.println("Старая поливалка: полив в течение некоторого времени...");
+        System.out.println("Ожидание завершения полива...");
         oldSystem.turnOff();
         status = ToolStatus.READY;
     }
@@ -27,6 +28,11 @@ public class OldWateringAdapter implements ITool {
 
     @Override
     public String getName() {
-        return "Старая поливалка";
+        return "Адаптер старой поливалки";
+    }
+
+    //Дополнительный метод для дозаправки старой системы
+    public void refillOldSystem() {
+        oldSystem.refill();
     }
 }
