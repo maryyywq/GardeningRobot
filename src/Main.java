@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Тестирование системы роботов-садовников: ");
 
-        //Создание компонентов
+        // Создание компонентов
         IMovementSystem wheels = new WheeledMovement();
         IMovementSystem legs = new LeggedMovement();
         IMovementSystem heli = new HelicopterMovement();
@@ -16,8 +16,7 @@ public class Main {
         ICommunication wifi = new WiFiCommunication();
         ICommunication lte = new LTECommunication();
 
-
-        //Заполнение базы знаний
+        // Заполнение базы знаний
         WateringKnowledgeBase wateringKB = new WateringKnowledgeBase();
         wateringKB.addEntry("томат", new WateringEntry(2.5, "дождевание"));
         wateringKB.addEntry("огурец", new WateringEntry(3.0, "точечный"));
@@ -47,19 +46,20 @@ public class Main {
         harvestingKB.addEntry("томат", new HarvestingEntry("красный", "механизированный"));
         harvestingKB.addEntry("яблоко", new HarvestingEntry("желто-красный", "ручной"));
 
-        //Создание роботов с разными наборами компонентов и баз знаний
-        GroundRobot groundWateringBot = new GroundRobot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
-        GroundRobot groundFertilizingBot = new GroundRobot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
-        Drone medicalDrone = new Drone("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
-        Drone mowingDrone = new Drone("MowDrone", plane, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
+        // Создание роботов с разными наборами компонентов и баз знаний
+        // Используем непосредственно класс Robot, без наследования GroundRobot и Drone
+        Robot groundWateringBot = new Robot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
+        Robot groundFertilizingBot = new Robot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
+        Robot medicalDrone = new Robot("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
+        Robot mowingDrone = new Robot("MowDrone", plane, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
 
-        //Создание proxy-роботов
+        // Создание proxy-роботов
         IRobot proxyWatering = new RobotProxy(groundWateringBot);
         IRobot proxyFertilizing = new RobotProxy(groundFertilizingBot);
         IRobot proxyMedical = new RobotProxy(medicalDrone);
         IRobot proxyMowing = new RobotProxy(mowingDrone);
 
-        //Создание инструментов
+        // Создание инструментов
         ITool wateringTool = new WateringTool();
         ITool fertilizingTool = new FertilizingTool();
         ITool mowingTool = new MowingTool();
@@ -105,13 +105,11 @@ public class Main {
         gps.adjustRoute(new Obstacle(new Location(5, 5)));
         System.out.println();
 
-
         System.out.println("4. Тестирование систем передвижения: ");
         groundWateringBot.getMovementSystem().moveTo(new Location(2, 3));
         groundWateringBot.getMovementSystem().setSpeed(1.5);
         groundWateringBot.getMovementSystem().stop();
         System.out.println();
-
 
         System.out.println("5. Тестирование систем связи: ");
         wifi.connect();
@@ -121,14 +119,12 @@ public class Main {
         wifi.disconnect();
         System.out.println();
 
-
         System.out.println("6. Тестирование источников питания:");
         System.out.println("Аккумулятор: уровень " + battery.getLevel() + "%");
         battery.charge();
         System.out.println("Топливный элемент: уровень " + fuelCell.getLevel() + "%");
         fuelCell.switchToBackup();
         System.out.println();
-
 
         System.out.println("7. Центральный контроллер (назначение задач роботам):");
         CentralController controller = new CentralController();
@@ -149,25 +145,22 @@ public class Main {
         controller.assignTask("C3PO", fertilizeTask);
         System.out.println();
 
-
         System.out.println("8. Тестирование proxy (робот без инструмента): ");
-        GroundRobot noToolBot = new GroundRobot("NoTool", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
+        Robot noToolBot = new Robot("NoTool", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
         IRobot proxyNoTool = new RobotProxy(noToolBot);
         controller.registerRobot("NoTool", proxyNoTool);
         controller.assignTask("NoTool", waterTask);
         System.out.println();
 
-
         System.out.println("9. Тестирование proxy (низкий заряд):");
         Battery lowBattery = new Battery();
         lowBattery.setLevel(5.0);
-        GroundRobot lowBot = new GroundRobot("LowBot", wheels, gps, lowBattery, wifi, wateringKB, new Location(0, 0));
+        Robot lowBot = new Robot("LowBot", wheels, gps, lowBattery, wifi, wateringKB, new Location(0, 0));
         IRobot proxyLowBot = new RobotProxy(lowBot);
         proxyLowBot.setTool(wateringTool);
         controller.registerRobot("LowBot", proxyLowBot);
         controller.assignTask("LowBot", waterTask);
         System.out.println();
-
 
         System.out.println("10. Мониторинг состояния роботов:");
         Map<String, RobotStatus> statuses = controller.monitorRobots();
@@ -178,14 +171,12 @@ public class Main {
         }
         System.out.println();
 
-
         System.out.println("11. Ручное изменение статуса:");
         groundWateringBot.startTask();
         System.out.println("R2D2 статус: " + groundWateringBot.getStatus());
         groundWateringBot.stopTask();
         System.out.println("R2D2 статус: " + groundWateringBot.getStatus());
         System.out.println();
-
 
         System.out.println("12. Тестирование инструментов:");
         Map<String, Object> toolParams = new HashMap<>();
@@ -194,7 +185,6 @@ public class Main {
         wateringTool.execute();
         System.out.println("Статус инструмента после выполнения: " + wateringTool.getStatus());
         System.out.println();
-
 
         System.out.println("13. Получение информации из баз знаний:");
         WateringEntry we = wateringKB.getEntry("томат");
@@ -210,14 +200,12 @@ public class Main {
         System.out.println(mowe.getInfo());
         System.out.println();
 
-
         System.out.println("14. Проверка на возможность использования инструментов:");
         System.out.println("R2D2 может использовать лейку? ");
         System.out.println(proxyWatering.canUseTool(wateringTool));
         System.out.println("R2D2 может использовать медикаменты? ");
         System.out.println(proxyWatering.canUseTool(medicalTool));
         System.out.println();
-
 
         System.out.println("15. Проверка передачи данных с помощью сотовой связи:");
         lte.connect();
@@ -232,30 +220,8 @@ public class Main {
         vision.adjustRoute(new Obstacle(new Location(2, 2)));
         System.out.println();
 
-
-        System.out.println("17. Проверка совместимости типа робота с типом передвижения:");
-        try {
-            GroundRobot brokenBot = new GroundRobot("Broken", heli, gps, battery, wifi, wateringKB, new Location(0, 0));
-            System.out.println("Робот успешно создан!");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка при создании наземного робота с винтом сверху: " + e.getMessage());
-        }
-
-        try {
-            Drone brokenDrone = new Drone("BrokenDrone", wheels, vision, fuelCell, lte, medicalKB, new Location(0, 0));
-            System.out.println("Робот успешно создан!");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка при создании дрона на колесиках: " + e.getMessage());
-        }
-
-        try {
-            GroundRobot goodRobot = new GroundRobot("goodRobot", wheels, vision, fuelCell, lte, medicalKB, new Location(0, 0));
-            System.out.println("Робот успешно создан!");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка при создании дрона на колесиках: " + e.getMessage());
-        }
-
+        // Пункт 17 удалён, так как классы GroundRobot и Drone больше не существуют,
+        // и проверки совместимости типа передвижения не выполняются.
+        // Роботы могут быть созданы с любым типом движения.
     }
-
-
 }
