@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 class Robot implements IRobot {
     protected String id; //Уникальный идентификатор робота
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
@@ -57,6 +59,11 @@ class Robot implements IRobot {
     @Override
     public boolean canUseTool(ITool tool) {
         return knowledgeBase.isToolCompatible(tool);
+    }
+
+    // Метод для получения итератора по компонентам
+    public Iterator<Object> componentIterator() {
+        return new RobotComponentIterator(this);
     }
 
     // Реализация геттеров

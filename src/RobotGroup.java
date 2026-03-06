@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class RobotGroup implements IRobot {
+class RobotGroup implements IRobot, Iterable<IRobot> {
     private String groupName;
     private List<IRobot> robots = new ArrayList<>();
 
@@ -16,6 +17,16 @@ class RobotGroup implements IRobot {
     public void removeRobot(IRobot robot) {
         robots.remove(robot);
     }
+
+    public List<IRobot> getRobots() {
+        return robots;
+    }
+
+    @Override
+    public Iterator<IRobot> iterator() {
+        return new RobotGroupIterator(this);
+    }
+
 
     @Override
     public void startTask() {

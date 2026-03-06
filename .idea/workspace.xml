@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a composite pattern">
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Updated classes OldWateringAdapter, OldWateringSystem">
+      <change afterPath="$PROJECT_DIR$/src/RobotComponentIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OldWateringAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OldWateringAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OldWateringSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OldWateringSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,11 +266,18 @@
       <option name="project" value="LOCAL" />
       <updated>1772631238534</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Updated classes OldWateringAdapter, OldWateringSystem">
+      <option name="closed" value="true" />
+      <created>1772633481162</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1772633481162</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Create enums" />
     <MESSAGE value="Added interfaces" />
     <MESSAGE value="Added additional classes" />
     <MESSAGE value="Added classes for types of movements" />
@@ -294,6 +302,7 @@
     <MESSAGE value="Added a pattern adapter" />
     <MESSAGE value="Added a pattern decorator" />
     <MESSAGE value="Added a composite pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a composite pattern" />
+    <MESSAGE value="Updated classes OldWateringAdapter, OldWateringSystem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated classes OldWateringAdapter, OldWateringSystem" />
   </component>
 </project>
