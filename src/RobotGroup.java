@@ -78,4 +78,8 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
         }
         return true;
     }
+    @Override
+    public String toString() {
+        return String.format("Группа '%s' [количество участников: %d]", groupName, robots.size());
+    }
 }

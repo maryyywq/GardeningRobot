@@ -2,9 +2,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Тестирование системы роботов-садовников: ");
-
-        // Создание компонентов
+        //Создание базовых компонентов
         IMovementSystem wheels = new WheeledMovement();
         IMovementSystem legs = new LeggedMovement();
         IMovementSystem heli = new HelicopterMovement();
@@ -16,212 +14,115 @@ public class Main {
         ICommunication wifi = new WiFiCommunication();
         ICommunication lte = new LTECommunication();
 
-        // Заполнение базы знаний
+        //Создание баз знаний
         WateringKnowledgeBase wateringKB = new WateringKnowledgeBase();
         wateringKB.addEntry("томат", new WateringEntry(2.5, "дождевание"));
         wateringKB.addEntry("огурец", new WateringEntry(3.0, "точечный"));
-        wateringKB.addEntry("газон", new WateringEntry(5.0, "линейный"));
 
         FertilizingKnowledgeBase fertilizingKB = new FertilizingKnowledgeBase();
         fertilizingKB.addEntry("томат", new FertilizingEntry("NPK 10-10-10", 50));
-        fertilizingKB.addEntry("огурец", new FertilizingEntry("азотное", 30));
-
-        WeedingKnowledgeBase weedingKB = new WeedingKnowledgeBase();
-        weedingKB.addEntry("морковка", new WeedingEntry("механический", ""));
-        weedingKB.addEntry("лук", new WeedingEntry("химический", "глифосат"));
-
-        MowingKnowledgeBase mowingKB = new MowingKnowledgeBase();
-        mowingKB.addEntry("газон", new MowingEntry(5.0, ""));
-        mowingKB.addEntry("куст", new MowingEntry(0, "шар"));
 
         MedicalKnowledgeBase medicalKB = new MedicalKnowledgeBase();
         medicalKB.addEntry("фитофтора", new MedicalEntry("бордоская смесь", 100));
-        medicalKB.addEntry("мучнистая роса", new MedicalEntry("раствор серы", 50));
 
-        PlantingKnowledgeBase plantingKB = new PlantingKnowledgeBase();
-        plantingKB.addEntry("томат", new PlantingEntry(40, 5));
-        plantingKB.addEntry("морковь", new PlantingEntry(10, 2));
+        //Создание роботов
+        Robot robot1 = new Robot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
+        Robot robot2 = new Robot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
+        Robot robot3 = new Robot("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
+        //Для четвёртого робота используем пустую базу знаний полива
+        Robot robot4 = new Robot("MowDrone", plane, vision, fuelCell, wifi, new WateringKnowledgeBase(), new Location(20, 20));
 
-        HarvestingKnowledgeBase harvestingKB = new HarvestingKnowledgeBase();
-        harvestingKB.addEntry("томат", new HarvestingEntry("красный", "механизированный"));
-        harvestingKB.addEntry("яблоко", new HarvestingEntry("желто-красный", "ручной"));
+        System.out.println("1. Создание роботов:");
+        System.out.println(robot1);
+        System.out.println(robot2);
+        System.out.println(robot3);
+        System.out.println(robot4 + "\n");
 
-        // Создание роботов с разными наборами компонентов и баз знаний
-        // Используем непосредственно класс Robot, без наследования GroundRobot и Drone
-        Robot groundWateringBot = new Robot("R2D2", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
-        Robot groundFertilizingBot = new Robot("C3PO", legs, vision, fuelCell, lte, fertilizingKB, new Location(5, 5));
-        Robot medicalDrone = new Robot("MediDrone", heli, gps, battery, lte, medicalKB, new Location(10, 10));
-        Robot mowingDrone = new Robot("MowDrone", plane, vision, fuelCell, wifi, mowingKB, new Location(20, 20));
 
-        // Создание proxy-роботов
-        IRobot proxyWatering = new RobotProxy(groundWateringBot);
-        IRobot proxyFertilizing = new RobotProxy(groundFertilizingBot);
-        IRobot proxyMedical = new RobotProxy(medicalDrone);
-        IRobot proxyMowing = new RobotProxy(mowingDrone);
-
-        // Создание инструментов
-        ITool wateringTool = new WateringTool();
-        ITool fertilizingTool = new FertilizingTool();
-        ITool mowingTool = new MowingTool();
-        ITool medicalTool = new MedicalTool();
+        System.out.println("2. Демонстрация паттерна адаптер:");
+        OldWateringSystem oldWatering = new OldWateringSystem(20.0, 2.0);
+        oldWatering.turnOn();
+        oldWatering.turnOff();
+        ITool adaptedTool = new OldWateringAdapter(oldWatering);
+        robot1.setTool(adaptedTool);
+        robot1.receiveCommand("WATER");
         System.out.println();
 
-        System.out.println("1. Тестирование установки инструментов роботам: ");
-        System.out.println("Установка для робота-поливальщика инструмента для полива: ");
-        proxyWatering.setTool(wateringTool);
-        System.out.println();
-        System.out.println("Установка для робота-поливальщика инструмента для лечения: ");
-        proxyWatering.setTool(medicalTool);
-        System.out.println();
-        System.out.println("Установка для робота-удобрителя инструмента для удобрения: ");
-        proxyFertilizing.setTool(fertilizingTool);
-        System.out.println();
-        System.out.println("Установка для робота-доктора инструмента для лечения: ");
-        proxyMedical.setTool(medicalTool);
-        System.out.println();
-        System.out.println("Установка для робота-доктора инструмента для полива: ");
-        proxyMedical.setTool(wateringTool);
-        System.out.println();
-        System.out.println("Установка для робота-парикмахера инструмента для стрижки: ");
-        proxyMowing.setTool(mowingTool);
+
+        System.out.println("3. Демонстрация паттерна декоратор:");
+
+        ITool fertilizing = new FertilizingTool(); // базовый инструмент для удобрения
+
+        // 1.Только музыка
+        System.out.println("Вариант 1. Только музыка:");
+        ITool musicOnly = new SoundToolDecorator(fertilizing, "There's a zombie on your lawn");
+        robot2.setTool(musicOnly);
+        robot2.receiveCommand("FERTILIZE");
         System.out.println();
 
-        System.out.println("2. Тестирование установки команд через proxy:");
-        proxyWatering.receiveCommand("MOVE 10 20");
-        System.out.println();
-        proxyWatering.receiveCommand("SCAN");
-        System.out.println();
-        proxyWatering.receiveCommand("ATTACK");
-        System.out.println();
-        proxyWatering.receiveCommand("STATUS");
-        System.out.println();
-
-        System.out.println("3. Тестирование навигационных систем:");
-        Location start = new Location(0, 0);
-        Location goal = new Location(15, 15);
-        gps.updatePosition();
-        Route route = gps.planRoute(start, goal);
-        System.out.println("GPS: спланирован маршрут: " + route.points);
-        gps.adjustRoute(new Obstacle(new Location(5, 5)));
+        //2.Все три декоратора в порядке: музыка, подсветка, голос
+        System.out.println("Вариант 2. Музыка, подсветка, голос:");
+        ITool allInOrder1 = new VoiceToolDecorator(
+                new LightToolDecorator(
+                        new SoundToolDecorator(fertilizing, "We are the champions, my friend..."),
+                        "розовый", 2),
+                "Мария");
+        robot2.setTool(allInOrder1);
+        robot2.receiveCommand("FERTILIZE");
         System.out.println();
 
-        System.out.println("4. Тестирование систем передвижения: ");
-        groundWateringBot.getMovementSystem().moveTo(new Location(2, 3));
-        groundWateringBot.getMovementSystem().setSpeed(1.5);
-        groundWateringBot.getMovementSystem().stop();
+        //3. Все три декоратора в другом порядке
+        System.out.println("Вариант 3. Голос + подсветка + музыка:");
+        ITool allInOrder2 = new SoundToolDecorator(
+                new LightToolDecorator(
+                        new VoiceToolDecorator(fertilizing, "Господин"),
+                        "зелёный", 15),
+                "Never give it up, keep it up a superstar!");
+        robot2.setTool(allInOrder2);
+        robot2.receiveCommand("FERTILIZE");
         System.out.println();
 
-        System.out.println("5. Тестирование систем связи: ");
-        wifi.connect();
-        wifi.sendData("Hello", "контроллер");
-        String cmd = wifi.receiveCommand("MOVE 10 20");
-        System.out.println("WiFi: получена команда: " + cmd);
-        wifi.disconnect();
+        System.out.println("4. Демонстрация паттерна композит:");
+        RobotGroup groupA = new RobotGroup("Грядка-1");
+        groupA.addRobot(robot1);
+        groupA.addRobot(robot2);
+
+        RobotGroup groupB = new RobotGroup("Теплица");
+        groupB.addRobot(robot3);
+        groupB.addRobot(robot4);
+        groupB.addRobot(groupA); //вложенная группа
+
+        System.out.println("Вывод состава групп:");
+        System.out.println(groupB);
+        System.out.println(groupA);
+        System.out.println();
+        groupB.receiveCommand("START");
+        groupB.startTask();
+        System.out.println();
+        System.out.println("Статус группы B: " + groupB.getStatus().getDescription());
+        groupB.stopTask();
         System.out.println();
 
-        System.out.println("6. Тестирование источников питания:");
-        System.out.println("Аккумулятор: уровень " + battery.getLevel() + "%");
-        battery.charge();
-        System.out.println("Топливный элемент: уровень " + fuelCell.getLevel() + "%");
-        fuelCell.switchToBackup();
-        System.out.println();
 
-        System.out.println("7. Центральный контроллер (назначение задач роботам):");
-        CentralController controller = new CentralController();
-        controller.registerRobot("R2D2", proxyWatering);
-        controller.registerRobot("C3PO", proxyFertilizing);
-        controller.registerRobot("MediDrone", proxyMedical);
-        controller.registerRobot("MowDrone", proxyMowing);
+        System.out.println("5. Демонстрация паттерна итератор:");
 
-        Map<String, Object> waterParams = new HashMap<>();
-        waterParams.put("plant", "томат");
-        Task waterTask = new Task("WATER", waterParams);
-        controller.assignTask("R2D2", waterTask);
-        System.out.println();
-
-        Map<String, Object> fertilizeParams = new HashMap<>();
-        fertilizeParams.put("plant", "огурец");
-        Task fertilizeTask = new Task("HARVEST", fertilizeParams);
-        controller.assignTask("C3PO", fertilizeTask);
-        System.out.println();
-
-        System.out.println("8. Тестирование proxy (робот без инструмента): ");
-        Robot noToolBot = new Robot("NoTool", wheels, gps, battery, wifi, wateringKB, new Location(0, 0));
-        IRobot proxyNoTool = new RobotProxy(noToolBot);
-        controller.registerRobot("NoTool", proxyNoTool);
-        controller.assignTask("NoTool", waterTask);
-        System.out.println();
-
-        System.out.println("9. Тестирование proxy (низкий заряд):");
-        Battery lowBattery = new Battery();
-        lowBattery.setLevel(5.0);
-        Robot lowBot = new Robot("LowBot", wheels, gps, lowBattery, wifi, wateringKB, new Location(0, 0));
-        IRobot proxyLowBot = new RobotProxy(lowBot);
-        proxyLowBot.setTool(wateringTool);
-        controller.registerRobot("LowBot", proxyLowBot);
-        controller.assignTask("LowBot", waterTask);
-        System.out.println();
-
-        System.out.println("10. Мониторинг состояния роботов:");
-        Map<String, RobotStatus> statuses = controller.monitorRobots();
-        System.out.println();
-        System.out.println("Состояния роботов:");
-        for (Map.Entry<String, RobotStatus> entry : statuses.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        //Итератор по компонентам робота
+        System.out.println("Компоненты робота R2D2:");
+        for (Object comp : robot1) {
+            System.out.println(comp);
         }
         System.out.println();
 
-        System.out.println("11. Ручное изменение статуса:");
-        groundWateringBot.startTask();
-        System.out.println("R2D2 статус: " + groundWateringBot.getStatus());
-        groundWateringBot.stopTask();
-        System.out.println("R2D2 статус: " + groundWateringBot.getStatus());
+        //Итератор по группе
+        System.out.println("Роботы в группе 'Грядка-1':");
+        for (IRobot r : groupA) {
+            System.out.println(r);
+        }
         System.out.println();
 
-        System.out.println("12. Тестирование инструментов:");
-        Map<String, Object> toolParams = new HashMap<>();
-        toolParams.put("Объем", 10);
-        toolParams.put("Режим", "дождевание");
-        wateringTool.execute();
-        System.out.println("Статус инструмента после выполнения: " + wateringTool.getStatus());
-        System.out.println();
-
-        System.out.println("13. Получение информации из баз знаний:");
-        WateringEntry we = wateringKB.getEntry("томат");
-        System.out.println("Для томата: ");
-        System.out.println(we.getInfo());
-        System.out.println();
-        MedicalEntry me = medicalKB.getEntry("фитофтора");
-        System.out.println("Для фитофторы: ");
-        System.out.println(me.getInfo());
-        System.out.println();
-        MowingEntry mowe = mowingKB.getEntry("куст");
-        System.out.println("Для куста: ");
-        System.out.println(mowe.getInfo());
-        System.out.println();
-
-        System.out.println("14. Проверка на возможность использования инструментов:");
-        System.out.println("R2D2 может использовать лейку? ");
-        System.out.println(proxyWatering.canUseTool(wateringTool));
-        System.out.println("R2D2 может использовать медикаменты? ");
-        System.out.println(proxyWatering.canUseTool(medicalTool));
-        System.out.println();
-
-        System.out.println("15. Проверка передачи данных с помощью сотовой связи:");
-        lte.connect();
-        lte.sendData("ping", "R2D2");
-        lte.receiveCommand("START");
-        lte.disconnect();
-        System.out.println();
-
-        System.out.println("16. Проверка навигации с помощью компьютерного зрения:");
-        vision.updatePosition();
-        vision.planRoute(new Location(0, 0), new Location(5, 5));
-        vision.adjustRoute(new Obstacle(new Location(2, 2)));
-        System.out.println();
-
-        // Пункт 17 удалён, так как классы GroundRobot и Drone больше не существуют,
-        // и проверки совместимости типа передвижения не выполняются.
-        // Роботы могут быть созданы с любым типом движения.
+        System.out.println("Роботы в группе 'Теплица':");
+        for (IRobot r : groupB) {
+            System.out.println(r);
+        }
     }
 }

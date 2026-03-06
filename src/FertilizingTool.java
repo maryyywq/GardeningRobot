@@ -6,4 +6,8 @@ public class FertilizingTool extends BaseTool {
     @Override public void execute() {
         System.out.println("Инструмент 'Удобрение': внесение удобрений ");
     }
+    @Override
+    public String toString() {
+        return name + " (" + toolType.getDescription() + ")";
+    }
 }

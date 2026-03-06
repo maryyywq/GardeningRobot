@@ -9,4 +9,8 @@ public class WiFiCommunication extends ICommunication {
         System.out.println("WiFi: получение команды");
         return command;
     }
+    @Override
+    public String toString() {
+        return "Система коммуникации с помощью Wi-Fi";
+    }
 }

@@ -28,11 +28,16 @@ class OldWateringAdapter implements ITool {
 
     @Override
     public String getName() {
-        return "Адаптер старой поливалки";
+        return "Старая поливалка";
     }
 
     //Дополнительный метод для дозаправки старой системы
     public void refillOldSystem() {
         oldSystem.refill();
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

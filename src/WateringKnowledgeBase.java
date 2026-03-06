@@ -10,4 +10,8 @@ class WateringKnowledgeBase implements IKnowledgeBase<WateringEntry> {
     @Override public boolean isToolCompatible(ITool tool) {
         return tool.getToolType() == ToolType.WATERING;
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний полива (записей: %d)", storage.size());
+    }
 }

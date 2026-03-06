@@ -9,4 +9,9 @@ public class LTECommunication extends ICommunication {
         System.out.println("LTE: получение команды");
         return command;
     }
+    @Override
+    public String toString() {
+        return "LTE-связь";
+    }
 }
+
