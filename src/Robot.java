@@ -27,7 +27,6 @@ class Robot implements IRobot, Iterable<Object> {
         this.segmentFactory = segmentFactory;
         this.currentSegment = segmentFactory.getMapSegment(startLoc);
     }
-
     public void moveTo(Location newLocation) {
         movementSystem.moveTo(newLocation);
         this.location = newLocation;
@@ -35,6 +34,11 @@ class Robot implements IRobot, Iterable<Object> {
     }
 
     public MapSegment getCurrentSegment() { return currentSegment; }
+
+    @Override
+    public String getRobotId() {
+        return id;
+    }
 
     @Override
     public Iterator<Object> iterator() {

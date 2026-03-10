@@ -13,7 +13,7 @@ public class MapSegment {
     public void setSoilType(String soilType) { this.soilType = soilType; }
 
     public String getCrop() { return plant; }
-    public void setCrop(String crop) { this.plant = plant; }
+    public void setPlant(String plant) { this.plant = plant; }
 
     public double getWatteringLevel() { return watteringLevel; }
     public void setWatteringLevel(double watteringLevel) { this.watteringLevel = watteringLevel; }
