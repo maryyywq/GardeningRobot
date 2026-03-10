@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a bridge pattern for movement types and a flyweight pattern">
-      <change afterPath="$PROJECT_DIR$/src/GardenFacade.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a facade pattern">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapSegment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OldWateringAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OldWateringAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VoiceToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VoiceToolDecorator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,11 +312,18 @@
       <option name="project" value="LOCAL" />
       <updated>1773134114331</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added a facade pattern">
+      <option name="closed" value="true" />
+      <created>1773136932915</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1773136932915</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added classes for types of power source" />
     <MESSAGE value="Added classes for types of tool" />
     <MESSAGE value="Added classes for types of communication" />
     <MESSAGE value="Added classes for types of knowledge base" />
@@ -338,6 +348,7 @@
     <MESSAGE value="Updated main and added method ToString()" />
     <MESSAGE value="Added a bridge pattern for power sources" />
     <MESSAGE value="Added a bridge pattern for movement types and a flyweight pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a bridge pattern for movement types and a flyweight pattern" />
+    <MESSAGE value="Added a facade pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a facade pattern" />
   </component>
 </project>

@@ -45,6 +45,7 @@ class Robot implements IRobot, Iterable<Object> {
         return new RobotComponentIterator(this);
     }
 
+
     @Override
     public void startTask() {
         if (currentTool == null) {
@@ -62,6 +63,7 @@ class Robot implements IRobot, Iterable<Object> {
                 System.out.println(id + ": задача запущена с инструментом " + currentTool.getName() +
                         " (потребление " + requiredEnergy + " ед.)");
                 currentTool.execute();
+                powerManager.consumeEnergy(requiredEnergy);
                 break;
             case CHARGE:
                 System.out.println(id + ": недостаточно энергии (нужно " + requiredEnergy +
@@ -72,8 +74,6 @@ class Robot implements IRobot, Iterable<Object> {
             case USE_BACKUP:
                 System.out.println(id + ": переключаюсь на резервный источник");
                 powerManager.switchToBackup();
-                status = RobotStatus.WORKING;
-                currentTool.execute();
                 break;
             case STOP:
                 System.out.println(id + ": недостаточно энергии для инструмента " +
