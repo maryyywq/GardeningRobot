@@ -28,7 +28,8 @@ class GardenFacade {
             Task plantingTask = new Task("PLANT", Map.of("plant", "томаты", "location", bedLocation));
             controller.assignTask(plantingRobot.getRobotId(), plantingTask);
         } else {
-            System.out.println("Шаг 2: Нет робота-посадчика!");
+            System.out.println("Нет робота-посадчика!");
+            return;
         }
 
         //3. Полив
@@ -37,6 +38,10 @@ class GardenFacade {
             System.out.println("Шаг 3: Полив...");
             Task waterTask = new Task("WATER", Map.of("plant", "томаты", "volume", 2.5));
             controller.assignTask(wateringRobot.getRobotId(), waterTask);
+
+        }else {
+            System.out.println("Нет робота для полива!");
+            return;
         }
 
         //4. Удобрение
@@ -45,6 +50,9 @@ class GardenFacade {
             System.out.println("Шаг 4: Удобрение...");
             Task fertilizeTask = new Task("FERTILIZE", Map.of("plant", "томаты", "dosage", 50));
             controller.assignTask(fertilizingRobot.getRobotId(), fertilizeTask);
+        } else {
+            System.out.println("Нет робота для удобрения!");
+            return;
         }
 
         //5. Обработка от болезней
@@ -53,6 +61,9 @@ class GardenFacade {
             System.out.println("Шаг 5: Обработка от болезней...");
             Task medicalTask = new Task("TREAT", Map.of("disease", "фитофтора", "medicine", "бордоская смесь"));
             controller.assignTask(medicalRobot.getRobotId(), medicalTask);
+        } else {
+            System.out.println("Нет робота-медика!");
+            return;
         }
 
         System.out.println("Процесс выращивания помидоров запущен");
@@ -74,7 +85,7 @@ class GardenFacade {
     }
 
     //Собрать урожай со всех грядок
-    public void harvestAll() {
+    public void harvestAllBeds() {
         System.out.println("Запуск сбора урожая");
         List<IRobot> harvesters = controller.findAllRobotsWithTool(ToolType.HARVESTING);
         if (harvesters.isEmpty()) {

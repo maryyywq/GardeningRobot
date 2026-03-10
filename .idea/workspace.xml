@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a facade pattern">
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Fixed bugs, added bridge pattern demonstration in main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GardenFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GardenFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OldWateringAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OldWateringAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToolDecorator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VoiceToolDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VoiceToolDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MapSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapSegment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,11 +314,18 @@
       <option name="project" value="LOCAL" />
       <updated>1773136932915</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fixed bugs, added bridge pattern demonstration in main">
+      <option name="closed" value="true" />
+      <created>1773145873060</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1773145873060</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added classes for types of tool" />
     <MESSAGE value="Added classes for types of communication" />
     <MESSAGE value="Added classes for types of knowledge base" />
     <MESSAGE value="Added abstract class Robot" />
@@ -349,6 +350,18 @@
     <MESSAGE value="Added a bridge pattern for power sources" />
     <MESSAGE value="Added a bridge pattern for movement types and a flyweight pattern" />
     <MESSAGE value="Added a facade pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a facade pattern" />
+    <MESSAGE value="Fixed bugs, added bridge pattern demonstration in main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs, added bridge pattern demonstration in main" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GardenFacade.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -3,7 +3,7 @@ public class MapSegment {
     private String plant;          // культура
     private double watteringLevel;  // базовая влажность
 
-    public MapSegment(String soilType, String crop, double baseMoisture) {
+    public MapSegment(String soilType, String plant, double baseMoisture) {
         this.soilType = soilType;
         this.plant = plant;
         this.watteringLevel = baseMoisture;
