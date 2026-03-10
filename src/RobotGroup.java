@@ -27,7 +27,6 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
         return new RobotGroupIterator(this);
     }
 
-
     @Override
     public void startTask() {
         System.out.println("Группа " + groupName + ": запуск задач");

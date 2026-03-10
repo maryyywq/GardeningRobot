@@ -5,7 +5,7 @@ class Robot implements IRobot, Iterable<Object> {
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
     protected IMovementSystem movementSystem; //Система передвижения
     protected INavigation navigation; //Навигационная система
-    protected IPowerSource powerSource; //Источник питания
+    protected PowerManager powerManager;
     protected ICommunication communication; //Система связи
     protected IKnowledgeBase<?> knowledgeBase; //База знаний
     protected ITool currentTool; //Текущий установленный инструмент
@@ -13,12 +13,12 @@ class Robot implements IRobot, Iterable<Object> {
 
     public Robot() { }
 
-    public Robot(String id, IMovementSystem ms, INavigation nav, IPowerSource ps,
+    public Robot(String id, IMovementSystem ms, INavigation nav, PowerManager pm,
                          ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
         this.id = id;
         this.movementSystem = ms;
         this.navigation = nav;
-        this.powerSource = ps;
+        this.powerManager = pm;
         this.communication = comm;
         this.knowledgeBase = kb;
         this.location = startLoc;
@@ -32,14 +32,39 @@ class Robot implements IRobot, Iterable<Object> {
     @Override
     public void startTask() {
         if (currentTool == null) {
-            System.out.println(id + ": ошибка - инструмент не установлен, задача не может быть выполнена");
+            System.out.println(id + ": ошибка - инструмент не установлен");
             status = RobotStatus.ERROR;
             return;
         }
-        status = RobotStatus.WORKING;
-        System.out.println(id + ": задача запущена, использую инструмент " + currentTool.getName());
 
-        currentTool.execute();
+        double requiredEnergy = currentTool.getPowerConsumption();
+        PowerAction action = powerManager.checkPower(requiredEnergy);
+
+        switch (action) {
+            case CONTINUE:
+                status = RobotStatus.WORKING;
+                System.out.println(id + ": задача запущена с инструментом " + currentTool.getName() +
+                        " (потребление " + requiredEnergy + " ед.)");
+                currentTool.execute();
+                break;
+            case CHARGE:
+                System.out.println(id + ": недостаточно энергии (нужно " + requiredEnergy +
+                        "), отправляюсь на зарядку");
+                status = RobotStatus.CHARGING;
+                powerManager.charge();
+                break;
+            case USE_BACKUP:
+                System.out.println(id + ": переключаюсь на резервный источник");
+                powerManager.switchToBackup();
+                status = RobotStatus.WORKING;
+                currentTool.execute();
+                break;
+            case STOP:
+                System.out.println(id + ": недостаточно энергии для инструмента " +
+                        currentTool.getName() + ", задача отменена");
+                status = RobotStatus.ERROR;
+                break;
+        }
     }
 
     @Override public void stopTask() { status = RobotStatus.IDLE; System.out.println(id + ": задача остановлена"); }
@@ -66,15 +91,11 @@ class Robot implements IRobot, Iterable<Object> {
         return knowledgeBase.isToolCompatible(tool);
     }
 
-    // Метод для получения итератора по компонентам
-    public Iterator<Object> componentIterator() {
-        return new RobotComponentIterator(this);
-    }
 
     // Реализация геттеров
     public IMovementSystem getMovementSystem() { return movementSystem; }
     public INavigation getNavigation() { return navigation; }
-    public IPowerSource getPowerSource() { return powerSource; }
+    public PowerManager getPowerManager() { return powerManager; }
     public ICommunication getCommunication() { return communication; }
     public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
     public ITool getCurrentTool() { return currentTool; }

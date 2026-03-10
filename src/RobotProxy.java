@@ -30,6 +30,9 @@ public class RobotProxy extends Robot {
 
         System.out.println("Proxy: все системы в норме");
         return true;
+
+
+
     }
 
     @Override
@@ -91,7 +94,7 @@ public class RobotProxy extends Robot {
     //Реализация геттеров (делегирование)
     @Override public IMovementSystem getMovementSystem() { return realRobot.getMovementSystem(); }
     @Override public INavigation getNavigation() { return realRobot.getNavigation(); }
-    @Override public IPowerSource getPowerSource() { return realRobot.getPowerSource(); }
+    @Override public PowerManager getPowerManager() { return realRobot.getPowerManager(); }
     @Override public ICommunication getCommunication() { return realRobot.getCommunication(); }
     @Override public IKnowledgeBase<?> getKnowledgeBase() { return realRobot.getKnowledgeBase(); }
     @Override public ITool getCurrentTool() { return realRobot.getCurrentTool(); }
