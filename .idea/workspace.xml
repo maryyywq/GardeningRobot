@@ -4,31 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Updated main and added method ToString()">
-      <change afterPath="$PROJECT_DIR$/src/BalancePowerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EcoPowerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MaxPerformanceManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PowerAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PowerManager.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a bridge pattern for power sources">
+      <change afterPath="$PROJECT_DIR$/src/MapSegment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MapSegmentFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HarvestingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MedicalTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MowingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlantingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotComponentIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotComponentIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WateringTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeedingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,11 +289,18 @@
       <option name="project" value="LOCAL" />
       <updated>1772791704207</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added a bridge pattern for power sources">
+      <option name="closed" value="true" />
+      <created>1773131702488</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1773131702488</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added classes for types of movements" />
     <MESSAGE value="Added classes for types of navigation" />
     <MESSAGE value="Added classes for types of power source" />
     <MESSAGE value="Added classes for types of tool" />
@@ -339,6 +325,7 @@
     <MESSAGE value="Updated classes OldWateringAdapter, OldWateringSystem" />
     <MESSAGE value="Added RobotComponentIterator and RobotGroupIterator" />
     <MESSAGE value="Updated main and added method ToString()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated main and added method ToString()" />
+    <MESSAGE value="Added a bridge pattern for power sources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a bridge pattern for power sources" />
   </component>
 </project>

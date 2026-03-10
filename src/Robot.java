@@ -10,11 +10,13 @@ class Robot implements IRobot, Iterable<Object> {
     protected IKnowledgeBase<?> knowledgeBase; //База знаний
     protected ITool currentTool; //Текущий установленный инструмент
     protected Location location; //Текущее местоположение
+    private MapSegment currentSegment;
+    private MapSegmentFactory segmentFactory;
 
     public Robot() { }
 
     public Robot(String id, IMovementSystem ms, INavigation nav, PowerManager pm,
-                         ICommunication comm, IKnowledgeBase<?> kb, Location startLoc) {
+                         ICommunication comm, IKnowledgeBase<?> kb, Location startLoc, MapSegmentFactory segmentFactory) {
         this.id = id;
         this.movementSystem = ms;
         this.navigation = nav;
@@ -22,7 +24,17 @@ class Robot implements IRobot, Iterable<Object> {
         this.communication = comm;
         this.knowledgeBase = kb;
         this.location = startLoc;
+        this.segmentFactory = segmentFactory;
+        this.currentSegment = segmentFactory.getMapSegment(startLoc);
     }
+
+    public void moveTo(Location newLocation) {
+        movementSystem.moveTo(newLocation);
+        this.location = newLocation;
+        this.currentSegment = segmentFactory.getMapSegment(newLocation);
+    }
+
+    public MapSegment getCurrentSegment() { return currentSegment; }
 
     @Override
     public Iterator<Object> iterator() {
