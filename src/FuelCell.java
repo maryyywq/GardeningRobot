@@ -4,4 +4,7 @@ public class FuelCell extends IPowerSource {
     @Override public void charge() { level = 100.0; System.out.println("Источник питания на основе топлива: заправка завершена"); }
     @Override public double getLevel() { return level; }
     @Override public void switchToBackup() { System.out.println("Источник питания на основе топлива: переход на резервный бак"); }
+    @Override public boolean hasBackup() {
+        return true;
+    }
 }

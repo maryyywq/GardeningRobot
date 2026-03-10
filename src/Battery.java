@@ -9,4 +9,8 @@ public class Battery extends IPowerSource {
     public String toString() {
         return String.format("Аккумулятор (заряд: %.1f%%)", level);
     }
+    @Override public boolean hasBackup() {
+        return false;
+    }
 }
+

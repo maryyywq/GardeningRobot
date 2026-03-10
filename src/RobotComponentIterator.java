@@ -22,7 +22,7 @@ class RobotComponentIterator implements Iterator<Object> {
         switch (currentIndex) {
             case 0: component = robot.getMovementSystem(); break;
             case 1: component = robot.getNavigation(); break;
-            case 2: component = robot.getPowerSource(); break;
+            case 2: component = robot.getPowerManager(); break;
             case 3: component = robot.getCommunication(); break;
             case 4: component = robot.getKnowledgeBase(); break;
             case 5: component = robot.getCurrentTool(); break;
