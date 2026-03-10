@@ -9,4 +9,8 @@ abstract class ToolDecorator implements ITool {
     @Override public ToolStatus getStatus() { return wrapped.getStatus(); }
     @Override public ToolType getToolType() { return wrapped.getToolType(); }
     @Override public String getName() { return wrapped.getName(); }
+
+    @Override public double getPowerConsumption(){
+        return wrapped.getPowerConsumption();
+    }
 }

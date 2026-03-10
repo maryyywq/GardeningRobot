@@ -27,7 +27,6 @@ class Robot implements IRobot, Iterable<Object> {
         this.segmentFactory = segmentFactory;
         this.currentSegment = segmentFactory.getMapSegment(startLoc);
     }
-
     public void moveTo(Location newLocation) {
         movementSystem.moveTo(newLocation);
         this.location = newLocation;
@@ -37,9 +36,15 @@ class Robot implements IRobot, Iterable<Object> {
     public MapSegment getCurrentSegment() { return currentSegment; }
 
     @Override
+    public String getRobotId() {
+        return id;
+    }
+
+    @Override
     public Iterator<Object> iterator() {
         return new RobotComponentIterator(this);
     }
+
 
     @Override
     public void startTask() {
@@ -58,6 +63,7 @@ class Robot implements IRobot, Iterable<Object> {
                 System.out.println(id + ": задача запущена с инструментом " + currentTool.getName() +
                         " (потребление " + requiredEnergy + " ед.)");
                 currentTool.execute();
+                powerManager.consumeEnergy(requiredEnergy);
                 break;
             case CHARGE:
                 System.out.println(id + ": недостаточно энергии (нужно " + requiredEnergy +
@@ -68,8 +74,6 @@ class Robot implements IRobot, Iterable<Object> {
             case USE_BACKUP:
                 System.out.println(id + ": переключаюсь на резервный источник");
                 powerManager.switchToBackup();
-                status = RobotStatus.WORKING;
-                currentTool.execute();
                 break;
             case STOP:
                 System.out.println(id + ": недостаточно энергии для инструмента " +

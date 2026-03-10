@@ -81,4 +81,14 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
     public String toString() {
         return String.format("Группа '%s' [количество участников: %d]", groupName, robots.size());
     }
+
+    @Override
+    public ITool getCurrentTool() {
+        throw new UnsupportedOperationException("Группа роботов не имеет единого текущего инструмента");
+    }
+
+    @Override
+    public String getRobotId() {
+        throw new UnsupportedOperationException("Группа не имеет единого идентификатора");
+    }
 }

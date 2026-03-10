@@ -6,8 +6,11 @@ public class CentralController implements IController {
 
     private Map<String, IRobot> robots = new ConcurrentHashMap<>(); //Словарь роботов
 
-    //Добавление роботов в систему
-    public void registerRobot(String id, IRobot robot) {
+    public void registerRobot(IRobot robot) {
+        String id = robot.getRobotId();
+        if (id == null) {
+            throw new IllegalArgumentException("Робот не имеет идентификатора");
+        }
         robots.put(id, robot);
     }
 
@@ -32,4 +35,33 @@ public class CentralController implements IController {
         }
         return statusMap;
     }
+
+    // Новый метод: получить всех роботов
+    public List<IRobot> getAllRobots() {
+        return new ArrayList<>(robots.values());
+    }
+
+    // Новый метод: найти первого робота с заданным типом инструмента
+    public IRobot findRobotWithTool(ToolType toolType) {
+        for (IRobot robot : robots.values()) {
+            ITool tool = robot.getCurrentTool();
+            if (tool != null && tool.getToolType() == toolType) {
+                return robot;
+            }
+        }
+        return null;
+    }
+
+    // Новый метод: найти всех роботов с заданным типом инструмента
+    public List<IRobot> findAllRobotsWithTool(ToolType toolType) {
+        List<IRobot> result = new ArrayList<>();
+        for (IRobot robot : robots.values()) {
+            ITool tool = robot.getCurrentTool();
+            if (tool != null && tool.getToolType() == toolType) {
+                result.add(robot);
+            }
+        }
+        return result;
+    }
+
 }

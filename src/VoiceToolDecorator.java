@@ -12,4 +12,5 @@ class VoiceToolDecorator extends ToolDecorator {
         super.execute();
         System.out.println("Голосовой помощник выключается. " + ownerName + ", задача выполнена!");
     }
+
 }

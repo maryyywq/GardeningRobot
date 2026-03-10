@@ -40,4 +40,10 @@ class OldWateringAdapter implements ITool {
     public String toString() {
         return getName();
     }
+
+    @Override
+    public double getPowerConsumption() {
+        //Старая система потребляет некоторую энергию, например 2.0
+        return 2.0;
+    }
 }
