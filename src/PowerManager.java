@@ -9,7 +9,7 @@ abstract public class PowerManager {
         return powerSource.getLevel();
     }
 
-    public void consumeEnergy(double amount) { powerSource.consume(amount); }
+    public void consumeEnergy(double amount) { powerSource.consume(amount); } //использовать энергию
 
     //Проверка возможности выполнения задачи с требуемым расходом энергии
     public abstract PowerAction checkPower(double requiredEnergy);

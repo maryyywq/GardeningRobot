@@ -7,4 +7,8 @@ public class HelicopterMovement extends IMovementSystem {
     @Override public void stop() { System.out.println("Система передвижения с винтом сверху (как у вертолета): зависание"); }
     @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения с винтом сверху (как у вертолета): скорость установлена " + speed);}
     @Override public MovementType getMovementType() { return MovementType.AIR; }
+    @Override
+    public MovementSystemType getSystemType() {
+        return MovementSystemType.HELICOPTER;
+    }
 }

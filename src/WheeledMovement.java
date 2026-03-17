@@ -11,4 +11,8 @@ public class WheeledMovement extends IMovementSystem {
     public String toString() {
         return String.format("Система передвижения на колесиках (скорость: %.1f)", speed);
     }
+    @Override
+    public MovementSystemType getSystemType() {
+        return MovementSystemType.WHEELED;
+    }
 }

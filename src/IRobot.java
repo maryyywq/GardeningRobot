@@ -9,5 +9,6 @@ interface IRobot {
     boolean canUseTool(ITool tool); //Проверить, может ли робот использовать данный инструмент
     public ITool getCurrentTool();
     String getRobotId();
+    IMovementSystem getMovementSystem();
 
 }
