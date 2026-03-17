@@ -6,4 +6,8 @@ public class PlaneMovement extends IMovementSystem {
     @Override public void stop() { System.out.println("Система передвижения с использованием винта передней части (как у самолета): торможение"); }
     @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения с использованием винта передней части (как у самолета): скорость установлена " + speed); }
     @Override public MovementType getMovementType() { return MovementType.AIR; }
+    @Override
+    public MovementSystemType getSystemType() {
+        return MovementSystemType.PLAIN;
+    }
 }

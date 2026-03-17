@@ -1,7 +1,7 @@
 public class MapSegment {
-    private String soilType;      // тип почвы
-    private String plant;          // культура
-    private double watteringLevel;  // базовая влажность
+    private String soilType;      //тип почвы
+    private String plant;          //культура
+    private double watteringLevel;  //базовая влажность
 
     public MapSegment(String soilType, String plant, double baseMoisture) {
         this.soilType = soilType;
@@ -12,7 +12,7 @@ public class MapSegment {
     public String getSoilType() { return soilType; }
     public void setSoilType(String soilType) { this.soilType = soilType; }
 
-    public String getCrop() { return plant; }
+    public String getPlant() { return plant; }
     public void setPlant(String plant) { this.plant = plant; }
 
     public double getWatteringLevel() { return watteringLevel; }

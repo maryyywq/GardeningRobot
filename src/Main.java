@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -49,10 +52,10 @@ public class Main {
         Robot ecoBattery = new Robot("EcoBattery", wheels, gps, new EcoPowerManager(battery1), wifi, wateringKB, new Location(0, 0), segmentFactory);
         Robot ecoFuel = new Robot("EcoFuel", plane, gps, new EcoPowerManager(fuelCell1), wifi, plantingKnowledgeBase, new Location(0, 1), segmentFactory);
 
-        Robot maxFuel = new Robot("MaxFuel", legs, vision, new MaxPerformanceManager(fuelCell2), lte, fertilizingKB, new Location(5, 5), segmentFactory);
+        Robot maxFuel = new Robot("MaxFuel", legs, vision, new MaxPerformanceManager(fuelCell2), lte, wateringKB, new Location(5, 5), segmentFactory);
         Robot maxBattery = new Robot("MaxBattery", legs, vision, new MaxPerformanceManager(battery2), lte, fertilizingKB, new Location(5, 6), segmentFactory);
 
-        Robot balanceBattery = new Robot("BalanceBattery", heli, gps, new BalancePowerManager(battery3), lte, medicalKB, new Location(10, 10), segmentFactory);
+        Robot balanceBattery = new Robot("BalanceBattery", wheels, gps, new BalancePowerManager(battery3), lte, medicalKB, new Location(10, 10), segmentFactory);
         Robot balanceFuel = new Robot("BalanceFuel", heli, gps, new BalancePowerManager(fuelCell3), lte, medicalKB, new Location(10, 11), segmentFactory);
 
 
@@ -61,7 +64,7 @@ public class Main {
         //Устанавливаем инструменты
         ecoBattery.setTool(wateringTool);
         ecoFuel.setTool(plantingTool);
-        maxFuel.setTool(fertilizingTool);
+        maxFuel.setTool(wateringTool);
         maxBattery.setTool(fertilizingTool);
         balanceBattery.setTool(medicalTool);
         balanceFuel.setTool(medicalTool);
@@ -146,32 +149,17 @@ public class Main {
         balanceBattery.moveTo(loc);//Вертолет
         System.out.println();
 
-        System.out.println("2. Демонстрация паттерна Flyweight (разделение сегментов карты):");
+        System.out.println("2. Демонстрация паттерна Flyweight:");
 
-        //Используем один и тот же объект Location для демонстрации
-        Location location = new Location(3, 3);
-
-        MapSegment seg1 = segmentFactory.getMapSegment(location);
-        MapSegment seg2 = segmentFactory.getMapSegment(location); //тот же объект
-        System.out.println();
-
-        System.out.println("Первый и второй сегменты для одинаковых координат: " + (seg1 == seg2)); //true
+        List<MapSegment> map = new ArrayList<>();
+        map.add(new MapSegment("почва", "", 3));
+        map.add(new MapSegment("почва", "помидоры", 3));
+        map.add(new MapSegment("песок", "", 3));
+        MapDrawer drawer = new MapDrawer(map);
+        drawer.draw();
 
         System.out.println();
-        //Изменяем один сегмент – изменения видны везде
-        System.out.println("До изменения: " + seg1);
-        seg1.setPlant("помидоры");
-        seg1.setWatteringLevel(3.0);
-        System.out.println("После изменения через первый сегмент: " + seg1);
-        System.out.println("Второй сегмент: " + seg2);
-        System.out.println();
-
-        //Роботы получают сегменты при перемещении
-        ecoBattery.moveTo(location);
-        System.out.println(ecoBattery.getRobotId() + " переместился на " + location + ", его сегмент: " + ecoBattery.getCurrentSegment());
-        balanceFuel.moveTo(location);
-        System.out.println(balanceFuel.getRobotId() + " переместился на " + location + ", его сегмент: " + balanceFuel.getCurrentSegment());
-        System.out.println("Оба робота ссылаются на один объект: " + (ecoBattery.getCurrentSegment() == balanceFuel.getCurrentSegment()));
+        drawer.draw();
 
         System.out.println("\n3. Демонстрация паттерна Facade (умный планшет садовода):");
 
@@ -203,10 +191,15 @@ public class Main {
 
         System.out.println("\n4. Демонстрация паттерна Information Expert:");
 
-        System.out.println("Проверка совместимости инструмента (этим занимается база знаний):");
-        System.out.println(ecoBattery.getRobotId() + " может использовать инструмент для полива? " + ecoBattery.canUseTool(wateringTool));
-        System.out.println(ecoBattery.getRobotId() + " может использовать инструмент для лечения? " + ecoBattery.canUseTool(medicalTool));
-        System.out.println();
-    }
+        MountainExpert mountainExpert = new MountainExpert();
+        DesertExpert desertExpert = new DesertExpert();
 
+        IRobot[] robots = {ecoBattery, ecoFuel, maxFuel, maxBattery, balanceBattery, balanceFuel};
+        for (IRobot robot : robots) {
+            System.out.println("\nРобот: " + robot.getRobotId());
+            System.out.println("  " + mountainExpert.getDescription() + ": " + mountainExpert.check(robot));
+            System.out.println("  " + desertExpert.getDescription() + ": " + desertExpert.check(robot));
+        }
+
+    }
 }

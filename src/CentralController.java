@@ -36,7 +36,7 @@ public class CentralController implements IController {
         return statusMap;
     }
 
-    // Новый метод: получить всех роботов
+    //получить всех роботов
     public List<IRobot> getAllRobots() {
         return new ArrayList<>(robots.values());
     }

@@ -11,5 +11,4 @@ public class VisionNavigation extends INavigation {
     @Override public void adjustRoute(Obstacle obstacle) {
         System.out.println("Навигация с помощью компьютерного зрения: обнаружено препятствие в " + obstacle.position + ", пересчёт маршрута");
     }
-
 }

@@ -4,5 +4,6 @@ abstract class IMovementSystem {
     abstract void moveTo(Location target); //Переместиться к точке
     abstract void stop(); //Остановиться
     abstract void setSpeed(double speed); //Установить скорость
-    abstract MovementType getMovementType(); //Получить тип движения (GROUND/AIR)
+    abstract MovementType getMovementType();
+    abstract MovementSystemType getSystemType();
 }

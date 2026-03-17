@@ -9,6 +9,10 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
     public RobotGroup(String groupName) {
         this.groupName = groupName;
     }
+    @Override
+    public IMovementSystem getMovementSystem() {
+        throw new UnsupportedOperationException("Группа не имеет единой системы передвижения");
+    }
 
     public void addRobot(IRobot robot) {
         robots.add(robot);
