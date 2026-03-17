@@ -2,6 +2,8 @@ import java.util.*;
 
 //Реализация GPS-навигации
 public class GPSNavigation extends INavigation {
+    public GPSNavigation() { }
+    public GPSNavigation(GPSNavigation other) { this.current = other.current.clone(); }
     @Override public void updatePosition() { //Обновление позиции
         System.out.println("GPS-навигация: обновление позиции по GPS");
     }
@@ -16,4 +18,5 @@ public class GPSNavigation extends INavigation {
     public String toString() {
         return "GPS-навигация";
     }
+    @Override public INavigation clone() { return new GPSNavigation(this); }
 }

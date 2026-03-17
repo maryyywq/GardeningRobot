@@ -1,5 +1,6 @@
 //Класс аккумулятора как источника питания робота
 public class Battery extends IPowerSource {
+    public Battery(Battery other) { this.level = other.level; }
     public Battery() {level = 100.0;} //Уровень заряда в процентах
     @Override public void charge() { level = 100.0; System.out.println("Аккумулятор: зарядка завершена"); } //Зарядка до 100%
     @Override public double getLevel() { return level; }
@@ -19,5 +20,6 @@ public class Battery extends IPowerSource {
             System.out.println("Аккумулятор: недостаточно энергии!");
         }
     }
+    @Override public IPowerSource clone() { return new Battery(this); }
 }
 

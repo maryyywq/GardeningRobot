@@ -9,5 +9,15 @@ class MowingKnowledgeBase implements IKnowledgeBase<MowingEntry> {
     @Override public boolean isToolCompatible(ITool tool) {
         return tool.getToolType() == ToolType.MOWING;
     }
+    public MowingKnowledgeBase() {}
+
+    public MowingKnowledgeBase(MowingKnowledgeBase other) {
+        for (Map.Entry<String, MowingEntry> entry : other.storage.entrySet()) {
+            this.storage.put(entry.getKey(), entry.getValue().clone());
+        }
+    }
+    @Override public IKnowledgeBase<?> clone() {
+        return new MowingKnowledgeBase(this);
+    }
 }
 

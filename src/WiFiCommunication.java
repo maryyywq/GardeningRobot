@@ -1,5 +1,6 @@
 public class WiFiCommunication extends ICommunication {
     WiFiCommunication(){connected = false;}
+    public WiFiCommunication(WiFiCommunication other) { this.connected = other.connected; }
     @Override public void connect() { connected = true; System.out.println("WiFi: соединение установлено"); }
     @Override public void disconnect() { connected = false; System.out.println("WiFi: соединение разорвано"); }
     @Override public void sendData(String data, String recipientId) {
@@ -13,4 +14,5 @@ public class WiFiCommunication extends ICommunication {
     public String toString() {
         return "Система коммуникации с помощью Wi-Fi";
     }
+    @Override public ICommunication clone() { return new WiFiCommunication(this); }
 }

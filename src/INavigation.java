@@ -1,5 +1,5 @@
 //Абстрактный класс навигации
-abstract class INavigation {
+abstract class INavigation implements Prototype<INavigation> {
     protected Location current = new Location(0, 0);
     abstract void updatePosition(); //Обновить текущие координаты
     abstract Route planRoute(Location start, Location goal); //Построить оптимальный маршрут от старта до цели
@@ -7,4 +7,5 @@ abstract class INavigation {
     public void setCurrentLocation(Location loc) {
         this.current = loc;
     }
+    @Override public abstract INavigation clone();
 }

@@ -1,6 +1,7 @@
 //Движение робота по типу "вертолет"
 public class HelicopterMovement extends IMovementSystem {
     HelicopterMovement() {speed = 2.0;}
+    public HelicopterMovement(HelicopterMovement other) { this.speed = other.speed; }
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения с винтом сверху (как у вертолета): полёт к " + target);
     }
@@ -11,4 +12,5 @@ public class HelicopterMovement extends IMovementSystem {
     public MovementSystemType getSystemType() {
         return MovementSystemType.HELICOPTER;
     }
+    @Override public IMovementSystem clone() { return new HelicopterMovement(this); }
 }

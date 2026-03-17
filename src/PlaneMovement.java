@@ -1,5 +1,6 @@
 public class PlaneMovement extends IMovementSystem {
     PlaneMovement() {speed = 3.0;}
+    public PlaneMovement(PlaneMovement other) { this.speed = other.speed; }
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения с использованием винта передней части (как у самолета): планирование к " + target);
     }
@@ -10,4 +11,5 @@ public class PlaneMovement extends IMovementSystem {
     public MovementSystemType getSystemType() {
         return MovementSystemType.PLAIN;
     }
+    @Override public IMovementSystem clone() { return new PlaneMovement(this); }
 }
