@@ -4,6 +4,15 @@ import java.util.*;
 //Класс центрального контроллера
 public class CentralController implements IController {
 
+    private static class Holder {
+        private static final CentralController INSTANCE = new CentralController();
+    }
+    private CentralController() {}
+
+    public static CentralController getInstance() {
+        return Holder.INSTANCE;
+    }
+
     private Map<String, IRobot> robots = new ConcurrentHashMap<>(); //Словарь роботов
 
     public void registerRobot(IRobot robot) {

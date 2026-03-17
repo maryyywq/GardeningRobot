@@ -4,62 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added flyweight, facade, information expert patterns demonstration in main">
-      <change afterPath="$PROJECT_DIR$/src/BalancePowerManagerFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BatteryFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BrownImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CommunicationFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DesertExpert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EcoPowerManagerFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FertilizingRobotFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FertilizingToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FuelCellFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GPSNavigationFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GreenImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestingRobotFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestingToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HelicopterMovementFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LTECommunicationFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LeggedMovementFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MapDrawer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MapImageFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MapSegmentImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MaxPerformanceManagerFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MedicalToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MountainExpert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovementSystemFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovementSystemType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MowingToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NavigationFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlaneMovementFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlantingToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PowerManagerFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PowerSourceFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RobotExpert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RobotFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/VisionNavigationFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WateringRobotFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WateringToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeedingToolFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WheeledMovementFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WiFiCommunicationFabric.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/INavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/INavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LeggedMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeggedMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapSegment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapSegmentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapSegmentFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlaneMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaneMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VisionNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VisionNavigation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
-    </list>
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a pattern fabric method and abstract fabric" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -385,11 +330,18 @@
       <option name="project" value="LOCAL" />
       <updated>1773151130178</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added a pattern fabric method and abstract fabric">
+      <option name="closed" value="true" />
+      <created>1773756496892</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1773756496892</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added classes for types of knowledge base" />
     <MESSAGE value="Added abstract class Robot" />
     <MESSAGE value="Added robot type classes" />
     <MESSAGE value="Added class for central controller" />
@@ -414,6 +366,7 @@
     <MESSAGE value="Added a facade pattern" />
     <MESSAGE value="Fixed bugs, added bridge pattern demonstration in main" />
     <MESSAGE value="Added flyweight, facade, information expert patterns demonstration in main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added flyweight, facade, information expert patterns demonstration in main" />
+    <MESSAGE value="Added a pattern fabric method and abstract fabric" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a pattern fabric method and abstract fabric" />
   </component>
 </project>
