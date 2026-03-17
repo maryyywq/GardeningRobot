@@ -1,5 +1,5 @@
 //Интерфейс базы знаний
-interface IKnowledgeBase<T extends IEntry> {
+interface IKnowledgeBase<T extends IEntry> extends Prototype<IKnowledgeBase<?>>{
     void addEntry(String key, T value);  //Добавить новую запись по ключу
     void updateEntry(String key, T value); //Обновить существующую запись
     void removeEntry(String key); //Удалить запись по ключу

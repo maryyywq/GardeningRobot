@@ -2,6 +2,7 @@ class MaxPerformanceManager extends PowerManager {
     public MaxPerformanceManager(IPowerSource ps) {
         super(ps);
     }
+    public MaxPerformanceManager(MaxPerformanceManager other) { super(other.powerSource.clone()); }
 
     @Override
     public PowerAction checkPower(double requiredEnergy) {
@@ -15,4 +16,5 @@ class MaxPerformanceManager extends PowerManager {
             }
         }
     }
+    @Override public PowerManager clone() { return new MaxPerformanceManager(this); }
 }

@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-class Robot implements IRobot, Iterable<Object> {
+class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
     protected String id; //Уникальный идентификатор робота
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
     protected IMovementSystem movementSystem; //Система передвижения
@@ -23,10 +23,37 @@ class Robot implements IRobot, Iterable<Object> {
         this.powerManager = pm;
         this.communication = comm;
         this.knowledgeBase = kb;
-        this.location = startLoc;
+        this.location = startLoc.clone();
         this.segmentFactory = segmentFactory;
         this.currentSegment = segmentFactory.getMapSegment(startLoc);
     }
+
+    private Robot(Robot other, String newId) {
+        this.id = newId;
+        this.status = RobotStatus.IDLE; // сбрасываем статус
+        // Глубокое копирование всех компонентов
+        this.movementSystem = other.movementSystem.clone();
+        this.navigation = other.navigation.clone();
+        this.powerManager = other.powerManager.clone();
+        this.communication = other.communication.clone();
+        this.knowledgeBase = other.knowledgeBase.clone();
+        this.currentTool = other.currentTool != null ? other.currentTool.clone() : null;
+        this.location = other.location.clone();
+        this.segmentFactory = other.segmentFactory; // фабрика разделяемая (Flyweight)
+        this.currentSegment = segmentFactory.getMapSegment(this.location);
+    }
+
+    @Override
+    public Robot clone() {
+        String newId = generateUniqueId(this.id);
+        return new Robot(this, newId);
+    }
+
+    private String generateUniqueId(String originalId) {
+        // Добавляем временную метку для уникальности (можно использовать UUID)
+        return originalId + "_copy_" + System.currentTimeMillis();
+    }
+
     public void moveTo(Location newLocation) {
         movementSystem.moveTo(newLocation);
         this.location = newLocation;

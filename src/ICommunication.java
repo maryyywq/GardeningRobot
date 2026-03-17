@@ -5,4 +5,5 @@ abstract class ICommunication {
     abstract void disconnect(); //Разорвать соединение
     abstract void sendData(String data, String recipientId);  //Отправить данные получателю
     abstract String receiveCommand(String command); //Принять команду
+    @Override public abstract ICommunication clone();
 }

@@ -1,5 +1,6 @@
 //Класс топливного элемента как источника питания роботов
 public class FuelCell extends IPowerSource {
+    public FuelCell(FuelCell other) { this.level = other.level; }
     public FuelCell() {level = 100.0;} //Уровень заряда в процентах
     @Override public void charge() { level = 100.0; System.out.println("Источник питания на основе топлива: заправка завершена"); }
     @Override public void switchToBackup() { System.out.println("Источник питания на основе топлива: переход на резервный бак");
@@ -16,4 +17,5 @@ public class FuelCell extends IPowerSource {
             System.out.println("Топливный элемент: недостаточно топлива!");
         }
     }
+    @Override public IPowerSource clone() { return new FuelCell(this); }
 }

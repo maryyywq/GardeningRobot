@@ -1,5 +1,6 @@
 public class LTECommunication extends ICommunication {
     LTECommunication() {connected = false;}
+    public LTECommunication(LTECommunication other) { this.connected = other.connected; }
     @Override public void connect() { connected = true; System.out.println("LTE: соединение через сотовую сеть"); }
     @Override public void disconnect() { connected = false; System.out.println("LTE: соединение разорвано"); }
     @Override public void sendData(String data, String recipientId) {
@@ -13,5 +14,6 @@ public class LTECommunication extends ICommunication {
     public String toString() {
         return "LTE-связь";
     }
+    @Override public ICommunication clone() { return new LTECommunication(this); }
 }
 

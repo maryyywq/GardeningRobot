@@ -1,5 +1,6 @@
 public class LeggedMovement extends IMovementSystem {
     LeggedMovement() {speed = 0.5;}
+    public LeggedMovement(LeggedMovement other) { this.speed = other.speed; }
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения на ножках: перемещение к " + target);
     }
@@ -10,4 +11,5 @@ public class LeggedMovement extends IMovementSystem {
     public MovementSystemType getSystemType() {
         return MovementSystemType.LEGGED;
     }
+    @Override public IMovementSystem clone() { return new LeggedMovement(this); }
 }

@@ -10,11 +10,18 @@ abstract class BaseTool implements ITool{
 
     @Override
     public void execute() {
-
     }
 
+    // Конструктор копирования
+    public BaseTool(BaseTool other) {
+        this.name = other.name;
+        this.toolType = other.toolType;
+        this.powerConsumption = other.powerConsumption;
+    }
+    @Override public abstract ITool clone();
     @Override public ToolStatus getStatus() { return status; }
     @Override public ToolType getToolType() { return toolType; }
     @Override public String getName() { return name; }
     @Override public double getPowerConsumption() { return powerConsumption; }
+
 }

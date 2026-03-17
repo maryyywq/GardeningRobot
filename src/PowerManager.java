@@ -1,9 +1,9 @@
-abstract public class PowerManager {
+abstract public class PowerManager implements Prototype<PowerManager>{
     protected IPowerSource powerSource;
-
     public PowerManager(IPowerSource powerSource) {
         this.powerSource = powerSource;
     }
+    @Override public abstract PowerManager clone();
 
     public double getLevel() {
         return powerSource.getLevel();

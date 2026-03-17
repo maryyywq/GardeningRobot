@@ -2,6 +2,7 @@ class BalancePowerManager extends PowerManager {
     public BalancePowerManager(IPowerSource ps) {
         super(ps);
     }
+    public BalancePowerManager(BalancePowerManager other) { super(other.powerSource.clone()); }
 
     @Override
     public PowerAction checkPower(double requiredEnergy) {
@@ -15,4 +16,5 @@ class BalancePowerManager extends PowerManager {
             }
         }
     }
+    @Override public PowerManager clone() { return new BalancePowerManager(this); }
 }

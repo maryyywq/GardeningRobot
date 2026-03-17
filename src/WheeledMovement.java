@@ -1,5 +1,6 @@
 public class WheeledMovement extends IMovementSystem {
     WheeledMovement() {speed = 1.0;}
+    public WheeledMovement(WheeledMovement other) { this.speed = other.speed; }
     @Override public void moveTo(Location target) {
         System.out.println("Система передвижения на колесах: движение к " + target);
     }
@@ -15,4 +16,5 @@ public class WheeledMovement extends IMovementSystem {
     public MovementSystemType getSystemType() {
         return MovementSystemType.WHEELED;
     }
+    @Override public IMovementSystem clone() { return new WheeledMovement(this); }
 }

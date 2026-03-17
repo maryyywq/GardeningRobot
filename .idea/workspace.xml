@@ -4,7 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a pattern fabric method and abstract fabric" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a pattern singleton">
+      <change afterPath="$PROJECT_DIR$/src/Prototype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BalancePowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BalancePowerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BaseTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Battery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EcoPowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EcoPowerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuelCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuelCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GPSNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GPSNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelicopterMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelicopterMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ICommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IMovementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IMovementSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/INavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/INavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IPowerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ITool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ITool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LTECommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LTECommunication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LeggedMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeggedMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MaxPerformanceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MaxPerformanceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MedicalTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MedicalTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlaneMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaneMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PowerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PowerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VisionNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VisionNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WateringTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WateringTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingKnowledgeBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedingTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedingTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WheeledMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WheeledMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WiFiCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WiFiCommunication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +62,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -338,11 +386,18 @@
       <option name="project" value="LOCAL" />
       <updated>1773756496892</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added a pattern singleton">
+      <option name="closed" value="true" />
+      <created>1773756936611</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1773756936611</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added abstract class Robot" />
     <MESSAGE value="Added robot type classes" />
     <MESSAGE value="Added class for central controller" />
     <MESSAGE value="Removed instanceof for movement types" />
@@ -367,6 +422,7 @@
     <MESSAGE value="Fixed bugs, added bridge pattern demonstration in main" />
     <MESSAGE value="Added flyweight, facade, information expert patterns demonstration in main" />
     <MESSAGE value="Added a pattern fabric method and abstract fabric" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a pattern fabric method and abstract fabric" />
+    <MESSAGE value="Added a pattern singleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a pattern singleton" />
   </component>
 </project>
