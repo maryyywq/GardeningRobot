@@ -23,4 +23,8 @@ class FertilizingKnowledgeBase implements IKnowledgeBase<FertilizingEntry> {
     @Override public IKnowledgeBase<?> clone() {
         return new FertilizingKnowledgeBase(this);
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний удобрения (записей: %d)", storage.size());
+    }
 }

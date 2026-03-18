@@ -12,4 +12,8 @@ public class PlaneMovement extends IMovementSystem {
         return MovementSystemType.PLAIN;
     }
     @Override public IMovementSystem clone() { return new PlaneMovement(this); }
+    @Override
+    public String toString() {
+        return "Система передвижения с винтом спереди (скорость: " + speed + ")";
+    }
 }

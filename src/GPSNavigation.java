@@ -16,7 +16,9 @@ public class GPSNavigation extends INavigation {
     }
     @Override
     public String toString() {
-        return "GPS-навигация";
+        return "GPS-навигация (текущая позиция: " + current + ")";
     }
+
     @Override public INavigation clone() { return new GPSNavigation(this); }
+
 }

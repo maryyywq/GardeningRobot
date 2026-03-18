@@ -18,9 +18,10 @@ class WeedingKnowledgeBase implements IKnowledgeBase<WeedingEntry> {
     }
     @Override
     public String toString() {
-        return String.format("База знаний полива (записей: %d)", storage.size());
+        return String.format("База знаний прополки (записей: %d)", storage.size());
     }
     @Override public IKnowledgeBase<?> clone() {
         return new WeedingKnowledgeBase(this);
     }
+
 }

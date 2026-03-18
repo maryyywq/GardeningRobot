@@ -10,5 +10,6 @@ interface IRobot {
     public ITool getCurrentTool();
     String getRobotId();
     IMovementSystem getMovementSystem();
+    void setToolPool(ToolPool pool);
 
 }

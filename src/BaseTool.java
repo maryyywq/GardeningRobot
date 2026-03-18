@@ -23,5 +23,12 @@ abstract class BaseTool implements ITool{
     @Override public ToolType getToolType() { return toolType; }
     @Override public String getName() { return name; }
     @Override public double getPowerConsumption() { return powerConsumption; }
-
+    @Override
+    public void reset() {
+        this.status = ToolStatus.READY;
+    }
+    @Override
+    public String toString() {
+        return name + " (" + toolType.getDescription() + ")";
+    }
 }

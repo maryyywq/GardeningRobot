@@ -19,5 +19,10 @@ class MowingKnowledgeBase implements IKnowledgeBase<MowingEntry> {
     @Override public IKnowledgeBase<?> clone() {
         return new MowingKnowledgeBase(this);
     }
+
+    @Override
+    public String toString() {
+        return String.format("База знаний стрижки (записей: %d)", storage.size());
+    }
 }
 

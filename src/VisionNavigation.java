@@ -14,4 +14,8 @@ public class VisionNavigation extends INavigation {
         System.out.println("Навигация с помощью компьютерного зрения: обнаружено препятствие в " + obstacle.position + ", пересчёт маршрута");
     }
     @Override public INavigation clone() { return new VisionNavigation(this); }
+    @Override
+    public String toString() {
+        return "Навигация с помощью компьютерного зрения (текущая позиция: " + current + ")";
+    }
 }

@@ -17,4 +17,8 @@ class BalancePowerManager extends PowerManager {
         }
     }
     @Override public PowerManager clone() { return new BalancePowerManager(this); }
+    @Override
+    public String toString() {
+        return "MaxPerformanceManager (" + powerSource.toString() + ")";
+    }
 }

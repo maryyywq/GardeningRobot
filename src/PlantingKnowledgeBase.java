@@ -19,4 +19,8 @@ class PlantingKnowledgeBase implements IKnowledgeBase<PlantingEntry> {
     @Override public IKnowledgeBase<?> clone() {
         return new PlantingKnowledgeBase(this);
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний посадки (записей: %d)", storage.size());
+    }
 }

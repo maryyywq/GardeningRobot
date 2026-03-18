@@ -1,4 +1,4 @@
-abstract class ToolDecorator implements ITool {
+abstract class ToolDecorator implements ITool, Prototype<ITool> {
     protected ITool wrapped;
 
     public ToolDecorator(ITool wrapped) {
@@ -13,4 +13,6 @@ abstract class ToolDecorator implements ITool {
     @Override public double getPowerConsumption(){
         return wrapped.getPowerConsumption();
     }
+    @Override
+    public abstract ITool clone();
 }

@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
+class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     protected String id; //Уникальный идентификатор робота
     protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
     protected IMovementSystem movementSystem; //Система передвижения
@@ -12,11 +12,13 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
     protected Location location; //Текущее местоположение
     private MapSegment currentSegment;
     private MapSegmentFactory segmentFactory;
+    private ToolPool toolPool;
 
-    public Robot() { }
+    public Robot() {
+    }
 
     public Robot(String id, IMovementSystem ms, INavigation nav, PowerManager pm,
-                         ICommunication comm, IKnowledgeBase<?> kb, Location startLoc, MapSegmentFactory segmentFactory) {
+                 ICommunication comm, IKnowledgeBase<?> kb, Location startLoc, MapSegmentFactory segmentFactory) {
         this.id = id;
         this.movementSystem = ms;
         this.navigation = nav;
@@ -41,7 +43,72 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
         this.location = other.location.clone();
         this.segmentFactory = other.segmentFactory; // фабрика разделяемая (Flyweight)
         this.currentSegment = segmentFactory.getMapSegment(this.location);
+        this.toolPool = other.toolPool;
     }
+
+    private ToolType commandToToolType(String command) {
+        if (command == null) return null;
+        switch (command) {
+            case "WATER":
+                return ToolType.WATERING;
+            case "FERTILIZE":
+                return ToolType.FERTILIZING;
+            case "TREAT":
+                return ToolType.MEDICAL;
+            case "PLANT":
+                return ToolType.PLANTING;
+            case "HARVEST":
+                return ToolType.HARVESTING;
+            case "WEED":
+                return ToolType.WEEDING;
+            case "MOW":
+                return ToolType.MOWING;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public void receiveCommand(String command) {
+        if (toolPool == null) {
+            System.out.println(id + ": ошибка - не привязан к пулу инструментов");
+            return;
+        }
+
+        ToolType requiredType = commandToToolType(command);
+        if (requiredType == null) {
+            System.out.println(id + ": неизвестная команда '" + command + "'");
+            return;
+        }
+
+        // Запрашиваем инструмент из пула
+        ITool tool = toolPool.acquireTool(requiredType);
+        if (tool == null) {
+            System.out.println(id + ": нет свободного инструмента для " + requiredType);
+            return;
+        }
+
+        if (!canUseTool(tool)) {
+            System.out.println(id + ": команда несовместима с базой знаний, требуемый тип " + requiredType);
+            return;
+        }
+
+        this.currentTool = tool; // временно устанавливаем
+
+        try {
+            System.out.println(id + ": получена команда: " + command);
+            communication.receiveCommand(command);
+            communication.sendData("Подтверждение", "контроллер");
+            startTask(); // использует currentTool
+        } finally {
+            // Возвращаем инструмент в пул
+            if (currentTool != null) {
+                toolPool.releaseTool(currentTool);
+                this.currentTool = null;
+            }
+        }
+    }
+
 
     @Override
     public Robot clone() {
@@ -112,18 +179,12 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
 
     @Override public void stopTask() { status = RobotStatus.IDLE; System.out.println(id + ": задача остановлена"); }
     @Override public RobotStatus getStatus() { return status; }
-    @Override public void receiveCommand(String command) {
-        System.out.println(id + ": получена команда: " + command);
-        communication.receiveCommand(command); //Передаём команду в систему связи
-        communication.sendData("Подтверждение", "контроллер");
-        startTask();
-    }
 
     @Override
     public void setTool(ITool tool) {
         if (canUseTool(tool)) {
             this.currentTool = tool;
-            System.out.println(id + ": установлен инструмент " + tool.getName()); // вместо getClass().getSimpleName()
+            System.out.println(id + ": установлен инструмент " + tool.getName());
         } else {
             System.out.println(id + ": невозможно использовать инструмент " + tool.getName() + " - несовместим с моей базой знаний");
         }
@@ -148,6 +209,11 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot>{
         String toolStr = (currentTool != null) ? currentTool.getName() : "не установлен";
         return String.format("Робот '%s': состояние %s, инструмент: %s",
                 id, status.getDescription(), toolStr);
+    }
+
+    @Override
+    public void setToolPool(ToolPool pool) {
+        this.toolPool = pool;
     }
 }
 
