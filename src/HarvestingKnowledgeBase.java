@@ -20,4 +20,8 @@ class HarvestingKnowledgeBase implements IKnowledgeBase<HarvestingEntry> {
     @Override public IKnowledgeBase<?> clone() {
         return new HarvestingKnowledgeBase(this);
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний сбора урожая (записей: %d)", storage.size());
+    }
 }

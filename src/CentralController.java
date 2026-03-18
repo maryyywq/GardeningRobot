@@ -4,16 +4,34 @@ import java.util.*;
 //Класс центрального контроллера
 public class CentralController implements IController {
 
+    private ToolPool toolPool;
+
     private static class Holder {
         private static final CentralController INSTANCE = new CentralController();
     }
-    private CentralController() {}
 
     public static CentralController getInstance() {
         return Holder.INSTANCE;
     }
 
-    private Map<String, IRobot> robots = new ConcurrentHashMap<>(); //Словарь роботов
+    private Map<String, IRobot> robots = new ConcurrentHashMap<>();//Словарь роботов
+
+    private CentralController() {
+        toolPool = new GenericToolPool(); // пустой пул
+        System.out.println("CentralController: создан пустой пул инструментов");
+    }
+
+    public void addToolToPool(ITool tool) {
+        toolPool.addTool(tool);
+        System.out.println("Контроллер: инструмент " + tool + " добавлен в пул");
+    }
+
+    public void removeToolFromPool(ITool tool) {
+        if (toolPool.removeTool(tool)) {
+            System.out.println("Контроллер: инструмент " + tool + " удалён из пула");
+        }
+    }
+
 
     public void registerRobot(IRobot robot) {
         String id = robot.getRobotId();
@@ -21,14 +39,14 @@ public class CentralController implements IController {
             throw new IllegalArgumentException("Робот не имеет идентификатора");
         }
         robots.put(id, robot);
+        robot.setToolPool(toolPool); // передаём ссылку на пул
+        System.out.println("Контроллер: робот " + id + " зарегистрирован и получил доступ к пулу инструментов");
     }
 
-    //Hазначает задачу роботу
     public void assignTask(String robotId, Task task) {
         IRobot robot = robots.get(robotId);
         if (robot != null) {
             System.out.println("Контроллер: назначение задачи " + task.type + " роботу " + robotId);
-            //Передаем команду роботу
             robot.receiveCommand(task.type);
         } else {
             System.out.println("Контроллер: робот " + robotId + " не найден");
@@ -37,7 +55,6 @@ public class CentralController implements IController {
 
     @Override
     public Map<String, RobotStatus> monitorRobots() {
-        //Возвращает текущие статусы всех зарегистрированных роботов
         Map<String, RobotStatus> statusMap = new HashMap<>();
         for (Map.Entry<String, IRobot> entry : robots.entrySet()) {
             statusMap.put(entry.getKey(), entry.getValue().getStatus());
@@ -45,12 +62,10 @@ public class CentralController implements IController {
         return statusMap;
     }
 
-    //получить всех роботов
     public List<IRobot> getAllRobots() {
         return new ArrayList<>(robots.values());
     }
 
-    // Новый метод: найти первого робота с заданным типом инструмента
     public IRobot findRobotWithTool(ToolType toolType) {
         for (IRobot robot : robots.values()) {
             ITool tool = robot.getCurrentTool();
@@ -61,7 +76,6 @@ public class CentralController implements IController {
         return null;
     }
 
-    // Новый метод: найти всех роботов с заданным типом инструмента
     public List<IRobot> findAllRobotsWithTool(ToolType toolType) {
         List<IRobot> result = new ArrayList<>();
         for (IRobot robot : robots.values()) {
@@ -72,5 +86,4 @@ public class CentralController implements IController {
         }
         return result;
     }
-
 }

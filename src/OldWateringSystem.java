@@ -9,6 +9,12 @@ class OldWateringSystem {
         this.waterAmount = capacity; //изначально полный
     }
 
+    public OldWateringSystem(OldWateringSystem other) {
+        this.waterAmount = other.waterAmount;
+        this.capacity = other.capacity;
+        this.flowRate = other.flowRate;
+    }
+
     public void turnOn() {
         if (waterAmount >= flowRate) {
             System.out.println("Старая поливалка: включена, расходует " + flowRate + " л воды");

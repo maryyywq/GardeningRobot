@@ -19,4 +19,8 @@ class MedicalKnowledgeBase implements IKnowledgeBase<MedicalEntry> {
     @Override public IKnowledgeBase<?> clone() {
         return new MedicalKnowledgeBase(this);
     }
+    @Override
+    public String toString() {
+        return String.format("База знаний лечения (записей: %d)", storage.size());
+    }
 }

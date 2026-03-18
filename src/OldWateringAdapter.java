@@ -1,9 +1,14 @@
-class OldWateringAdapter implements ITool {
+class OldWateringAdapter implements ITool, Prototype<ITool> {
     private OldWateringSystem oldSystem;
     private ToolStatus status = ToolStatus.READY;
 
     public OldWateringAdapter(OldWateringSystem oldSystem) {
         this.oldSystem = oldSystem;
+    }
+
+    public OldWateringAdapter(OldWateringAdapter other) {
+        this.oldSystem = new OldWateringSystem(other.oldSystem);
+        this.status = other.status;
     }
 
     @Override
@@ -45,5 +50,15 @@ class OldWateringAdapter implements ITool {
     public double getPowerConsumption() {
         //Старая система потребляет некоторую энергию, например 2.0
         return 2.0;
+    }
+
+    @Override
+    public ITool clone() {
+        return new OldWateringAdapter(this);
+    }
+
+    @Override
+    public void reset() {
+        this.status = ToolStatus.READY;
     }
 }

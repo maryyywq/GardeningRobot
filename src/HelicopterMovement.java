@@ -13,4 +13,8 @@ public class HelicopterMovement extends IMovementSystem {
         return MovementSystemType.HELICOPTER;
     }
     @Override public IMovementSystem clone() { return new HelicopterMovement(this); }
+    @Override
+    public String toString() {
+        return "Система передвижения с винтом сверху (скорость: " + speed + ")";
+    }
 }

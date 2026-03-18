@@ -12,4 +12,8 @@ public class LeggedMovement extends IMovementSystem {
         return MovementSystemType.LEGGED;
     }
     @Override public IMovementSystem clone() { return new LeggedMovement(this); }
+    @Override
+    public String toString() {
+        return "Система передвижения на ножках (скорость: " + speed + ")";
+    }
 }

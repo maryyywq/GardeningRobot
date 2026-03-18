@@ -18,4 +18,8 @@ public class FuelCell extends IPowerSource {
         }
     }
     @Override public IPowerSource clone() { return new FuelCell(this); }
+    @Override
+    public String toString() {
+        return String.format("Топливный элемент (заряд: %.1f%%)", level);
+    }
 }

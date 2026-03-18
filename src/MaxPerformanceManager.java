@@ -17,4 +17,8 @@ class MaxPerformanceManager extends PowerManager {
         }
     }
     @Override public PowerManager clone() { return new MaxPerformanceManager(this); }
+    @Override
+    public String toString() {
+        return "MaxPerformanceManager (" + powerSource.toString() + ")";
+    }
 }

@@ -6,5 +6,5 @@ interface ITool extends Prototype<ITool>{
     ToolType getToolType(); //Получить тип инструмента
     String getName();  //Получить название инструмента
     double getPowerConsumption();
-
+    void reset();
 }

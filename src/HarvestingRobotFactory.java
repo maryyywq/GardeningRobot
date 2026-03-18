@@ -1,32 +1,12 @@
 public class HarvestingRobotFactory implements RobotFactory {
-    private MovementSystemFabric movementFab = new HelicopterMovementFabric();
-    private NavigationFabric navFab = new GPSNavigationFabric();
-    private CommunicationFabric commFab = new WiFiCommunicationFabric();
-    private PowerSourceFabric psFab = new FuelCellFabric();
-    private PowerManagerFabric pmFab = new BalancePowerManagerFabric();
-    private ToolFabric toolFab = new HarvestingToolFabric();
-
     @Override
     public Robot createRobot(String id, Location startLoc, MapSegmentFactory segmentFactory) {
-        IMovementSystem movement = movementFab.create();
-        INavigation navigation = navFab.create(startLoc);
-        ICommunication communication = commFab.create();
-        IPowerSource powerSource = psFab.create();
-        PowerManager powerManager = pmFab.create(powerSource);
-        ITool tool = toolFab.create();
+        IMovementSystem movement = new HelicopterMovementFabric().create();
+        INavigation navigation = new GPSNavigationFabric().create(startLoc);
+        ICommunication communication = new WiFiCommunicationFabric().create();
+        IPowerSource ps = new FuelCellFabric().create();
+        PowerManager pm = new BalancePowerManagerFabric().create(ps);
         IKnowledgeBase<?> kb = new HarvestingKnowledgeBase();
-
-        Robot robot = new Robot(
-                id,
-                movement,
-                navigation,
-                powerManager,
-                communication,
-                kb,
-                startLoc,
-                segmentFactory
-        );
-        robot.setTool(tool);
-        return robot;
+        return new Robot(id, movement, navigation, pm, communication, kb, startLoc, segmentFactory);
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 class RobotGroup implements IRobot, Iterable<IRobot> {
     private String groupName;
     private List<IRobot> robots = new ArrayList<>();
+    private ToolPool groupPool;
 
     public RobotGroup(String groupName) {
         this.groupName = groupName;
@@ -16,6 +17,18 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
 
     public void addRobot(IRobot robot) {
         robots.add(robot);
+        // Если группе уже назначен пул, сразу передаём его новому роботу
+        if (groupPool != null) {
+            robot.setToolPool(groupPool);
+        }
+    }
+
+    @Override
+    public void setToolPool(ToolPool pool) {
+        this.groupPool = pool;
+        for (IRobot robot : robots) {
+            robot.setToolPool(pool);
+        }
     }
 
     public void removeRobot(IRobot robot) {

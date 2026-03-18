@@ -12,4 +12,9 @@ class EcoPowerManager extends PowerManager {
         }
     }
     @Override public PowerManager clone() { return new EcoPowerManager(this); }
+
+    @Override
+    public String toString() {
+        return "EcoPowerManager (" + powerSource.toString() + ")";
+    }
 }
