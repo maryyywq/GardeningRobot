@@ -2,7 +2,7 @@ import java.util.Iterator;
 
 class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     protected String id; //Уникальный идентификатор робота
-    protected RobotStatus status = RobotStatus.IDLE; //Текущий статус, по умолчанию IDLE
+    private IRobotState currentState;
     protected IMovementSystem movementSystem; //Система передвижения
     protected INavigation navigation; //Навигационная система
     protected PowerManager powerManager;
@@ -13,6 +13,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     private MapSegment currentSegment;
     private MapSegmentFactory segmentFactory;
     private ToolPool toolPool;
+    private Location destination;
 
     public Robot() {
     }
@@ -25,26 +26,70 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         this.powerManager = pm;
         this.communication = comm;
         this.knowledgeBase = kb;
-        this.location = startLoc.clone();
+        this.location = startLoc;
+        this.destination = startLoc;
         this.segmentFactory = segmentFactory;
-        this.currentSegment = segmentFactory.getMapSegment(startLoc);
+
+        startIdle(); // начальное состояние
     }
 
+    // Конструктор клонирования
     private Robot(Robot other, String newId) {
         this.id = newId;
-        this.status = RobotStatus.IDLE; //сбрасываем статус
-        //Глубокое копирование всех компонентов
         this.movementSystem = other.movementSystem.clone();
         this.navigation = other.navigation.clone();
         this.powerManager = other.powerManager.clone();
         this.communication = other.communication.clone();
         this.knowledgeBase = other.knowledgeBase.clone();
+        this.location = other.location;
+        this.destination = other.destination;
         this.currentTool = other.currentTool != null ? other.currentTool.clone() : null;
-        this.location = other.location.clone();
         this.segmentFactory = other.segmentFactory;
-        this.currentSegment = segmentFactory.getMapSegment(this.location);
-        this.toolPool = other.toolPool;
+        startIdle();
     }
+
+    public void startIdle() {
+        if (currentState != null) currentState.exit();
+        currentState = new IdleState(this);
+        currentState.enter();
+    }
+
+    public void startWorking() {
+        if (currentState != null) currentState.exit();
+        currentState = new WorkingState(this);
+        currentState.enter();
+    }
+
+    public void startCharging() {
+        if (currentState != null) currentState.exit();
+        currentState = new ChargingState(this);
+        currentState.enter();
+    }
+
+    public void startMoving(Location dest) {
+        this.destination = dest;
+        if (currentState != null) currentState.exit();
+        currentState = new MovingState(this);
+        currentState.enter();
+    }
+
+    public void handleError() {
+        if (currentState != null) currentState.exit();
+        currentState = new ErrorState(this);
+        currentState.enter();
+    }
+
+    public void act() {
+        if (currentState != null) {
+            currentState.execute();
+        }
+    }
+
+    public void resetError() {
+        System.out.println(id + ": ошибка успешно сброшена");
+        startIdle();
+    }
+
 
     private ToolType commandToToolType(String command) {
         if (command == null) return null;
@@ -99,7 +144,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
             System.out.println(id + ": получена команда: " + command);
             communication.receiveCommand(command);
             communication.sendData("Подтверждение", "контроллер");
-            startTask(); // использует currentTool
+            act();
         } finally {
             // Возвращаем инструмент в пул
             if (currentTool != null) {
@@ -117,7 +162,6 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     }
 
     private String generateUniqueId(String originalId) {
-        // Добавляем временную метку для уникальности (можно использовать UUID)
         return originalId + "_copy_" + System.currentTimeMillis();
     }
 
@@ -139,54 +183,14 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         return new RobotComponentIterator(this);
     }
 
-
-    @Override
-    public void startTask() {
-        if (currentTool == null) {
-            System.out.println(id + ": ошибка - инструмент не установлен");
-            status = RobotStatus.ERROR;
-            return;
-        }
-
-        double requiredEnergy = currentTool.getPowerConsumption();
-        PowerAction action = powerManager.checkPower(requiredEnergy);
-
-        switch (action) {
-            case CONTINUE:
-                status = RobotStatus.WORKING;
-                System.out.println(id + ": задача запущена с инструментом " + currentTool.getName() +
-                        " (потребление " + requiredEnergy + " ед.)");
-                currentTool.execute();
-                powerManager.consumeEnergy(requiredEnergy);
-                break;
-            case CHARGE:
-                System.out.println(id + ": недостаточно энергии (нужно " + requiredEnergy +
-                        "), отправляюсь на зарядку");
-                status = RobotStatus.CHARGING;
-                powerManager.charge();
-                break;
-            case USE_BACKUP:
-                System.out.println(id + ": переключаюсь на резервный источник");
-                powerManager.switchToBackup();
-                break;
-            case STOP:
-                System.out.println(id + ": недостаточно энергии для инструмента " +
-                        currentTool.getName() + ", задача отменена");
-                status = RobotStatus.ERROR;
-                break;
-        }
-    }
-
-    @Override public void stopTask() { status = RobotStatus.IDLE; System.out.println(id + ": задача остановлена"); }
-    @Override public RobotStatus getStatus() { return status; }
+    @Override public RobotStatus getStatus() { return currentState.getStatus(); }
 
     @Override
     public void setTool(ITool tool) {
         if (canUseTool(tool)) {
             this.currentTool = tool;
-            System.out.println(id + ": установлен инструмент " + tool.getName());
         } else {
-            System.out.println(id + ": невозможно использовать инструмент " + tool.getName() + " - несовместим с моей базой знаний");
+            handleError();
         }
     }
 
@@ -208,12 +212,22 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public String toString() {
         String toolStr = (currentTool != null) ? currentTool.getName() : "не установлен";
         return String.format("Робот '%s': состояние %s, инструмент: %s",
-                id, status.getDescription(), toolStr);
+                id, currentState.getStatus(), toolStr);
     }
 
     @Override
     public void setToolPool(ToolPool pool) {
         this.toolPool = pool;
     }
+
+    public Location getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Location destination) {
+        this.destination = destination;
+    }
+
+
 }
 

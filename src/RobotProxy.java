@@ -35,22 +35,6 @@ public class RobotProxy extends Robot {
 
     }
 
-    @Override
-    public void startTask() {
-        System.out.println("Proxy: запрос на запуск задачи");
-        if (canStart()) {
-            System.out.println("Proxy: запускаю задачу");
-            realRobot.startTask();
-        } else {
-            System.out.println("Proxy: задача не запущена из-за проблем с системами");
-        }
-    }
-
-    @Override
-    public void stopTask() {
-        System.out.println("Proxy: запрос на остановку задачи");
-        realRobot.stopTask();
-    }
 
     @Override
     public RobotStatus getStatus() {

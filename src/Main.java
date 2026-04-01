@@ -1,5 +1,8 @@
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("1. Тестирование паттерна Builder:\n");
 
         //1. Создаём билдер
@@ -41,6 +44,48 @@ public class Main {
         segmentFactory.registerSegment(customLoc, customSegment);
         MapSegment retrieved = segmentFactory.getMapSegment(customLoc);
         System.out.println("Зарегистрированный свой сегмент:\n" + retrieved);
+        System.out.println();
+
+        System.out.println("2. Тестирование паттерна State:\n");
+        CentralController controller = CentralController.getInstance();
+
+        //Создаём робота через фабрику (подходит для полива)
+        RobotFactory factory = new WateringRobotFactory();
+        Robot robot = factory.createRobot("Robot-001", new Location(0, 0), segmentFactory);
+
+        //Добавляем инструмент в пул контроллера
+        controller.addToolToPool(new WateringTool());
+
+        //Регистрируем робота в контроллере (он получает доступ к пулу)
+        controller.registerRobot(robot);
+        System.out.println();
+
+        System.out.println("2.1. Демонстрация состояния простоя: ");
+        robot.act();
+        System.out.println();
+        System.out.println("2.2. Демонстрация состояния работы:");
+        robot.startWorking();
+        controller.assignTask("Robot-001", new Task("WATER", Map.of("volume", 2.5)));
+        System.out.println();
+
+        System.out.println("2.3. Демонстрация зарядки:");
+        robot.startCharging();
+        robot.act();
+        System.out.println("Статус: " + robot.getStatus());
+        System.out.println();
+
+        System.out.println("2.4. Демонстрация состояния движения:");
+        robot.startMoving(new Location(10, 20));
+        robot.act();
+        System.out.println("Статус: " + robot.getStatus());
+        System.out.println();
+
+        System.out.println("2.5. Демонстрация состояния ошибки:");
+        robot.handleError();
+        System.out.println("Статус: " + robot.getStatus());
+        robot.act();
+        System.out.println("Статус после восстановления: " + robot.getStatus());
     }
 
-}
+    }
+

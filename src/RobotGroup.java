@@ -45,22 +45,6 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
     }
 
     @Override
-    public void startTask() {
-        System.out.println("Группа " + groupName + ": запуск задач");
-        for (IRobot robot : robots) {
-            robot.startTask();
-        }
-    }
-
-    @Override
-    public void stopTask() {
-        System.out.println("Группа " + groupName + ": остановка задач");
-        for (IRobot robot : robots) {
-            robot.stopTask();
-        }
-    }
-
-    @Override
     public RobotStatus getStatus() {
         //Возвращаем WORKING, если хотя бы один робот работает
         for (IRobot robot : robots) {
