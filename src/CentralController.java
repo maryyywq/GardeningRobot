@@ -8,7 +8,7 @@ public class CentralController implements IController {
 
     private static class Holder {
         private static final CentralController INSTANCE = new CentralController();
-    }
+    } //храним ссылку на самого себя
 
     public static CentralController getInstance() {
         return Holder.INSTANCE;
@@ -17,7 +17,7 @@ public class CentralController implements IController {
     private Map<String, IRobot> robots = new ConcurrentHashMap<>();//Словарь роботов
 
     private CentralController() {
-        toolPool = new GenericToolPool(); // пустой пул
+        toolPool = new GenericToolPool(); //пустой пул
         System.out.println("CentralController: создан пустой пул инструментов");
     }
 
@@ -31,7 +31,6 @@ public class CentralController implements IController {
             System.out.println("Контроллер: инструмент " + tool + " удалён из пула");
         }
     }
-
 
     public void registerRobot(IRobot robot) {
         String id = robot.getRobotId();

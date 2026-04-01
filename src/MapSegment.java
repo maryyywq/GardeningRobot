@@ -1,27 +1,40 @@
-public class MapSegment {
-    private String soilType;      //тип почвы
-    private String plant;          //культура
-    private double watteringLevel;  //базовая влажность
+import java.util.ArrayList;
+import java.util.List;
 
-    public MapSegment(String soilType, String plant, double baseMoisture) {
-        this.soilType = soilType;
+public class MapSegment {
+    private final SoilType soil;
+    private final PlantType plant;
+    private final double moisture;
+    private final WeedLevel weeds;
+    private final List<GroundObjectType> objects;
+    // Конструктор с пакетным доступом, вызывается только из Builder
+    MapSegment(SoilType soil, PlantType plant, double moisture,
+               WeedLevel weeds, List<GroundObjectType> objects) {
+        this.soil = soil;
         this.plant = plant;
-        this.watteringLevel = baseMoisture;
+        this.moisture = moisture;
+        this.weeds = weeds;
+        this.objects = new ArrayList<>(objects);
     }
 
-    public String getSoilType() { return soilType; }
-    public void setSoilType(String soilType) { this.soilType = soilType; }
-
-    public String getPlant() { return plant; }
-    public void setPlant(String plant) { this.plant = plant; }
-
-    public double getWatteringLevel() { return watteringLevel; }
-    public void setWatteringLevel(double watteringLevel) { this.watteringLevel = watteringLevel; }
+    // Геттеры (при необходимости)
+    public SoilType getSoil() { return soil; }
+    public PlantType getPlant() { return plant; }
+    public double getMoisture() { return moisture; }
+    public WeedLevel getWeeds() { return weeds; }
+    public List<GroundObjectType> getObjects() { return new ArrayList<>(objects); }
 
     @Override
     public String toString() {
-        return String.format("Сегмент {почва='%s', культура='%s', влажность=%.1f}",
-                soilType, plant, watteringLevel);
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Сегмент {почва=%s, растение=%s, влажность=%.1f, сорняки=%s",
+                soil.getName(), plant.getName(), moisture, weeds));
+        if (!objects.isEmpty()) {
+            sb.append(", объекты: ").append(objects);
+        }
+        sb.append("}");
+        return sb.toString();
     }
 }
+
 

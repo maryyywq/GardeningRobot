@@ -1,8 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapImageFactory
-{
+public class MapImageFactory {
     private static Map<MapSegment, MapSegmentImage> cache = new HashMap<>();
 
     public static MapSegmentImage getImage(MapSegment segment) {
@@ -11,10 +10,11 @@ public class MapImageFactory
             return cache.get(segment);
         }
 
-        //Создаём новую картинку
+        // Создаём новую картинку
         MapSegmentImage image;
 
-        if (segment.getPlant().isEmpty()) {
+        // Если растение – газон (значение по умолчанию), считаем грядку пустой
+        if (segment.getPlant() == PlantType.GRASS) {
             image = new BrownImage();
         } else {
             image = new GreenImage();

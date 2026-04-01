@@ -9,7 +9,7 @@ public class WateringRobotFactory implements RobotFactory {
         PowerManager pm = new EcoPowerManagerFabric().create(ps);
         IKnowledgeBase<?> kb = new WateringKnowledgeBase();
 
-        // Робот создаётся без инструмента!
+        //Робот создаётся без инструмента!
         return new Robot(id, movement, navigation, pm, communication, kb, startLoc, segmentFactory);
     }
 }

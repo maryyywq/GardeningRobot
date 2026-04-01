@@ -10,18 +10,21 @@ class GardenFacade {
         this.mapFactory = mapFactory;
     }
 
-    //Вырастить помидоры на указанной грядке
+    // Вырастить помидоры на указанной грядке (используя Builder и Director)
     public void growTomatoes(Location bedLocation) {
         System.out.println("Запуск процесса выращивания помидоров на грядке " + bedLocation);
 
-        //1. Обновляем данные о сегменте карты
-        MapSegment segment = mapFactory.getMapSegment(bedLocation);
-        segment.setSoilType("чернозём");
-        segment.setPlant("томаты");
-        segment.setWatteringLevel(2.5);
-        System.out.println("Шаг 1: Данные о грядке обновлены");
+        // 1. Создаём сегмент для помидорной грядки через директор
+        MapSegmentBuilder builder = new StandartMapSegmentBuilder();
+        MapSegmentDirector director = new TomatoGardenDirector();
+        director.construct(builder);
+        MapSegment tomatoSegment = builder.build();
 
-        //2. Посадка
+        // Регистрируем сегмент в фабрике (Flyweight)
+        mapFactory.registerSegment(bedLocation, tomatoSegment);
+        System.out.println("Шаг 1: Данные о грядке обновлены (создан новый сегмент)");
+
+        // 2. Посадка
         IRobot plantingRobot = controller.findRobotWithTool(ToolType.PLANTING);
         if (plantingRobot != null) {
             System.out.println("Шаг 2: Посадка...");
@@ -32,19 +35,18 @@ class GardenFacade {
             return;
         }
 
-        //3. Полив
+        // 3. Полив
         IRobot wateringRobot = controller.findRobotWithTool(ToolType.WATERING);
         if (wateringRobot != null) {
             System.out.println("Шаг 3: Полив...");
             Task waterTask = new Task("WATER", Map.of("plant", "томаты", "volume", 2.5));
             controller.assignTask(wateringRobot.getRobotId(), waterTask);
-
-        }else {
+        } else {
             System.out.println("Нет робота для полива!");
             return;
         }
 
-        //4. Удобрение
+        // 4. Удобрение
         IRobot fertilizingRobot = controller.findRobotWithTool(ToolType.FERTILIZING);
         if (fertilizingRobot != null) {
             System.out.println("Шаг 4: Удобрение...");
@@ -55,7 +57,7 @@ class GardenFacade {
             return;
         }
 
-        //5. Обработка от болезней
+        // 5. Обработка от болезней
         IRobot medicalRobot = controller.findRobotWithTool(ToolType.MEDICAL);
         if (medicalRobot != null) {
             System.out.println("Шаг 5: Обработка от болезней...");
@@ -69,7 +71,7 @@ class GardenFacade {
         System.out.println("Процесс выращивания помидоров запущен");
     }
 
-    //Полить все грядки (все сегменты карты, где есть растения)
+    // Полить все грядки (все сегменты карты, где есть растения)
     public void waterAllBeds() {
         System.out.println("Запуск полива всех грядок");
         List<IRobot> waterers = controller.findAllRobotsWithTool(ToolType.WATERING);
@@ -84,7 +86,7 @@ class GardenFacade {
         System.out.println("Команды полива отправлены " + waterers.size() + " роботам");
     }
 
-    //Собрать урожай со всех грядок
+    // Собрать урожай со всех грядок
     public void harvestAllBeds() {
         System.out.println("Запуск сбора урожая");
         List<IRobot> harvesters = controller.findAllRobotsWithTool(ToolType.HARVESTING);
@@ -99,7 +101,7 @@ class GardenFacade {
         System.out.println("Команды сбора отправлены " + harvesters.size() + " роботам");
     }
 
-    //Удобрить все грядки
+    // Удобрить все грядки
     public void fertilizeAllBeds() {
         System.out.println("Запуск удобрения всех грядок");
         List<IRobot> fertilizers = controller.findAllRobotsWithTool(ToolType.FERTILIZING);
@@ -113,5 +115,4 @@ class GardenFacade {
         }
         System.out.println("Команды удобрения отправлены " + fertilizers.size() + " роботам");
     }
-
 }

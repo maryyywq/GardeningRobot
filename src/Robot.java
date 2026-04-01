@@ -32,8 +32,8 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
 
     private Robot(Robot other, String newId) {
         this.id = newId;
-        this.status = RobotStatus.IDLE; // сбрасываем статус
-        // Глубокое копирование всех компонентов
+        this.status = RobotStatus.IDLE; //сбрасываем статус
+        //Глубокое копирование всех компонентов
         this.movementSystem = other.movementSystem.clone();
         this.navigation = other.navigation.clone();
         this.powerManager = other.powerManager.clone();
@@ -41,7 +41,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         this.knowledgeBase = other.knowledgeBase.clone();
         this.currentTool = other.currentTool != null ? other.currentTool.clone() : null;
         this.location = other.location.clone();
-        this.segmentFactory = other.segmentFactory; // фабрика разделяемая (Flyweight)
+        this.segmentFactory = other.segmentFactory;
         this.currentSegment = segmentFactory.getMapSegment(this.location);
         this.toolPool = other.toolPool;
     }
