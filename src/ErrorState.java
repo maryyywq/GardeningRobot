@@ -18,4 +18,9 @@ public class ErrorState implements IRobotState {
 
     @Override
     public RobotStatus getStatus() { return RobotStatus.ERROR; }
+
+    @Override
+    public IRobotState clone(Robot newRobot) {
+        return new ErrorState(newRobot);
+    }
 }

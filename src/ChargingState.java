@@ -20,4 +20,9 @@ public class ChargingState implements IRobotState {
 
     @Override
     public RobotStatus getStatus() { return RobotStatus.CHARGING; }
+
+    @Override
+    public IRobotState clone(Robot newRobot) {
+        return new ChargingState(newRobot);
+    }
 }

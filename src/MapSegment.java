@@ -7,7 +7,7 @@ public class MapSegment {
     private final double moisture;
     private final WeedLevel weeds;
     private final List<GroundObjectType> objects;
-    // Конструктор с пакетным доступом, вызывается только из Builder
+
     MapSegment(SoilType soil, PlantType plant, double moisture,
                WeedLevel weeds, List<GroundObjectType> objects) {
         this.soil = soil;

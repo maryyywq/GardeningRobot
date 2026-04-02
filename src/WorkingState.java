@@ -53,4 +53,10 @@ public class WorkingState implements IRobotState {
 
     @Override
     public RobotStatus getStatus() { return RobotStatus.WORKING; }
+
+    @Override
+    public IRobotState clone(Robot newRobot) {
+        return new WorkingState(newRobot);
+    }
+
 }

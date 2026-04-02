@@ -3,4 +3,5 @@ public interface IRobotState {
     void execute();
     void exit();
     RobotStatus getStatus();
+    IRobotState clone(Robot newRobot);
 }

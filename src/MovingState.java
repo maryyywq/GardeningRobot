@@ -19,4 +19,9 @@ public class MovingState implements IRobotState {
 
     @Override
     public RobotStatus getStatus() { return RobotStatus.MOVING; }
+
+    @Override
+    public IRobotState clone(Robot newRobot) {
+        return new MovingState(newRobot);
+    }
 }

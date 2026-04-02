@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
+    private List<IRobotObserver> observers = new ArrayList<>();
     protected String id; //Уникальный идентификатор робота
     private IRobotState currentState;
     protected IMovementSystem movementSystem; //Система передвижения
@@ -30,22 +33,45 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         this.destination = startLoc;
         this.segmentFactory = segmentFactory;
 
-        startIdle(); // начальное состояние
+
     }
 
-    // Конструктор клонирования
-    private Robot(Robot other, String newId) {
-        this.id = newId;
+    public Robot(Robot other) {
+        this.id = other.id;   // оригинальный ID
         this.movementSystem = other.movementSystem.clone();
         this.navigation = other.navigation.clone();
         this.powerManager = other.powerManager.clone();
         this.communication = other.communication.clone();
         this.knowledgeBase = other.knowledgeBase.clone();
-        this.location = other.location;
-        this.destination = other.destination;
         this.currentTool = other.currentTool != null ? other.currentTool.clone() : null;
+        this.location = other.location.clone();
+        this.destination = other.destination != null ? other.destination.clone() : null;
         this.segmentFactory = other.segmentFactory;
-        startIdle();
+        this.toolPool = other.toolPool;
+        this.currentSegment = other.currentSegment; // неглубокое копирование, но достаточно
+        if (other.currentState != null) {
+            this.currentState = other.currentState.clone(this);
+            this.currentState.enter();  //важно: войти в состояние, чтобы настроить ссылку на робота
+        } else {
+            startIdle(); //на случай, если состояние не задано
+        }
+    }
+
+    @Override
+    public void addRobotObserver(IRobotObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeRobotObserver(IRobotObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyRobotObservers(RobotEvent event) {
+        for (IRobotObserver obs : observers) {
+            obs.onRobotEvent(event);
+        }
     }
 
     public void startIdle() {
@@ -64,6 +90,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         if (currentState != null) currentState.exit();
         currentState = new ChargingState(this);
         currentState.enter();
+        notifyRobotObservers(new RobotEvent(id, EventType.CHARGING_STARTED, null));
     }
 
     public void startMoving(Location dest) {
@@ -71,12 +98,14 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         if (currentState != null) currentState.exit();
         currentState = new MovingState(this);
         currentState.enter();
+        notifyRobotObservers(new RobotEvent(id, EventType.MOVING_STARTED, dest));
     }
 
     public void handleError() {
         if (currentState != null) currentState.exit();
         currentState = new ErrorState(this);
         currentState.enter();
+        notifyRobotObservers(new RobotEvent(id, EventType.ERROR, "Произошла ошибка"));
     }
 
     public void act() {
@@ -88,6 +117,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public void resetError() {
         System.out.println(id + ": ошибка успешно сброшена");
         startIdle();
+        notifyRobotObservers(new RobotEvent(id, EventType.ERROR_RESET, null));
     }
 
 
@@ -117,12 +147,14 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public void receiveCommand(String command) {
         if (toolPool == null) {
             System.out.println(id + ": ошибка - не привязан к пулу инструментов");
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
             return;
         }
 
         ToolType requiredType = commandToToolType(command);
         if (requiredType == null) {
             System.out.println(id + ": неизвестная команда '" + command + "'");
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
             return;
         }
 
@@ -130,14 +162,16 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         ITool tool = toolPool.acquireTool(requiredType);
         if (tool == null) {
             System.out.println(id + ": нет свободного инструмента для " + requiredType);
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
             return;
         }
 
         if (!canUseTool(tool)) {
             System.out.println(id + ": команда несовместима с базой знаний, требуемый тип " + requiredType);
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
             return;
         }
-
+        notifyRobotObservers(new RobotEvent(id, EventType.TASK_STARTED, command));
         this.currentTool = tool; // временно устанавливаем
 
         try {
@@ -145,6 +179,9 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
             communication.receiveCommand(command);
             communication.sendData("Подтверждение", "контроллер");
             act();
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_COMPLETED, command));
+        } catch (Exception e) {
+            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, e.getMessage()));
         } finally {
             // Возвращаем инструмент в пул
             if (currentTool != null) {
@@ -154,11 +191,9 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         }
     }
 
-
     @Override
     public Robot clone() {
-        String newId = generateUniqueId(this.id);
-        return new Robot(this, newId);
+        return new Robot(this);
     }
 
     private String generateUniqueId(String originalId) {
@@ -169,6 +204,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         movementSystem.moveTo(newLocation);
         this.location = newLocation;
         this.currentSegment = segmentFactory.getMapSegment(newLocation);
+        notifyRobotObservers(new RobotEvent(id, EventType.ARRIVED, newLocation));
     }
 
     public MapSegment getCurrentSegment() { return currentSegment; }

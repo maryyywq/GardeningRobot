@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added a pattern Builder">
-      <change afterPath="$PROJECT_DIR$/src/ChargingState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ErrorState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IRobotState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IdleState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovingState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WorkingState.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="fixed bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HistoryManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snapshot.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -61,15 +53,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -383,14 +375,42 @@
       <option name="project" value="LOCAL" />
       <updated>1775053149317</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added a pattern State">
+      <option name="closed" value="true" />
+      <created>1775061556779</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1775061556779</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Added a pattern Memento">
+      <option name="closed" value="true" />
+      <created>1775131810945</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1775131810945</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Added a pattern Observer">
+      <option name="closed" value="true" />
+      <created>1775138959339</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1775138959339</updated>
+    </task>
+    <task id="LOCAL-00042" summary="fixed bugs">
+      <option name="closed" value="true" />
+      <created>1775229283667</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1775229283667</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed instanceof for types tool" />
-    <MESSAGE value="Added generics for knowledge bases" />
-    <MESSAGE value="Added class RobotProxy" />
-    <MESSAGE value="Created main and fixed some bugs" />
     <MESSAGE value="Fixed mini bugs" />
     <MESSAGE value="Added comments" />
     <MESSAGE value="Added full comments" />
@@ -412,6 +432,10 @@
     <MESSAGE value="Added a pattern prototype" />
     <MESSAGE value="Added a pattern object pool and created main" />
     <MESSAGE value="Added a pattern Builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a pattern Builder" />
+    <MESSAGE value="Added a pattern State" />
+    <MESSAGE value="Added a pattern Memento" />
+    <MESSAGE value="Added a pattern Observer" />
+    <MESSAGE value="fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
   </component>
 </project>

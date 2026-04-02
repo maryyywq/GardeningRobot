@@ -11,4 +11,9 @@ public class IdleState implements IRobotState {
     public void exit() { System.out.println(robot.getRobotId() + ": вышел из состояния ожидания"); }
     @Override
     public RobotStatus getStatus() { return RobotStatus.IDLE; }
+
+    @Override
+    public IRobotState clone(Robot newRobot) {
+        return new IdleState(newRobot);
+    }
 }

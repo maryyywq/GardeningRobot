@@ -11,6 +11,36 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
         this.groupName = groupName;
     }
     @Override
+    public void addRobotObserver(IRobotObserver observer) {
+        throw new UnsupportedOperationException("RobotGroup не поддерживает добавление наблюдателей");
+    }
+
+    @Override
+    public void removeRobotObserver(IRobotObserver observer) {
+        throw new UnsupportedOperationException("RobotGroup не поддерживает удаление наблюдателей");
+    }
+
+    @Override
+    public void notifyRobotObservers(RobotEvent event) {
+    }
+
+    @Override
+    public void handleError() {
+        System.out.println("Группа " + groupName + ": обработка ошибки для всех роботов");
+        for (IRobot robot : robots) {
+            robot.handleError();
+        }
+    }
+
+    @Override
+    public void resetError() {
+        System.out.println("Группа " + groupName + ": сброс ошибок у всех роботов");
+        for (IRobot robot : robots) {
+            robot.resetError();
+        }
+    }
+
+    @Override
     public IMovementSystem getMovementSystem() {
         throw new UnsupportedOperationException("Группа не имеет единой системы передвижения");
     }
