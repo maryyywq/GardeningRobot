@@ -92,12 +92,6 @@ class RobotGroup implements IRobot, Iterable<IRobot> {
         }
     }
 
-    @Override
-    public void receiveCommand(String command) {
-        for (IRobot robot : robots) {
-            robot.receiveCommand(command);
-        }
-    }
 
     @Override
     public boolean canUseTool(ITool tool) {

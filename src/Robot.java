@@ -57,6 +57,14 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         }
     }
 
+    public ToolPool getToolPool() {
+        return toolPool;
+    }
+
+    public void setCurrentTool(ITool tool) {
+        this.currentTool = tool;
+    }
+
     @Override
     public void addRobotObserver(IRobotObserver observer) {
         observers.add(observer);
@@ -120,77 +128,6 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         notifyRobotObservers(new RobotEvent(id, EventType.ERROR_RESET, null));
     }
 
-
-    private ToolType commandToToolType(String command) {
-        if (command == null) return null;
-        switch (command) {
-            case "WATER":
-                return ToolType.WATERING;
-            case "FERTILIZE":
-                return ToolType.FERTILIZING;
-            case "TREAT":
-                return ToolType.MEDICAL;
-            case "PLANT":
-                return ToolType.PLANTING;
-            case "HARVEST":
-                return ToolType.HARVESTING;
-            case "WEED":
-                return ToolType.WEEDING;
-            case "MOW":
-                return ToolType.MOWING;
-            default:
-                return null;
-        }
-    }
-
-    @Override
-    public void receiveCommand(String command) {
-        if (toolPool == null) {
-            System.out.println(id + ": ошибка - не привязан к пулу инструментов");
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
-            return;
-        }
-
-        ToolType requiredType = commandToToolType(command);
-        if (requiredType == null) {
-            System.out.println(id + ": неизвестная команда '" + command + "'");
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
-            return;
-        }
-
-        // Запрашиваем инструмент из пула
-        ITool tool = toolPool.acquireTool(requiredType);
-        if (tool == null) {
-            System.out.println(id + ": нет свободного инструмента для " + requiredType);
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
-            return;
-        }
-
-        if (!canUseTool(tool)) {
-            System.out.println(id + ": команда несовместима с базой знаний, требуемый тип " + requiredType);
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, command));
-            return;
-        }
-        notifyRobotObservers(new RobotEvent(id, EventType.TASK_STARTED, command));
-        this.currentTool = tool; // временно устанавливаем
-
-        try {
-            System.out.println(id + ": получена команда: " + command);
-            communication.receiveCommand(command);
-            communication.sendData("Подтверждение", "контроллер");
-            act();
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_COMPLETED, command));
-        } catch (Exception e) {
-            notifyRobotObservers(new RobotEvent(id, EventType.TASK_FAILED, e.getMessage()));
-        } finally {
-            // Возвращаем инструмент в пул
-            if (currentTool != null) {
-                toolPool.releaseTool(currentTool);
-                this.currentTool = null;
-            }
-        }
-    }
-
     @Override
     public Robot clone() {
         return new Robot(this);
@@ -234,7 +171,6 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public boolean canUseTool(ITool tool) {
         return knowledgeBase.isToolCompatible(tool);
     }
-
 
     // Реализация геттеров
     public IMovementSystem getMovementSystem() { return movementSystem; }

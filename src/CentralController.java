@@ -5,7 +5,6 @@ import java.util.*;
 public class CentralController implements IController {
     private HistoryManager historyManager = new HistoryManager();
     private ToolPool toolPool;
-    private Map<String, Integer> failedAttempts = new HashMap<>();
 
     private class Snapshot {
         private final Map<String, IRobot> robotsSnapshot;
@@ -93,28 +92,17 @@ public class CentralController implements IController {
 
         switch (type) {
             case TASK_FAILED:
-                String command = (String) data;
-                int attempts = failedAttempts.getOrDefault(id, 0) + 1; //если робота нет, то 0
-                failedAttempts.put(id, attempts);
-                if (attempts <= 3) {
-                    System.out.printf("[Наблюдатель] Робот %s: попытка %d/3 повторить команду '%s'%n", id, attempts, command);
-                    assignTask(id, new Task(command, Map.of()));
-                } else {
-                    System.out.printf("[Наблюдатель] Робот %s: не удалось выполнить команду после 3 попыток. Перевожу в состояние ошибки%n", id);
-                    if (robot != null) robot.handleError();
-                    failedAttempts.remove(id);
-                }
+                System.out.printf("[Наблюдатель] Робот %s: не удалось выполнить команду. Перевожу в состояние ошибки%n", id);
+                if (robot != null) robot.handleError();
                 break;
 
             case ERROR:
                 System.out.printf("[Наблюдатель] Робот %s в ошибке. Пытаюсь сбросить...%n", id);
                 if (robot != null) robot.resetError();
-                failedAttempts.remove(id);
                 break;
 
             case TASK_COMPLETED:
                 System.out.printf("[Наблюдатель] Робот %s выполнил задачу: %s%n", id, data);
-                failedAttempts.remove(id);
                 break;
 
             case TASK_STARTED:
@@ -173,11 +161,11 @@ public class CentralController implements IController {
         robot.addRobotObserver(this);
     }
 
-    public void assignTask(String robotId, Task task) {
+    public void assignCommand(String robotId, ICommand command) {
         IRobot robot = robots.get(robotId);
         if (robot != null) {
-            System.out.println("Контроллер: назначение задачи " + task.type + " роботу " + robotId);
-            robot.receiveCommand(task.type);
+            System.out.println("Контроллер: назначение команды роботу " + robotId);
+            command.execute();
         } else {
             System.out.println("Контроллер: робот " + robotId + " не найден");
         }

@@ -28,8 +28,8 @@ class GardenFacade {
         IRobot plantingRobot = controller.findRobotWithTool(ToolType.PLANTING);
         if (plantingRobot != null) {
             System.out.println("Шаг 2: Посадка...");
-            Task plantingTask = new Task("PLANT", Map.of("plant", "томаты", "location", bedLocation));
-            controller.assignTask(plantingRobot.getRobotId(), plantingTask);
+            //Task plantingTask = new Task("PLANT", Map.of("plant", "томаты", "location", bedLocation));
+            //controller.assignTask(plantingRobot.getRobotId(), plantingTask);
         } else {
             System.out.println("Нет робота-посадчика!");
             return;
@@ -39,8 +39,8 @@ class GardenFacade {
         IRobot wateringRobot = controller.findRobotWithTool(ToolType.WATERING);
         if (wateringRobot != null) {
             System.out.println("Шаг 3: Полив...");
-            Task waterTask = new Task("WATER", Map.of("plant", "томаты", "volume", 2.5));
-            controller.assignTask(wateringRobot.getRobotId(), waterTask);
+            //Task waterTask = new Task("WATER", Map.of("plant", "томаты", "volume", 2.5));
+            //controller.assignTask(wateringRobot.getRobotId(), waterTask);
         } else {
             System.out.println("Нет робота для полива!");
             return;
@@ -50,8 +50,8 @@ class GardenFacade {
         IRobot fertilizingRobot = controller.findRobotWithTool(ToolType.FERTILIZING);
         if (fertilizingRobot != null) {
             System.out.println("Шаг 4: Удобрение...");
-            Task fertilizeTask = new Task("FERTILIZE", Map.of("plant", "томаты", "dosage", 50));
-            controller.assignTask(fertilizingRobot.getRobotId(), fertilizeTask);
+            //Task fertilizeTask = new Task("FERTILIZE", Map.of("plant", "томаты", "dosage", 50));
+            //controller.assignTask(fertilizingRobot.getRobotId(), fertilizeTask);
         } else {
             System.out.println("Нет робота для удобрения!");
             return;
@@ -61,8 +61,8 @@ class GardenFacade {
         IRobot medicalRobot = controller.findRobotWithTool(ToolType.MEDICAL);
         if (medicalRobot != null) {
             System.out.println("Шаг 5: Обработка от болезней...");
-            Task medicalTask = new Task("TREAT", Map.of("disease", "фитофтора", "medicine", "бордоская смесь"));
-            controller.assignTask(medicalRobot.getRobotId(), medicalTask);
+            //Task medicalTask = new Task("TREAT", Map.of("disease", "фитофтора", "medicine", "бордоская смесь"));
+            //controller.assignTask(medicalRobot.getRobotId(), medicalTask);
         } else {
             System.out.println("Нет робота-медика!");
             return;
@@ -80,8 +80,8 @@ class GardenFacade {
             return;
         }
         for (IRobot robot : waterers) {
-            Task waterTask = new Task("WATER", Map.of("volume", 5.0));
-            controller.assignTask(robot.getRobotId(), waterTask);
+            //Task waterTask = new Task("WATER", Map.of("volume", 5.0));
+            //controller.assignTask(robot.getRobotId(), waterTask);
         }
         System.out.println("Команды полива отправлены " + waterers.size() + " роботам");
     }
@@ -95,8 +95,8 @@ class GardenFacade {
             return;
         }
         for (IRobot robot : harvesters) {
-            Task harvestTask = new Task("HARVEST", Map.of("crop", "томаты"));
-            controller.assignTask(robot.getRobotId(), harvestTask);
+            //Task harvestTask = new Task("HARVEST", Map.of("crop", "томаты"));
+            //controller.assignTask(robot.getRobotId(), harvestTask);
         }
         System.out.println("Команды сбора отправлены " + harvesters.size() + " роботам");
     }
@@ -110,8 +110,8 @@ class GardenFacade {
             return;
         }
         for (IRobot robot : fertilizers) {
-            Task fertilizeTask = new Task("FERTILIZE", Map.of("type", "комплексное", "dosage", 30));
-            controller.assignTask(robot.getRobotId(), fertilizeTask);
+            //Task fertilizeTask = new Task("FERTILIZE", Map.of("type", "комплексное", "dosage", 30));
+            //controller.assignTask(robot.getRobotId(), fertilizeTask);
         }
         System.out.println("Команды удобрения отправлены " + fertilizers.size() + " роботам");
     }

@@ -52,23 +52,6 @@ public class RobotProxy extends Robot {
         }
     }
 
-    @Override
-    public void receiveCommand(String command) {
-        String cmd = command.split(" ")[0];
-        //Проверяем, разрешена ли команда
-        if (!allowedCommands.contains(cmd)) {
-            System.out.println("Proxy: команда '" + command + "' заблокирована (не разрешена)");
-            return; //Не передаём дальше
-        }
-        System.out.println("Proxy: команда '" + command + "' разрешена, проверяю системы...");
-        if (canStart()) {
-            System.out.println("Proxy: системы в норме, передаю команду роботу");
-            realRobot.receiveCommand(command); //Робот сам запустит задачу в receiveCommand
-        } else {
-            System.out.println("Proxy: задача не запущена из-за проблем с системами");
-        }
-    }
-
 
     @Override
     public boolean canUseTool(ITool tool) {
