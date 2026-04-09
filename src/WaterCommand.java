@@ -1,13 +1,13 @@
 public class WaterCommand extends TaskCommand {
     private final double volume;
 
-    public WaterCommand(Robot robot, double volume) {
-        super(robot, ToolType.WATERING, "Полив");
+    public WaterCommand(double volume) {
+        super(ToolType.WATERING, "Полив");
         this.volume = volume;
     }
 
     @Override
-    protected void executeTask(ITool tool) {
+    protected void executeTask(Robot robot, ITool tool) {
         if (volume <= 0) {
             System.out.println(robot.getRobotId() + ": ошибка - объём полива должен быть положительным");
             return;

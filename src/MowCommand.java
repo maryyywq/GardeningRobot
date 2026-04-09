@@ -1,13 +1,13 @@
 public class MowCommand extends TaskCommand {
     private final double height;
 
-    public MowCommand(Robot robot, double height) {
-        super(robot, ToolType.MOWING, "Стрижка");
+    public MowCommand(double height) {
+        super(ToolType.MOWING, "Стрижка");
         this.height = height;
     }
 
     @Override
-    protected void executeTask(ITool tool) {
+    protected void executeTask(Robot robot, ITool tool) {
         if (height <= 0) {
             System.out.println(robot.getRobotId() + ": ошибка - высота стрижки должна быть положительной");
             return;

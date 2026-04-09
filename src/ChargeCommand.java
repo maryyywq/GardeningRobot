@@ -1,13 +1,12 @@
 public class ChargeCommand implements ICommand {
-    private final Robot robot;
-
-    public ChargeCommand(Robot robot) {
-        this.robot = robot;
+    @Override
+    public void execute(Robot robot) {
+        robot.startCharging();
+        robot.act();
     }
 
     @Override
-    public void execute() {
-        robot.startCharging();
-        robot.act();
+    public boolean canBeHandledBy(Robot robot) {
+        return true;
     }
 }

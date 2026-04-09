@@ -4,29 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Refactored Memento pattern to encapsulate data in CentralController">
-      <change afterPath="$PROJECT_DIR$/src/ChargeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FertilizeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HarvestCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ICommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MoveCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MowCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlantCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TaskCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TreatCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WaterCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeedCommand.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added pattern command">
+      <change afterPath="$PROJECT_DIR$/src/ITaskHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RobotTaskHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TaskHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GardenFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GardenFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChargeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChargeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FertilizeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HarvestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RobotProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WorkingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorkingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaskCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaskCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TreatCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TreatCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WaterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,11 +429,26 @@
       <option name="project" value="LOCAL" />
       <updated>1775232140322</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added pattern command">
+      <option name="closed" value="true" />
+      <created>1775662127495</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1775662127495</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added pattern command">
+      <option name="closed" value="true" />
+      <created>1775662179189</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1775662179190</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added comments" />
     <MESSAGE value="Added full comments" />
     <MESSAGE value="Moved getters from IRobot to Robot" />
     <MESSAGE value="Made abstract classes instead of interfaces, added delegation to the method startTask() in the Robot class" />
@@ -462,6 +473,7 @@
     <MESSAGE value="Added a pattern Observer" />
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="Refactored Memento pattern to encapsulate data in CentralController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored Memento pattern to encapsulate data in CentralController" />
+    <MESSAGE value="Added pattern command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pattern command" />
   </component>
 </project>

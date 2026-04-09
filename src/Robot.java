@@ -32,7 +32,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         this.location = startLoc;
         this.destination = startLoc;
         this.segmentFactory = segmentFactory;
-
+        startIdle();
 
     }
 

@@ -1,3 +1,4 @@
 public interface ICommand {
-    void execute();
+    void execute(Robot robot);
+    boolean canBeHandledBy(Robot robot);
 }

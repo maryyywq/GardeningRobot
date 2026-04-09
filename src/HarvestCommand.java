@@ -1,10 +1,10 @@
 public class HarvestCommand extends TaskCommand {
-    public HarvestCommand(Robot robot) {
-        super(robot, ToolType.HARVESTING, "Сбор урожая");
+    public HarvestCommand() {
+        super(ToolType.HARVESTING, "Сбор урожая");
     }
 
     @Override
-    protected void executeTask(ITool tool) {
+    protected void executeTask(Robot robot, ITool tool) {
         System.out.println(robot.getRobotId() + ": сбор урожая");
         tool.execute();
     }

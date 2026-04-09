@@ -1,13 +1,13 @@
 public class PlantCommand extends TaskCommand {
     private final PlantType plantType;
 
-    public PlantCommand(Robot robot, PlantType plantType) {
-        super(robot, ToolType.PLANTING, "Посадка");
+    public PlantCommand(PlantType plantType) {
+        super(ToolType.PLANTING, "Посадка");
         this.plantType = plantType;
     }
 
     @Override
-    protected void executeTask(ITool tool) {
+    protected void executeTask(Robot robot, ITool tool) {
         if (plantType == null) {
             System.out.println(robot.getRobotId() + ": ошибка - не указан тип растения для посадки");
             return;

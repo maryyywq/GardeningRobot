@@ -1,13 +1,13 @@
 public class TreatCommand extends TaskCommand {
     private final String medicine;
 
-    public TreatCommand(Robot robot, String medicine) {
-        super(robot, ToolType.MEDICAL, "Лечение");
+    public TreatCommand(String medicine) {
+        super(ToolType.MEDICAL, "Лечение");
         this.medicine = medicine;
     }
 
     @Override
-    protected void executeTask(ITool tool) {
+    protected void executeTask(Robot robot, ITool tool) {
         if (medicine == null || medicine.isEmpty()) {
             System.out.println(robot.getRobotId() + ": ошибка - не указан препарат для лечения");
             return;

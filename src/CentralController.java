@@ -1,10 +1,47 @@
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.*;
+import java.util.stream.Collectors;
 
 //Класс центрального контроллера
 public class CentralController implements IController {
     private HistoryManager historyManager = new HistoryManager();
     private ToolPool toolPool;
+    private TaskHandler taskChain;
+
+    private void buildTaskChain() {
+        if (robots.isEmpty()) {
+            taskChain = null;
+            return;
+        }
+        List<Robot> robotList = robots.values().stream()
+                .map(r -> (Robot) r)
+                .collect(Collectors.toList());
+        RobotTaskHandler first = new RobotTaskHandler(robotList.get(0));
+        RobotTaskHandler current = first;
+        for (int i = 1; i < robotList.size(); i++) {
+            RobotTaskHandler next = new RobotTaskHandler(robotList.get(i));
+            current.setNext(next);
+            current = next;
+        }
+        taskChain = first;
+    }
+
+    // Обновление цепочки после изменения списка роботов
+    private void updateChain() {
+        buildTaskChain();
+    }
+
+    public boolean executeCommand(ICommand command) {
+        if (taskChain == null) {
+            System.out.println("Нет доступных роботов для выполнения команды");
+            return false;
+        }
+        boolean result = taskChain.handle(command);
+        if (!result) {
+            System.out.println("Команда не выполнена");
+        }
+        return result;
+    }
 
     private class Snapshot {
         private final Map<String, IRobot> robotsSnapshot;
@@ -132,7 +169,7 @@ public class CentralController implements IController {
         return Holder.INSTANCE;
     }
 
-    private Map<String, IRobot> robots = new ConcurrentHashMap<>();//Словарь роботов
+    private Map<String, IRobot> robots = new LinkedHashMap<>();
 
     private CentralController() {
         toolPool = new GenericToolPool(); //пустой пул
@@ -159,13 +196,14 @@ public class CentralController implements IController {
         robot.setToolPool(toolPool); // передаём ссылку на пул
         System.out.println("Контроллер: робот " + id + " зарегистрирован и получил доступ к пулу инструментов");
         robot.addRobotObserver(this);
+        updateChain();
     }
 
     public void assignCommand(String robotId, ICommand command) {
         IRobot robot = robots.get(robotId);
         if (robot != null) {
             System.out.println("Контроллер: назначение команды роботу " + robotId);
-            command.execute();
+            command.execute((Robot) robot);   // передаём робота в команду
         } else {
             System.out.println("Контроллер: робот " + robotId + " не найден");
         }
@@ -257,6 +295,7 @@ public class CentralController implements IController {
             robots.remove(robotId);
             robot.removeRobotObserver(this);
             System.out.println("Контроллер: робот " + robotId + " удалён");
+            updateChain();
         }
     }
 
@@ -264,5 +303,7 @@ public class CentralController implements IController {
         robots.forEach(((_, value) -> value.removeRobotObserver(this)));
         robots.clear();
         System.out.println("Контроллер: все роботы удалены");
+        updateChain();
     }
+
 }

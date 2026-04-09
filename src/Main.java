@@ -71,40 +71,67 @@ public class Main {
         controller.registerRobot(plantingRobot);
         System.out.println();
 
-        ICommand waterCmd = new WaterCommand(wateringRobot, 5.0);
+        ICommand waterCmd = new WaterCommand(5.0);
         controller.assignCommand(wateringRobot.getRobotId(), waterCmd);
         System.out.println();
 
-        ICommand fertilizeCmd = new FertilizeCommand(fertilizingRobot, "аммиачная селитра");
+        ICommand fertilizeCmd = new FertilizeCommand("аммиачная селитра");
         controller.assignCommand(fertilizingRobot.getRobotId(), fertilizeCmd);
         System.out.println();
 
-        ICommand weedCmd = new WeedCommand(weedingRobot);
+        ICommand weedCmd = new WeedCommand();
         controller.assignCommand(weedingRobot.getRobotId(), weedCmd);
         System.out.println();
 
-        ICommand harvestCmd = new HarvestCommand(harvestingRobot);
+        ICommand harvestCmd = new HarvestCommand();
         controller.assignCommand(harvestingRobot.getRobotId(), harvestCmd);
         System.out.println();
 
-        ICommand mowCmd = new MowCommand(mowingRobot, 3.5);
+        ICommand mowCmd = new MowCommand(3.5);
         controller.assignCommand(mowingRobot.getRobotId(), mowCmd);
         System.out.println();
 
-        ICommand treatCmd = new TreatCommand(medicalRobot, "фитоспорин");
+        ICommand treatCmd = new TreatCommand("фитоспорин");
         controller.assignCommand(medicalRobot.getRobotId(), treatCmd);
         System.out.println();
 
-        ICommand plantCmd = new PlantCommand(medicalRobot, PlantType.TOMATO);
+        ICommand plantCmd = new PlantCommand(PlantType.TOMATO);
         controller.assignCommand(medicalRobot.getRobotId(), plantCmd);
         System.out.println();
 
-        ICommand moveCmd = new MoveCommand(wateringRobot, new Location(100, 200));
-        controller.assignCommand(harvestingRobot.getRobotId(), moveCmd);
+        ICommand moveCmd = new MoveCommand(new Location(100, 200));
+        controller.assignCommand(wateringRobot.getRobotId(), moveCmd);
         System.out.println();
 
-        ICommand chargeCmd = new ChargeCommand(fertilizingRobot);
+        ICommand chargeCmd = new ChargeCommand();
         controller.assignCommand(fertilizingRobot.getRobotId(), chargeCmd);
+        System.out.println();
+
+        System.out.println("2. Тестирование паттерна Chain of resposibility:\n");
+        controller.clearRobots();
+        System.out.println();
+        controller.registerRobot(fertilizingRobot);
+        controller.registerRobot(harvestingRobot);
+        controller.registerRobot(wateringRobot);
+        System.out.println();
+        controller.executeCommand(waterCmd);
+        System.out.println();
+
+        controller.clearRobots();
+        System.out.println();
+        controller.registerRobot(medicalRobot);
+        controller.registerRobot(harvestingRobot);
+        System.out.println();
+        controller.executeCommand(treatCmd);
+        System.out.println();
+
+        controller.clearRobots();
+        controller.registerRobot(medicalRobot);
+        controller.registerRobot(harvestingRobot);
+        System.out.println();
+        controller.executeCommand(waterCmd);
+
+
 
     }
 }
