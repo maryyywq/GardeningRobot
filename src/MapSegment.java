@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapSegment {
-    private final SoilType soil;
-    private final PlantType plant;
-    private final double moisture;
-    private final WeedLevel weeds;
-    private final List<GroundObjectType> objects;
+    private SoilType soil;
+    private PlantType plant;
+    private double moisture;
+    private WeedLevel weeds;
+    private List<GroundObjectType> objects;
 
     MapSegment(SoilType soil, PlantType plant, double moisture,
                WeedLevel weeds, List<GroundObjectType> objects) {
@@ -16,6 +16,16 @@ public class MapSegment {
         this.weeds = weeds;
         this.objects = new ArrayList<>(objects);
     }
+
+    public void accept(IMapSegmentVisitor visitor, IRobot robot, ICommand command) {
+        visitor.visit(this, robot, command);
+    }
+
+    public void setSoil(SoilType soil) { this.soil = soil; }
+    public void setPlant(PlantType plant) { this.plant = plant; }
+    public void setMoisture(double moisture) { this.moisture = moisture; }
+    public void setWeeds(WeedLevel weeds) { this.weeds = weeds; }
+    public void setObjects(List<GroundObjectType> objects) { this.objects = objects; }
 
     // Геттеры (при необходимости)
     public SoilType getSoil() { return soil; }
@@ -35,6 +45,7 @@ public class MapSegment {
         sb.append("}");
         return sb.toString();
     }
+
 }
 
 

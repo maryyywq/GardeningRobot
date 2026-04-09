@@ -15,4 +15,9 @@ public class FertilizeCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": внесение удобрения " + fertilizerType);
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Внесение удобрения '" + fertilizerType + "'";
+    }
 }

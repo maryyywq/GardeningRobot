@@ -4,22 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added pattern command">
-      <change afterPath="$PROJECT_DIR$/src/ITaskHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RobotTaskHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TaskHandler.java" afterDir="false" />
+    <list default="true" id="5d5e7280-32bd-4974-92e8-90896ff37bde" name="Changes" comment="Added pattern chain of responsibility">
+      <change afterPath="$PROJECT_DIR$/src/IMapSegmentVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RobotActivityVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CentralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CentralController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChargeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChargeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FertilizeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FertilizeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HarvestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HarvestCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IRobot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MapSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapSegment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MoveCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MowCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotTaskHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotTaskHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TaskCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaskCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaskHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaskHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TreatCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TreatCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WaterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WaterCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeedCommand.java" afterDir="false" />
@@ -67,15 +70,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/mk902/IdeaProjects/GardeningRobot/src/Main.java"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -445,11 +448,18 @@
       <option name="project" value="LOCAL" />
       <updated>1775662179190</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Added pattern chain of responsibility">
+      <option name="closed" value="true" />
+      <created>1775722178942</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1775722178942</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added full comments" />
     <MESSAGE value="Moved getters from IRobot to Robot" />
     <MESSAGE value="Made abstract classes instead of interfaces, added delegation to the method startTask() in the Robot class" />
     <MESSAGE value="Added a pattern adapter" />
@@ -474,6 +484,7 @@
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="Refactored Memento pattern to encapsulate data in CentralController" />
     <MESSAGE value="Added pattern command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pattern command" />
+    <MESSAGE value="Added pattern chain of responsibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added pattern chain of responsibility" />
   </component>
 </project>

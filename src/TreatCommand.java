@@ -15,4 +15,9 @@ public class TreatCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": лечение препаратом " + medicine);
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Лечение препаратом '" + medicine + "'";
+    }
 }

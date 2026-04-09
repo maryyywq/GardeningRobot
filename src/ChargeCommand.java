@@ -9,4 +9,12 @@ public class ChargeCommand implements ICommand {
     public boolean canBeHandledBy(Robot robot) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Зарядка";
+    }
+
+    @Override
+    public boolean isMadeOnThisSegment() { return false; }
 }

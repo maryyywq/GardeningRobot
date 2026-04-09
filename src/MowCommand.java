@@ -15,4 +15,9 @@ public class MowCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": стрижка на высоту " + height + " см");
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Стрижка на высоту " + height + " см";
+    }
 }

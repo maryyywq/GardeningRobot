@@ -8,4 +8,9 @@ public class HarvestCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": сбор урожая");
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Сбор урожая";
+    }
 }

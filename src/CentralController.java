@@ -7,12 +7,18 @@ public class CentralController implements IController {
     private HistoryManager historyManager = new HistoryManager();
     private ToolPool toolPool;
     private TaskHandler taskChain;
+    private RobotActivityVisitor visitor = new RobotActivityVisitor();
+
+    public RobotActivityVisitor getVisitor() {
+        return visitor;
+    }
 
     private void buildTaskChain() {
         if (robots.isEmpty()) {
             taskChain = null;
             return;
         }
+        //Преобразуем коллекцию роботов в список для удобного доступа по индексу
         List<Robot> robotList = robots.values().stream()
                 .map(r -> (Robot) r)
                 .collect(Collectors.toList());
@@ -36,7 +42,7 @@ public class CentralController implements IController {
             System.out.println("Нет доступных роботов для выполнения команды");
             return false;
         }
-        boolean result = taskChain.handle(command);
+        boolean result = taskChain.handle(command, visitor);
         if (!result) {
             System.out.println("Команда не выполнена");
         }
@@ -203,7 +209,7 @@ public class CentralController implements IController {
         IRobot robot = robots.get(robotId);
         if (robot != null) {
             System.out.println("Контроллер: назначение команды роботу " + robotId);
-            command.execute((Robot) robot);   // передаём робота в команду
+            command.execute((Robot) robot, visitor);   // передаём робота в команду
         } else {
             System.out.println("Контроллер: робот " + robotId + " не найден");
         }

@@ -32,6 +32,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         this.location = startLoc;
         this.destination = startLoc;
         this.segmentFactory = segmentFactory;
+        this.currentSegment = segmentFactory.getMapSegment(startLoc);
         startIdle();
 
     }
@@ -63,6 +64,10 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
 
     public void setCurrentTool(ITool tool) {
         this.currentTool = tool;
+    }
+
+    public void setCurrentSegment(MapSegment segment) {
+        this.currentSegment = segment;
     }
 
     @Override
@@ -133,17 +138,6 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
         return new Robot(this);
     }
 
-    private String generateUniqueId(String originalId) {
-        return originalId + "_copy_" + System.currentTimeMillis();
-    }
-
-    public void moveTo(Location newLocation) {
-        movementSystem.moveTo(newLocation);
-        this.location = newLocation;
-        this.currentSegment = segmentFactory.getMapSegment(newLocation);
-        notifyRobotObservers(new RobotEvent(id, EventType.ARRIVED, newLocation));
-    }
-
     public MapSegment getCurrentSegment() { return currentSegment; }
 
     @Override
@@ -179,6 +173,7 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public ICommunication getCommunication() { return communication; }
     public IKnowledgeBase<?> getKnowledgeBase() { return knowledgeBase; }
     public ITool getCurrentTool() { return currentTool; }
+    public MapSegmentFactory getSegmentFactory() { return segmentFactory; }
 
     @Override
     public String toString() {
@@ -195,11 +190,5 @@ class Robot implements IRobot, Iterable<Object> , Prototype<Robot> {
     public Location getDestination() {
         return destination;
     }
-
-    public void setDestination(Location destination) {
-        this.destination = destination;
-    }
-
-
 }
 

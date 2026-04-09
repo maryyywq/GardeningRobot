@@ -15,4 +15,9 @@ public class WaterCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": полив с объёмом " + volume + " л");
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Полив объёмом " + volume + " л";
+    }
 }

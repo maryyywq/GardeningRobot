@@ -85,4 +85,7 @@ public abstract class TaskCommand implements ICommand {
     }
 
     protected abstract void executeTask(Robot robot, ITool tool);
+
+    @Override
+    public boolean isMadeOnThisSegment() { return true; }
 }

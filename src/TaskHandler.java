@@ -5,17 +5,7 @@ public abstract class TaskHandler implements ITaskHandler {
         this.next = next;
     }
 
-    @Override
-    public boolean handle(ICommand command) {
-        if (canHandle(command)) {
-            return doHandle(command);
-        } else if (next != null) {
-            return next.handle(command);
-        } else {
-            return false;
-        }
-    }
-
+    protected abstract boolean handle(ICommand command, IMapSegmentVisitor visitor);
     protected abstract boolean canHandle(ICommand command);
     protected abstract boolean doHandle(ICommand command);
 }

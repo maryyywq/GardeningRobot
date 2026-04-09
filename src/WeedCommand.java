@@ -8,4 +8,8 @@ public class WeedCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": удаление сорняков");
         tool.execute();
     }
+    @Override
+    public String toString() {
+        return "Прополка сорняков";
+    }
 }

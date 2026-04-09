@@ -3,10 +3,53 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("1. Тестирование паттерна Command:\n");
+        System.out.println("1. Тестирование паттерна Visitor:\n");
         CentralController controller = CentralController.getInstance();
         MapSegmentFactory segmentFactory = new MapSegmentFactory();
+
+        Location loc1 = new Location(0, 0);
+        Location loc2 = new Location(1, 1);
+        System.out.println();
+
+        segmentFactory.getMapSegment(loc1).setSoil(SoilType.SAND);
+        segmentFactory.getMapSegment(loc2).setSoil(SoilType.CHERNOZEM);
+        System.out.println();
+
+        Robot waterBot = new WateringRobotFactory().createRobot("WaterBot", loc1, segmentFactory);
+        Robot fertilizeBot = new FertilizingRobotFactory().createRobot("FertilizeBot", loc2, segmentFactory);
+        System.out.println();
+
+        controller.registerRobot(waterBot);
+        controller.registerRobot(fertilizeBot);
+        controller.addToolToPool(new WateringTool());
+        controller.addToolToPool(new FertilizingTool());
+        controller.addToolToPool(new WeedingTool());
+        controller.addToolToPool(new HarvestingTool());
+        System.out.println();
+
+        System.out.println("Выполнение команд на назначенных сегментах:");
+        controller.assignCommand("WaterBot", new WaterCommand(5.0));
+        System.out.println();
+        controller.assignCommand("FertilizeBot", new FertilizeCommand("компост"));
+        System.out.println();
+
+        System.out.println("Перемещение на другие сегменты и повторные действия:");
+        controller.assignCommand("WaterBot", new MoveCommand(loc2));
+        System.out.println();
+        controller.assignCommand("WaterBot", new WaterCommand(3.0));
+        System.out.println();
+
+        controller.assignCommand("FertilizeBot", new MoveCommand(loc1));
+        System.out.println();
+        controller.assignCommand("FertilizeBot", new FertilizeCommand("азотное"));
+        System.out.println();
+        controller.assignCommand("WaterBot", new MoveCommand(loc1));
+        System.out.println();
+        System.out.println("Статистика посещений:");
+        controller.getVisitor().printStatistics();
+        System.out.println();
+
+        System.out.println("2. Тестирование паттерна Command:\n");
         controller.addToolToPool(new WateringTool());
         controller.addToolToPool(new FertilizingTool());
         controller.addToolToPool(new WeedingTool());
@@ -61,6 +104,7 @@ public class Main {
                 new Location(6,6),
                 segmentFactory
         );
+        System.out.println();
         //Регистрируем всех роботов в контроллере
         controller.registerRobot(wateringRobot);
         controller.registerRobot(fertilizingRobot);
@@ -107,7 +151,7 @@ public class Main {
         controller.assignCommand(fertilizingRobot.getRobotId(), chargeCmd);
         System.out.println();
 
-        System.out.println("2. Тестирование паттерна Chain of resposibility:\n");
+        System.out.println("3. Тестирование паттерна Chain of resposibility:\n");
         controller.clearRobots();
         System.out.println();
         controller.registerRobot(fertilizingRobot);
@@ -130,8 +174,7 @@ public class Main {
         controller.registerRobot(harvestingRobot);
         System.out.println();
         controller.executeCommand(waterCmd);
-
-
+        System.out.println();
 
     }
 }

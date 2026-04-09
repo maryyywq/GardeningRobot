@@ -10,4 +10,6 @@ interface IRobot extends IRobotObservable {
     void setToolPool(ToolPool pool);
     void handleError();
     void resetError();
+
+    MapSegment getCurrentSegment();
 }

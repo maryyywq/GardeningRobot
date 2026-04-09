@@ -15,4 +15,9 @@ public class PlantCommand extends TaskCommand {
         System.out.println(robot.getRobotId() + ": посадка " + plantType.getName());
         tool.execute();
     }
+
+    @Override
+    public String toString() {
+        return "Посадка " + plantType.getName();
+    }
 }
