@@ -1,0 +1,26 @@
+package components.movement;
+
+import core.IMovementSystem;
+import models.Location;
+import models.MovementSystemType;
+import models.MovementType;
+
+public class PlaneMovement extends IMovementSystem {
+    public PlaneMovement() {speed = 3.0;}
+    public PlaneMovement(PlaneMovement other) { this.speed = other.speed; }
+    @Override public void moveTo(Location target) {
+        System.out.println("Система передвижения с использованием винта передней части (как у самолета): планирование к " + target);
+    }
+    @Override public void stop() { System.out.println("Система передвижения с использованием винта передней части (как у самолета): торможение"); }
+    @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения с использованием винта передней части (как у самолета): скорость установлена " + speed); }
+    @Override public MovementType getMovementType() { return MovementType.AIR; }
+    @Override
+    public MovementSystemType getSystemType() {
+        return MovementSystemType.PLAIN;
+    }
+    @Override public IMovementSystem clone() { return new PlaneMovement(this); }
+    @Override
+    public String toString() {
+        return "Система передвижения с винтом спереди (скорость: " + speed + ")";
+    }
+}

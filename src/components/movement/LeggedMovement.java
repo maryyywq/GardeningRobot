@@ -1,0 +1,26 @@
+package components.movement;
+
+import core.IMovementSystem;
+import models.Location;
+import models.MovementSystemType;
+import models.MovementType;
+
+public class LeggedMovement extends IMovementSystem {
+    public LeggedMovement() {speed = 0.5;}
+    public LeggedMovement(LeggedMovement other) { this.speed = other.speed; }
+    @Override public void moveTo(Location target) {
+        System.out.println("Система передвижения на ножках: перемещение к " + target);
+    }
+    @Override public void stop() { System.out.println("Система передвижения на ножках: остановка"); }
+    @Override public void setSpeed(double speed) { this.speed = speed; System.out.println("Система передвижения на ножках: скорость установлена " + speed); }
+    @Override public MovementType getMovementType() { return MovementType.GROUND; }
+    @Override
+    public MovementSystemType getSystemType() {
+        return MovementSystemType.LEGGED;
+    }
+    @Override public IMovementSystem clone() { return new LeggedMovement(this); }
+    @Override
+    public String toString() {
+        return "Система передвижения на ножках (скорость: " + speed + ")";
+    }
+}

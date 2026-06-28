@@ -1,0 +1,75 @@
+package robot;
+
+import components.power.PowerManager;
+import core.*;
+import models.RobotStatus;
+import models.ToolStatus;
+
+import java.util.*;
+
+public class RobotProxy extends Robot {
+    private Robot realRobot; //Ссылка на реального робота
+    private Set<String> allowedCommands; //Множество разрешённых команд
+    private static final double MIN_POWER = 10.0; //Минимальный уровень заряда для работы
+
+    public RobotProxy(Robot realRobot) {
+        this.realRobot = realRobot;
+        this.allowedCommands = new HashSet<>(Arrays.asList("MOVE", "SCAN", "STATUS", "WATER", "FERTILIZE", "WEED", "MOW", "TREAT", "PLANT", "HARVEST"));
+    }
+
+    //Проверка всех систем перед запуском задачи
+    private boolean canStart() {
+        System.out.println("Proxy: проверка систем...");
+        //Проверка инструмента
+        ITool tool = realRobot.getCurrentTool();
+        if (tool == null) {
+            System.out.println("Proxy: ошибка - инструмент не установлен");
+            return false;
+        }
+        if (tool.getStatus() == ToolStatus.ERROR) {
+            System.out.println("Proxy: ошибка - инструмент в состоянии ошибки");
+            return false;
+        }
+        if (!realRobot.canUseTool(tool)) {
+            System.out.println("Proxy: ошибка - инструмент несовместим с базой знаний");
+            return false;
+        }
+
+        System.out.println("Proxy: все системы в норме");
+        return true;
+
+
+
+    }
+
+
+    @Override
+    public RobotStatus getStatus() {
+        System.out.println("Proxy: получение статуса");
+        return realRobot.getStatus();
+    }
+
+    @Override
+    public void setTool(ITool tool) {
+        System.out.println("Proxy: проверка совместимости инструмента " + tool.getName());
+        if (realRobot.canUseTool(tool)) {
+            realRobot.setTool(tool);
+        } else {
+            System.out.println("Proxy: инструмент " + tool.getName() + " несовместим. Отказ.");
+        }
+    }
+
+
+    @Override
+    public boolean canUseTool(ITool tool) {
+        return realRobot.canUseTool(tool);
+    }
+
+    //Реализация геттеров (делегирование)
+    @Override public IMovementSystem getMovementSystem() { return realRobot.getMovementSystem(); }
+    @Override public INavigation getNavigation() { return realRobot.getNavigation(); }
+    @Override public PowerManager getPowerManager() { return realRobot.getPowerManager(); }
+    @Override public ICommunication getCommunication() { return realRobot.getCommunication(); }
+    @Override public IKnowledgeBase<?> getKnowledgeBase() { return realRobot.getKnowledgeBase(); }
+    @Override public ITool getCurrentTool() { return realRobot.getCurrentTool(); }
+}

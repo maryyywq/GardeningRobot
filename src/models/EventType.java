@@ -1,0 +1,12 @@
+package models;
+
+public enum EventType {
+    TASK_STARTED,
+    TASK_COMPLETED,
+    TASK_FAILED,
+    CHARGING_STARTED,
+    MOVING_STARTED,
+    ARRIVED,
+    ERROR,
+    ERROR_RESET
+}
